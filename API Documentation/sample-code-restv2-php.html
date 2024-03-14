@@ -1,0 +1,1335 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Sample Code</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="javascript/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="javascript/jquery.colorbox-min.js" type="text/javascript"></script>
+    <link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="javascript/highlight.pack.js" type="text/javascript"></script>
+    <script src="javascript/help.js" type="text/javascript"></script>
+    <script src="javascript/flash.js" type="text/javascript"></script>
+    <script src="javascript/remote.js" type="text/javascript"></script>
+    <script src="javascript/switch.js" type="text/javascript"></script>
+    <script src="javascript/ajax_upload.js" type="text/javascript"></script>
+    <script src="javascript/extra_fields.js" type="text/javascript"></script>
+    <script src="javascript/application.js" type="text/javascript"></script>
+    <link href="css/default.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="html5.js"></script>
+    <script type="text/javascript" src="eCSStender.js"></script>
+    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="javascript/prettify.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var offset = $("#sidebar").offset(); //Sets which element is scrollable. In this case it's the div .sidebar
+            var topPadding = 30;  //Set how much top-padding the element has.
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > offset.top) {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: $(window).scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: 0
+                    });
+                };
+            });
+        });
+
+    </script>
+</head>
+
+<body class="home">
+
+    <div id="page">
+
+        <div id="header">
+            <a id="header-logo" href="index.html">
+                <img src="images/logo-white.png" /></a>
+            <div id="header-widget">
+                <div id="user_widget" class="round">
+                    <a href="login.html">Sign in</a>
+                    | <a href="signup.html">Sign up</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="content">
+            <table style="width: 100%" cellspacing="0" cellpadding="10">
+                <tr>
+                    <td valign="top" style="width: 250px">
+                        <div style="margin-left: 0px; margin-top: 0px">
+
+                            <div id='cssmenu'>
+                                <ul>
+                                    <li><a href='decibel-sdk.html'><span>Home</span></a></li>
+                                    <li><a href='news.html'><span>News</span></a></li>
+                                    <li><a href='our-api.html'><span>API Music Metadata</span></a></li>
+                                    <li><a href='authentication.html'><span>API Authentication</span></a></li>
+                                    <li><a href='rest-api-v2.html'><span>REST API Documentation</span></a></li>
+                                    <li><a href='hackathons.html'><span>Hackathons</span></a></li>
+                                    <li><a href='forum.html'><span>Forum</span></a></li>
+                                    <li><a href='support.html'><span>Support</span></a></li>
+                                    <li><a href='faq.html'><span>FAQ</span></a></li>
+                                    <li><a href='termsandconditions.html'><span>Terms and Conditions</span></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <script type="text/javascript">
+                                function PopupCenter(pageURL, title, w, h) {
+                                    var left = (screen.width / 2) - (w / 2);
+                                    var top = (screen.height / 2) - (h / 2);
+                                    var targetWin = window.open(pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+                                }
+                            </script>
+
+                            <style type="text/css">
+                                /**
+                             * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+                             * (http://qbnz.com/highlighter/ and http://geshi.org/)
+                             */
+                                .php .de1, .php-brief .de2 {
+                                    color: #000060;
+                                    font-weight: normal;
+                                }
+
+                                .php {
+                                    font-family: 'Courier New', Courier, monospace;
+                                    font-size: 110%;
+                                    background-color: #FFFFFF;
+                                    margin: 0;
+                                    line-height: 110%;
+                                    padding: 0;
+                                    color: #000;
+                                }
+
+                                    .php a:link {
+                                        color: #006;
+                                    }
+
+                                    .php a:hover {
+                                        background-color: #d6d6e6;
+                                    }
+
+                                    .php .head {
+                                        font-family: Verdana, Arial, sans-serif;
+                                        color: #808080;
+                                        font-size: 70%;
+                                        font-weight: bold;
+                                        background-color: #f0f0ff;
+                                        border-bottom: 1px solid #d0d0d0;
+                                        padding: 2px;
+                                    }
+
+                                    .php .foot {
+                                        font-family: Verdana, Arial, sans-serif;
+                                        color: #808080;
+                                        font-size: 70%;
+                                        font-weight: bold;
+                                        background-color: #f0f0ff;
+                                        border-top: 1px solid #d0d0d0;
+                                        padding: 2px;
+                                    }
+
+                                    .php .imp {
+                                        font-weight: bold;
+                                        color: red;
+                                    }
+
+                                    .php li, .php-brief .li1 {
+                                        font-family: 'Courier New', Courier, monospace;
+                                        color: #000060;
+                                        background-color: #FFFFF8;
+                                        padding-bottom: 2px;
+                                    }
+
+                                    .php .ln {
+                                        width: 1px;
+                                        text-align: right;
+                                        margin: 0;
+                                        padding: 0 2px;
+                                        vertical-align: top;
+                                    }
+
+                                    .php .kw1 {
+                                        color: #b1b100;
+                                    }
+
+                                    .php .kw2 {
+                                        color: #000000;
+                                        font-weight: bold;
+                                    }
+
+                                    .php .kw3 {
+                                        color: #990000;
+                                    }
+
+                                    .php .co1 {
+                                        color: #666666;
+                                        font-style: italic;
+                                    }
+
+                                    .php .co2 {
+                                        color: #666666;
+                                        font-style: italic;
+                                    }
+
+                                    .php .co3 {
+                                        color: #0000cc;
+                                        font-style: italic;
+                                    }
+
+                                    .php .coMULTI {
+                                        color: #666666;
+                                        font-style: italic;
+                                    }
+
+                                    .php .es0 {
+                                        color: #000099;
+                                        font-weight: bold;
+                                        font-weight: normal;
+                                    }
+
+                                    .php .es_h {
+                                        color: #000099;
+                                        font-weight: bold;
+                                    }
+
+                                    .php .br0 {
+                                        color: #009900;
+                                    }
+
+                                    .php .sy0 {
+                                        color: #339933;
+                                    }
+
+                                    .php .sy1 {
+                                        color: #000000;
+                                        font-weight: bold;
+                                    }
+
+                                    .php .st0 {
+                                        color: #0000ff;
+                                    }
+
+                                    .php .st_h {
+                                        color: #0000ff;
+                                    }
+
+                                    .php .nu0 {
+                                        color: #cc66cc;
+                                    }
+
+                                    .php .nu8 {
+                                        color: #208080;
+                                    }
+
+                                    .php .nu12 {
+                                        color: #208080;
+                                    }
+
+                                    .php .nu19 {
+                                        color: #800080;
+                                    }
+
+                                    .php .me1 {
+                                        color: #004000;
+                                    }
+
+                                    .php .me2 {
+                                        color: #004000;
+                                    }
+
+                                    .php .me {
+                                        1;
+                                    }
+
+                                    .php .re0 {
+                                        color: #0000ff;
+                                    }
+
+                                    .php span.xtra {
+                                        display: block;
+                                    }
+                            </style>
+
+
+                            <h1>PHP REST Sample Code</h1>
+                            <p>
+                                <h2><a name="viewdemosourcecode"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">View Demo / Source Code</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <p>The following code snippets are taken from the <strong>Decibel PHP REST API Demo.</strong></p>
+                            <div id="user_widget" style="float: left; margin-top: -12px" class="round">
+                                <a href="download/DecibelPHPClient.zip">PHP Source Code</a>
+                                <a href="javascript:PopupCenter('/demo/index.php', 'Decibel PHP Client', 1078, 765)">View Online</a>
+                            </div>
+                            <div style="clear: both">
+                                <p>
+                                    The code snippets will guide you through some basic use case scenarios of the Decibel REST API.
+                                </p>
+                            </div>
+                            <p>
+                                <h2><a name="callingtheapi"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Calling the API</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                                <p>REST requests are modelled after the way a web browser sends requests to a web server. So, when we use the PHP programming language for REST requests, our PHP scripts mimic the way a web browser interacts with a web server.</p>
+                            <p>PHP, being an extremely flexible and feature-rich language, provides a number of different mechanisms you can choose from to make your REST requests. The ones we recommend are:</p>
+                            <ul>
+                                <li><a href="http://php.net/manual/en/book.curl.php" target="_blank">cURL</a></li>
+                                <li><a href="http://php.net/manual/en/function.file-get-contents.php" target="_blank">file_get_contents</a></li>
+                            </ul>
+                            <p>Depending on your web server configuration either one of these functions may be more desirable.</p>
+                            <h2><a name="curl"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">cUrl</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>The PHP extension cURL is widely used for making Web services requests. It must be loaded in your PHP configuration file, called php.ini. Editing this file normally requires administrative privileges on your server. To see whether cURL is installed and active in your PHP build call the <a href="http://php.net/manual/en/function.phpinfo.php" target="_blank">phpinfo</a> function and browse the output.</p>
+
+                            <p>The following code example taken from <a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">util.php</a> makes a request using cURL and stores the response.</p>
+
+
+                            <div class="php">
+                                <span class="co1">// Initialize the cURL session with the request URL</span><br />
+                                <span class="re0">$session</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/curl_init"><span class="kw3">curl_init</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                                <br />
+                                <br />
+                                <span class="co1">// Tell cURL to return the request data</span><br />
+                                <a target="_blank" href="http://www.php.net/curl_setopt"><span class="kw3">curl_setopt</span></a><span class="br0">&#40;</span><span class="re0">$session</span><span class="sy0">,</span> CURLOPT_RETURNTRANSFER<span class="sy0">,</span> <span class="kw4">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                                <br />
+                                <br />
+                                <span class="co1">// Set the HTTP request authentication headers</span><br />
+                                <span class="re0">$headers</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><br />
+                                &nbsp; &nbsp; <span class="st_h">'DecibelAppID: '</span> <span class="sy0">.</span> <span class="re0">$applicationID</span><span class="sy0">,</span><br />
+                                &nbsp; &nbsp; <span class="st_h">'DecibelAppKey: '</span> <span class="sy0">.</span> <span class="re0">$applicationKey</span><span class="sy0">,</span><br />
+                                &nbsp; &nbsp; <span class="st_h">'DecibelTimestamp: '</span> <span class="sy0">.</span> <a target="_blank" href="http://www.php.net/date"><span class="kw3">date</span></a><span class="br0">&#40;</span><span class="st_h">'Ymd H:i:s'</span><span class="sy0">,</span> <a target="_blank" href="http://www.php.net/time"><span class="kw3">time</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <a target="_blank" href="http://www.php.net/curl_setopt"><span class="kw3">curl_setopt</span></a><span class="br0">&#40;</span><span class="re0">$session</span><span class="sy0">,</span> CURLOPT_HTTPHEADER<span class="sy0">,</span> <span class="re0">$headers</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Execute cURL on the session handle</span><br />
+                                <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/curl_exec"><span class="kw3">curl_exec</span></a><span class="br0">&#40;</span><span class="re0">$session</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Close the cURL session</span><br />
+                                <a target="_blank" href="http://www.php.net/curl_close"><span class="kw3">curl_close</span></a><span class="br0">&#40;</span><span class="re0">$session</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                            </div>
+                            <br />
+
+
+
+
+                            <h2><a name="filegetcontents"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">file_get_contents</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>PHP's file_get_contents function lets you easily fetch a URL and return the contents as a string. Its main drawback is that your PHP installation must have fopen wrappers enabled in order to access URLs. If fopen wrappers is not enabled, you will not be able to use file_get_contents for Web services requests.</p>
+                            <p>The following code example makes a request using file_get_contents and stores the response.</p>
+
+
+
+
+                            <div class="php">
+                                <span class="co1">// Set the HTTP request authentication headers</span><br />
+                                <span class="re0">$headers</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><br />
+                                &nbsp; &nbsp; <span class="st_h">'http'</span> <span class="sy0">=&gt;</span> <a target="_blank" href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; <span class="st_h">'method'</span> <span class="sy0">=&gt;</span> <span class="st0">&quot;GET&quot;</span><span class="sy0">,</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; <span class="st_h">'header'</span> <span class="sy0">=&gt;</span> <span class="st0">&quot;DecibelAppID: &quot;</span> <span class="sy0">.</span> <span class="re0">$applicationID</span> <span class="sy0">.</span> <span class="st0">&quot;<span class="es1">\r</span><span class="es1">\n</span>&quot;</span> <span class="sy0">.</span>&nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">&quot;DecibelAppKey: &quot;</span> <span class="sy0">.</span> <span class="re0">$applicationKey</span> <span class="sy0">.</span> <span class="st0">&quot;<span class="es1">\r</span><span class="es1">\n</span>&quot;</span> <span class="sy0">.</span>
+                                <br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">&quot;DecibelTimestamp: &quot;</span> <span class="sy0">.</span> <a target="_blank" href="http://www.php.net/date"><span class="kw3">date</span></a><span class="br0">&#40;</span><span class="st_h">'Ymd H:i:s'</span><span class="sy0">,</span> <a target="_blank" href="http://www.php.net/time"><span class="kw3">time</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st0">&quot;<span class="es1">\r</span><span class="es1">\n</span>&quot;</span><br />
+                                &nbsp; <span class="br0">&#41;</span><br />
+                                <span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Creates a stream context</span><br />
+                                <span class="re0">$context</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/stream_context_create"><span class="kw3">stream_context_create</span></a><span class="br0">&#40;</span><span class="re0">$headers</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Open the URL with the HTTP headers (fopen wrappers must be enabled)</span><br />
+                                <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="kw4">false</span><span class="sy0">,</span> <span class="re0">$context</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                            </div>
+                            <br />
+
+                            <h2><a name="interpretingxml"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Interpreting XML</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>The Decibel REST API returns data in two formats XML and JSON. To make it easier to parse the response the data can be interpreted into manageable objects.</p>
+                            <p>SimpleXML is a PHP extension which provides a very simple and easily usable toolset to convert XML to an object that can be processed with normal property selectors and array iterators.The <a href="http://php.net/manual/en/function.simplexml-load-string.php" target="_blank">simplexml_load_string</a> function takes a well-formed XML string and returns it as an object.</p>
+                            <p>The following code example requests albums by artist name, interprets the XML response and outputs the search results.</p>
+
+
+
+
+
+                            <div class="php">
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Set the character encoding to UTF-8</span><br />
+                                <a target="_blank" href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Type: text/html; charset=utf-8'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Set the request URL</span><br />
+                                <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Albums/?artist='</span> <span class="sy0">.</span> <a target="_blank" href="http://www.php.net/urlencode"><span class="kw3">urlencode</span></a><span class="br0">&#40;</span><span class="re0">$artistName</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                <span class="re0">$xml</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Get the collection of albums from the result set</span><br />
+                                <span class="re0">$albums</span> <span class="sy0">=</span> <span class="re0">$xml</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">Album</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Output the search results</span><br />
+                                <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$albums</span> <span class="kw1">as</span> <span class="re0">$album</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$album</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">' - '</span> <span class="sy0">.</span> <span class="re0">$album</span><span class="sy0">-&gt;</span><span class="me1">Artists</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span>
+                            </div>
+                            <br />
+
+                            <h2><a name="interpretingjson"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Interpreting JSON</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is like XML, but without the markup around the actual payload.</p>
+                            <p>The <a href="http://php.net/manual/en/function.json-decode.php" targe="_blank">json_decode</a> function takes a JSON encoded string and converts it into a PHP variable.</p>
+                            <p>The following code example requests albums by artist name, decodes the JSON response and outputs the search results.</p>
+
+
+
+                            <div class="php">
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span>
+                                <br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="co1">// Set the character encoding to UTF-8</span><br />
+                                <a target="_blank" href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Type: text/html; charset=utf-8'</span><span class="br0">&#41;</span><span class="sy0">;</span> &nbsp;
+                                <br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="co1">// Set the request URL</span><br />
+                                <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Albums/?artist='</span> <span class="sy0">.</span> <a target="_blank" href="http://www.php.net/urlencode"><span class="kw3">urlencode</span></a><span class="br0">&#40;</span><span class="re0">$artistName</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=json'</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Decode the JSON response </span>
+                                <br />
+                                <span class="re0">$json</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/json_decode"><span class="kw3">json_decode</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Get the collection of albums from the result set</span><br />
+                                <span class="re0">$albums</span> <span class="sy0">=</span> <span class="re0">$json</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">;</span>
+                                <br />
+                                <br />
+                                <span class="co1">// Output the search results</span><br />
+                                <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$albums</span> <span class="kw1">as</span> <span class="re0">$album</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$album</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">' - '</span> <span class="sy0">.</span> <span class="re0">$album</span><span class="sy0">-&gt;</span><span class="me1">Artists</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span>
+                            </div>
+                            <br />
+
+                            <h2><a name="albumssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Albums: Search for albums by title</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="php">
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span>
+                                <br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="co1">// Set the character encoding to UTF-8</span><br />
+                                <a target="_blank" href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Type: text/html; charset=utf-8'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="kw2">function</span> beginAlbumSearch<span class="br0">&#40;</span><span class="re0">$albumTitle</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Albums/?albumTitle='</span> <span class="sy0">.</span> <a target="_blank" href="http://www.php.net/urlencode"><span class="kw3">urlencode</span></a><span class="br0">&#40;</span><span class="re0">$albumTitle</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the collection of album objects</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">Album</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="co1">// Search for albums by title</span><br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> beginAlbumSearch<span class="br0">&#40;</span><span class="re0">$albumTitle</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Output the search results</span><br />
+                                <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$result</span> <span class="kw1">as</span> <span class="re0">$album</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$album</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">' - '</span> <span class="sy0">.</span> <span class="re0">$album</span><span class="sy0">-&gt;</span><span class="me1">Artists</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span>
+                            </div>
+                            <br />
+
+                            <h2><a name="albumsretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Albums: Retrieve Albums with Track information</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+                            <div class="php">
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Set the character encoding to UTF-8</span><br />
+                                <a target="_blank" href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Type: text/html; charset=utf-8'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="kw2">function</span> beginAlbumRetrieve<span class="br0">&#40;</span><span class="re0">$albumID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$depth</span> <span class="sy0">=</span> <span class="st_h">'Tracks;ImageThumbnail;Media;Names;Publications;Performances;'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Albums/?depth='</span> <span class="sy0">.</span> <span class="re0">$depth</span> <span class="sy0">.</span> <span class="st_h">'&amp;id='</span> <span class="sy0">.</span> <span class="re0">$albumID</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the album object</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">Album</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="co1">// Retrieve album with track information</span><br />
+                                <span class="re0">$result</span> span class="sy0">=</span> beginAlbumRetrieve<span class="br0">&#40;</span><span class="re0">$albumID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Output the result</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Name - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Artists - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Artists</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Disc Count - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">DiscCount</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Track Count - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">TrackCount</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Duration - '</span> <span class="sy0">.</span> formatTime<span class="br0">&#40;</span><span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">TotalSeconds</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="kw1">if</span><span class="br0">&#40;</span><a target="_blank" href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Discs</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">-&gt;</span><span class="me1">Disc</span><span class="sy0">-&gt;</span><span class="me1">MusicMedium</span><span class="sy0">-&gt;</span><span class="me1">Name</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st_h">'Format - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Discs</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">-&gt;</span><span class="me1">Disc</span><span class="sy0">-&gt;</span><span class="me1">MusicMedium</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="kw1">if</span><span class="br0">&#40;</span><a target="_blank" href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ExternalIdentifiers</span><span class="sy0">-&gt;</span><span class="me1">ExternalIdentifier</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ExternalIdentifiers</span><span class="sy0">-&gt;</span><span class="me1">ExternalIdentifier</span> <span class="kw1">as</span> <span class="re0">$externalIdentifier</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$externalIdentifier</span><span class="sy0">-&gt;</span><span class="me1">ExternalDatabase</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">==</span> <span class="st_h">'UPC Barcode'</span><span class="br0">&#41;</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st_h">'Barcode - '</span> <span class="sy0">.</span> <span class="re0">$externalIdentifier</span><span class="sy0">-&gt;</span><span class="me1">Identifier</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="br0">&#125;</span> &nbsp;
+                                <br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="kw1">if</span><span class="br0">&#40;</span><a target="_blank" href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Genres</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$genres</span> <span class="sy0">=</span> <span class="st_h">''</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Genres</span><span class="sy0">-&gt;</span><span class="me1">GenreValue</span> <span class="kw1">as</span> <span class="re0">$genreValue</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; <span class="re0">$genres</span> <span class="sy0">.=</span> <span class="re0">$genreValue</span><span class="sy0">-&gt;</span><span class="me1">Genre</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">','</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="br0">&#125;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st_h">'Genres - '</span> <span class="sy0">.</span> <a target="_blank" href="http://www.php.net/rtrim"><span class="kw3">rtrim</span></a><span class="br0">&#40;</span><span class="re0">$genres</span><span class="sy0">,</span> <span class="st_h">','</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="kw1">echo</span> <span class="st_h">'&lt;br/&gt;Track List:&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">if</span><span class="br0">&#40;</span><a target="_blank" href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Tracks</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">foreach</span><span class="br0">&#40;</span><span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Tracks</span><span class="sy0">-&gt;</span><span class="me1">Track</span> <span class="kw1">as</span> <span class="re0">$track</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$track</span><span class="sy0">-&gt;</span><span class="me1">SequenceNo</span> <span class="sy0">.</span> <span class="st_h">') '</span> <span class="sy0">.</span> <span class="re0">$track</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">' ('</span> <span class="sy0">.</span> formatTime<span class="br0">&#40;</span><span class="re0">$track</span><span class="sy0">-&gt;</span><span class="me1">TotalSeconds</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">')&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="br0">&#125;</span><br />
+                                <span class="br0">&#125;</span>
+                            </div>
+                            <br />
+
+
+                            <h2><a name="albumscoverart"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Albums: Get Album Cover Art</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+                            <div class="php">
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="kw2">function</span> beginAlbumArtRetrieve<span class="br0">&#40;</span><span class="re0">$albumID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Albums/'</span> <span class="sy0">.</span> <span class="re0">$albumID</span> <span class="sy0">.</span> <span class="st_h">'/Image'</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the base64 encoded image</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <a target="_blank" href="http://www.php.net/base64_encode"><span class="kw3">base64_encode</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> beginAlbumArtRetrieve<span class="br0">&#40;</span><span class="re0">$albumID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'&lt;img src=&quot;data:image/jpeg;base64,'</span> <span class="sy0">.</span> <span class="re0">$result</span> <span class="sy0">.</span> <span class="st_h">'&quot;/&gt;'</span><span class="sy0">;</span>
+                            </div>
+                            <br />
+
+
+
+                            <h2><a name="autocomplete"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">AutoComplete: Request autocomplete suggestions (jQuery)</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+                            <div class="php">
+                                <div class="head">autocomplete.php</div>
+                                <br />
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Retrieve the autocomplete dictionary to search</span><br />
+                                <span class="re0">$dictionary</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/trim"><span class="kw3">trim</span></a><span class="br0">&#40;</span><a target="_blank" href="http://www.php.net/strip_tags"><span class="kw3">strip_tags</span></a><span class="br0">&#40;</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st_h">'dictionary'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                                <br />
+                                <br />
+                                <span class="co1">// Retrieve the search term that jQuery autocomplete sends</span><br />
+                                <span class="re0">$term</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/trim"><span class="kw3">trim</span></a><span class="br0">&#40;</span><a target="_blank" href="http://www.php.net/strip_tags"><span class="kw3">strip_tags</span></a><span class="br0">&#40;</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st_h">'term'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                                <br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="co1">// Set the request URL</span><br />
+                                <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Autocomplete?text='</span> <span class="sy0">.</span> <a target="_blank" href="http://www.php.net/urlencode"><span class="kw3">urlencode</span></a><span class="br0">&#40;</span><span class="re0">$term</span><span class="br0">&#41;</span> <span class="sy0">.</span>
+                                <br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; <span class="st_h">'&amp;dictionary='</span> <span class="sy0">.</span> <span class="re0">$dictionary</span> <span class="sy0">.</span> <span class="st_h">'&amp;limit=5&amp;format=json'</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="st_h">'Your Application ID'</span><span class="sy0">,</span> <span class="st_h">'Your Application Key'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Decode the JSON response </span>
+                                <br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/json_decode"><span class="kw3">json_decode</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Build an array of suggestions in jQuery Autocomplete format</span><br />
+                                <span class="re0">$suggestions</span> <span class="sy0">=</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="re0">$dictionary</span><span class="sy0">;</span>
+                                <br />
+                                <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$suggestions</span> <span class="kw1">as</span> <span class="re0">$suggestion</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$row</span><span class="br0">&#91;</span><span class="st_h">'value'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/stripslashes"><span class="kw3">stripslashes</span></a><span class="br0">&#40;</span><span class="re0">$suggestion</span><span class="sy0">-&gt;</span><span class="me1">SuggestionValue</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$row</span><span class="br0">&#91;</span><span class="st_h">'id'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="br0">&#40;</span>int<span class="br0">&#41;</span><span class="re0">$suggestion</span><span class="sy0">-&gt;</span><span class="me1">ItemID</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$row_set</span><span class="br0">&#91;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="re0">$row</span><span class="sy0">;</span>
+                                <br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="co1">// Encode the array and output the result</span><br />
+                                <span class="kw1">echo</span> <a target="_blank" href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$row_set</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                            </div>
+                            <br />
+
+
+
+                            <div class="php">
+                                <div class="head">autocomplete.html</div>
+                                <br />
+                                &lt;html&gt;<br />
+                                &lt;head&gt;<br />
+                                &nbsp; &nbsp; &lt;link href=&quot;css/redmond/jquery-ui-1.9.2.custom.min.css&quot; rel=&quot;stylesheet&quot;&gt;<br />
+                                &nbsp; &nbsp; &lt;script src=&quot;js/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;<br />
+                                &nbsp; &nbsp; &lt;script src=&quot;js/jquery-ui-1.9.2.custom.min.js&quot;&gt;&lt;/script&gt;<br />
+                                &nbsp; &nbsp; &lt;script&gt;&nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; $(function() {<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; $(&quot;#album-name&quot;)<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .autocomplete({<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; source: &quot;autocomplete.php?dictionary=Albums&quot;,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; delay: 0,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; select: function(event, ui){<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; alert(ui.item.value);<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } &nbsp; &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br />
+                                &nbsp; &nbsp; });<br />
+                                &nbsp; &nbsp; &lt;/script&gt;<br />
+                                &lt;/head&gt;<br />
+                                <br />
+                                &lt;body&gt;<br />
+                                &nbsp; &nbsp; &lt;label for=&quot;album-name&quot;&gt;Album Name&lt;/label&gt;<br />
+                                &nbsp; &nbsp; &lt;input id=&quot;album-name&quot; size=&quot;50&quot; /&gt;
+                                <br />
+                                &lt;/body&gt;<br />
+                                <br />
+                                &lt;/html&gt;
+                            </div>
+
+                            <p><a href="download/jquery.zip">Download required jQuery libraries</a></p>
+
+
+
+                            <h2><a name="participantssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Participants: Search for participants by name</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="php">
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span>
+                                <br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="co1">// Set the character encoding to UTF-8</span><br />
+                                <a target="_blank" href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Type: text/html; charset=utf-8'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="kw2">function</span> beginParticipantSearch<span class="br0">&#40;</span><span class="re0">$participantName</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Participants/?name='</span> <span class="sy0">.</span> <a target="_blank" href="http://www.php.net/urlencode"><span class="kw3">urlencode</span></a><span class="br0">&#40;</span><span class="re0">$participantName</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the collection of participant objects</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">Participant</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="co1">// Search for participants by name</span><br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> beginParticipantSearch<span class="br0">&#40;</span><span class="re0">$participantName</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Output the search results</span><br />
+                                <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$result</span> <span class="kw1">as</span> <span class="re0">$participant</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$participant</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">'-'</span> <span class="sy0">.</span> <span class="re0">$participant</span><span class="sy0">-&gt;</span><span class="me1">Gender</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span>
+                            </div>
+                            <br />
+
+                            <h2><a name="participantsretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Participants: Retrieve participant with associations and track appearances</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="php">
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Set the character encoding to UTF-8</span><br />
+                                <a target="_blank" href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Type: text/html; charset=utf-8'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="kw2">function</span> beginParticipantRetrieve<span class="br0">&#40;</span><span class="re0">$participantID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$depth</span> <span class="sy0">=</span> <span class="st_h">'Names;GroupMembers;Nationalities;GeographicAreas;Annotations;ChartsAwards;Relationships;'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Participants/?depth='</span> <span class="sy0">.</span> <span class="re0">$depth</span> <span class="sy0">.</span> <span class="st_h">'&amp;id='</span> <span class="sy0">.</span> <span class="re0">$participantID</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the album object</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">Participant</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="kw2">function</span> beginParticipantAssociates<span class="br0">&#40;</span><span class="re0">$participantID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$depth</span> <span class="sy0">=</span> <span class="st_h">'Names;GroupMembers;Nationalities;GeographicAreas;Annotations;ChartsAwards;Relationships;'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Participants/'</span> <span class="sy0">.</span> <span class="re0">$participantID</span> <span class="sy0">.</span> <span class="st_h">'/Associates?depth='</span> <span class="sy0">.</span> <span class="re0">$depth</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the collection of participant associate objects</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">ParticipantAssociate</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="kw2">function</span> beginParticipantTrackAppearances<span class="br0">&#40;</span><span class="re0">$participantID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$depth</span> <span class="sy0">=</span> <span class="st_h">'Names;GroupMembers;Nationalities;GeographicAreas;Annotations;ChartsAwards;Relationships;'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Participants/'</span> <span class="sy0">.</span> <span class="re0">$participantID</span> <span class="sy0">.</span> <span class="st_h">'/Tracks?depth='</span> <span class="sy0">.</span> <span class="re0">$depth</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the collection of track appearance objects</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">TrackAppearance</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="co1">// Retreive participant with associations and track appearances</span><br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> beginParticipantRetrieve<span class="br0">&#40;</span><span class="re0">$participantID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Participant Name - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> beginParticipantAssociates<span class="br0">&#40;</span><span class="re0">$participantID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'&lt;br/&gt;Associates:&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$result</span> <span class="kw1">as</span> <span class="re0">$associate</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$associate</span><span class="sy0">-&gt;</span><span class="me1">Participant</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> beginParticipantTrackAppearances<span class="br0">&#40;</span><span class="re0">$participantID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'&lt;br/&gt;Track appearances:&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$result</span> <span class="kw1">as</span> <span class="re0">$trackAppearance</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$trackAppearance</span><span class="sy0">-&gt;</span><span class="me1">TrackName</span> <span class="sy0">.</span> <span class="st_h">' - '</span> <span class="sy0">.</span> <span class="re0">$trackAppearance</span><span class="sy0">-&gt;</span><span class="me1">AlbumName</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span>
+                            </div>
+                            <br />
+
+
+                            <h2><a name="trackssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Tracks: Search for tracks by title</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+
+                            <div class="php">
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span>
+                                <br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="co1">// Set the character encoding to UTF-8</span><br />
+                                <a target="_blank" href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Type: text/html; charset=utf-8'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="kw2">function</span> beginTrackSearch<span class="br0">&#40;</span><span class="re0">$trackTitle</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Tracks/?trackTitle='</span> <span class="sy0">.</span> <a target="_blank" href="http://www.php.net/urlencode"><span class="kw3">urlencode</span></a><span class="br0">&#40;</span><span class="re0">$trackTitle</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the collection of track objects</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">Track</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="co1">// Search for tracks by title</span><br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> beginTrackSearch<span class="br0">&#40;</span><span class="re0">$trackTitle</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Output the search results</span><br />
+                                <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$result</span> <span class="kw1">as</span> <span class="re0">$track</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$track</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">' - '</span> <span class="sy0">.</span> <span class="re0">$track</span><span class="sy0">-&gt;</span><span class="me1">Artists</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span>
+                            </div>
+                            <br />
+
+                            <h2><a name="tracksretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Tracks: Retrieve track with participations</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+                            <div class="php">
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Set the character encoding to UTF-8</span><br />
+                                <a target="_blank" href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Type: text/html; charset=utf-8'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="kw2">function</span> beginTrackRetrieve<span class="br0">&#40;</span><span class="re0">$trackID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$depth</span> <span class="sy0">=</span> <span class="st_h">'Names;Participations;ExternalIdentifiers;Genres;Performances;'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Tracks/?depth='</span> <span class="sy0">.</span> <span class="re0">$depth</span> <span class="sy0">.</span> <span class="st_h">'&amp;id='</span> <span class="sy0">.</span> <span class="re0">$trackID</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the track object</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">Track</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="co1">// Retrieve track with participations</span><br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> beginTrackRetrieve<span class="br0">&#40;</span><span class="re0">$trackID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Output the result</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Name - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Artists - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Artists</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Track Number - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">TrackNumber</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Disc Number - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">DiscNumber</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Total Seconds - '</span> <span class="sy0">.</span> formatTime<span class="br0">&#40;</span><span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">TotalSeconds</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="kw1">echo</span> <span class="st_h">'&lt;br/&gt;Participations:&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">if</span><span class="br0">&#40;</span><a target="_blank" href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Participations</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Participations</span><span class="sy0">-&gt;</span><span class="me1">Participation</span> <span class="kw1">as</span> <span class="re0">$participation</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$participation</span><span class="sy0">-&gt;</span><span class="me1">Participant</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">' - '</span> <span class="sy0">.</span> <span class="re0">$participation</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="br0">&#125;</span> &nbsp;
+                                <br />
+                                <span class="br0">&#125;</span>
+                            </div>
+                            <br />
+
+                            <h2><a name="workssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Works: Search for works by name</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+                            <div class="php">
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span>
+                                <br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="co1">// Set the character encoding to UTF-8</span><br />
+                                <a target="_blank" href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Type: text/html; charset=utf-8'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="kw2">function</span> beginWorkSearch<span class="br0">&#40;</span><span class="re0">$workName</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Works/?name='</span> <span class="sy0">.</span> <a target="_blank" href="http://www.php.net/urlencode"><span class="kw3">urlencode</span></a><span class="br0">&#40;</span><span class="re0">$workName</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the collection of work objects</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">Work</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> beginWorkSearch<span class="br0">&#40;</span><span class="re0">$workName</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Output the search results</span><br />
+                                <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$result</span> <span class="kw1">as</span> <span class="re0">$work</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$work</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">' - '</span> <span class="sy0">.</span> <span class="re0">$work</span><span class="sy0">-&gt;</span><span class="me1">Composers</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span>
+                            </div>
+                            <br />
+
+
+                            <h2><a name="worksretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Works: Retrieve work with track appearances</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+                            <div class="php">
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Set the character encoding to UTF-8</span><br />
+                                <a target="_blank" href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Type: text/html; charset=utf-8'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="kw2">function</span> beginWorkRetrieve<span class="br0">&#40;</span><span class="re0">$workID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$depth</span> <span class="sy0">=</span> <span class="st_h">'Annotations;ChartsAwards;Genres;Movements;Names;Nationalities;Publications;Publishers;'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Works/?depth='</span> <span class="sy0">.</span> <span class="re0">$depth</span> <span class="sy0">.</span> <span class="st_h">'&amp;id='</span> <span class="sy0">.</span> <span class="re0">$workID</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the track object</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">Work</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="kw2">function</span> beginWorkTrackAppearances<span class="br0">&#40;</span><span class="re0">$workID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><br />
+                                <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="co1">// Set the request URL</span><br />
+                                &nbsp; &nbsp; <span class="re0">$depth</span> <span class="sy0">=</span> <span class="st_h">'Annotations;ChartsAwards;Genres;Movements;Names;Nationalities;Publications;Publishers;'</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://api.decibel.net/v1/Works/'</span> <span class="sy0">.</span> <span class="re0">$workID</span> <span class="sy0">.</span> <span class="st_h">'/Tracks'</span> <span class="sy0">.</span> <span class="st_h">'?depth='</span> <span class="sy0">.</span> <span class="re0">$depth</span> <span class="sy0">.</span> <span class="st_h">'&amp;format=xml'</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                &nbsp; &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$result</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; <span class="co1">// Return the track object</span><br />
+                                &nbsp; &nbsp; <span class="kw1">return</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">TrackAppearance</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="co1">// Retrieve work with track appearances</span><br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> beginWorkRetrieve<span class="br0">&#40;</span><span class="re0">$workID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="kw1">echo</span> <span class="st_h">'Name - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Name</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Composers - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Composers</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="kw1">echo</span> <span class="st_h">'Catalogue - '</span> <span class="sy0">.</span> <span class="re0">$result</span><span class="sy0">-&gt;</span><span class="me1">Catalogue</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="re0">$result</span> <span class="sy0">=</span> beginWorkTrackAppearances<span class="br0">&#40;</span><span class="re0">$workID</span><span class="sy0">,</span> <span class="re0">$applicationID</span><span class="sy0">,</span> <span class="re0">$applicationKey</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$result</span> <span class="kw1">as</span> <span class="re0">$trackAppearance</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$trackAppearance</span><span class="sy0">-&gt;</span><span class="me1">TrackName</span> <span class="sy0">.</span> <span class="st_h">' - '</span> <span class="sy0">.</span> <span class="re0">$trackAppearance</span><span class="sy0">-&gt;</span><span class="me1">TrackArtistName</span> <span class="sy0">.</span> <span class="st_h">'&lt;br/&gt;'</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span>
+                            </div>
+                            <br />
+
+                            <h2><a name="flexigrid"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Flexigrid: Display search results in a data grid with paging (jQuery)</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="php">
+                                <div class="head">flexigrid.php</div>
+                                <br />
+                                <span class="kw1">include</span> <span class="st_h"><a href="http://www.decibel.net/developer/sample-code/php/util.txt" target="_blank">'util.php'</a></span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="co1">// Set the content type to JSON</span><br />
+                                <a target="_blank" href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st0">&quot;Content-type: application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Get the results per page</span><br />
+                                <span class="re0">$rp</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/trim"><span class="kw3">trim</span></a><span class="br0">&#40;</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st_h">'rp'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                                <br />
+                                <br />
+                                <span class="co1">// Get the current page</span><br />
+                                <span class="re0">$page</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/trim"><span class="kw3">trim</span></a><span class="br0">&#40;</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st_h">'page'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                                <br />
+                                <br />
+                                <span class="co1">// Get the url</span><br />
+                                <span class="re0">$url</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/ltrim"><span class="kw3">ltrim</span></a><span class="br0">&#40;</span><a target="_blank" href="http://www.php.net/http_build_query"><span class="kw3">http_build_query</span></a><span class="br0">&#40;</span><span class="re0">$_GET</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st_h">'url='</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <span class="re0">$url</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/urldecode"><span class="kw3">urldecode</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <span class="re0">$url</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/str_replace"><span class="kw3">str_replace</span></a><span class="br0">&#40;</span><span class="st_h">' '</span><span class="sy0">,</span> <span class="st_h">'%20'</span><span class="sy0">,</span> <span class="re0">$url</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Set the page size parameter</span><br />
+                                <span class="re0">$url</span> <span class="sy0">.=</span> <span class="st_h">'&amp;pageSize='</span> <span class="sy0">.</span> <span class="re0">$rp</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Start a session</span><br />
+                                <a target="_blank" href="http://www.php.net/session_start"><span class="kw3">session_start</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Construct the search URL with page number</span><br />
+                                <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$page</span> <span class="sy0">!=</span> <span class="nu0">1</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://decibel-rest-jazz.cloudapp.net/v1/Albums/Pages/'</span> <span class="sy0">.</span>
+                                <br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="re0">$_SESSION</span><span class="br0">&#91;</span><span class="st_h">'queryResultID'</span><span class="br0">&#93;</span> <span class="sy0">.</span> <span class="st_h">'?pageNumber='</span> <span class="sy0">.</span> <span class="br0">&#40;</span><span class="re0">$page</span><span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="co1">// Issue the request to the Decibel Web Service</span><br />
+                                <span class="re0">$response</span> <span class="sy0">=</span> <a target="_blank" href="http://www.decibel.net/developer/sample-code/php/util.txt"><span class="kw3">request</span></a><span class="br0">&#40;</span><span class="re0">$url</span><span class="sy0">,</span> <span class="st_h">'Your Application ID'</span><span class="sy0">,</span> <span class="st_h">'Your Application Key'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Interpret the XML response </span>
+                                <br />
+                                <span class="re0">$xml</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/simplexml_load_string"><span class="kw3">simplexml_load_string</span></a><span class="br0">&#40;</span><span class="re0">$response</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Set the result count</span><br />
+                                <span class="re0">$resultCount</span> <span class="sy0">=</span> <span class="re0">$xml</span><span class="sy0">-&gt;</span><span class="me1">ResultCount</span><span class="sy0">;</span> &nbsp;
+                                <br />
+                                <br />
+                                <span class="co1">// If this is the first page of results store the QueryResultID</span><br />
+                                <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$page</span> <span class="sy0">==</span> <span class="nu0">1</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$_SESSION</span><span class="br0">&#91;</span><span class="st_h">'queryResultID'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/stripslashes"><span class="kw3">stripslashes</span></a><span class="br0">&#40;</span><span class="re0">$xml</span><span class="sy0">-&gt;</span><span class="me1">QueryResultID</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                &nbsp; &nbsp;
+                                <br />
+                                <span class="co1">// Close and write session</span><br />
+                                <a target="_blank" href="http://www.php.net/session_write_close"><span class="kw3">session_write_close</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Store the collection of album objects</span><br />
+                                <span class="re0">$albums</span> <span class="sy0">=</span> <span class="re0">$xml</span><span class="sy0">-&gt;</span><span class="me1">ResultSet</span><span class="sy0">-&gt;</span><span class="me1">Album</span><span class="sy0">;</span><br />
+                                <br />
+                                <span class="co1">// Construct the Flexigrid JSON data array</span><br />
+                                <span class="re0">$jsonData</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="st_h">'page'</span><span class="sy0">=&gt;</span><span class="re0">$page</span><span class="sy0">,</span> <span class="st_h">'total'</span><span class="sy0">=&gt;</span><a target="_blank" href="http://www.php.net/stripslashes"><span class="kw3">stripslashes</span></a><span class="br0">&#40;</span><span class="re0">$resultCount</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st_h">'rows'</span><span class="sy0">=&gt;</span><a target="_blank" href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                                <br />
+                                <br />
+                                <span class="co1">// Construct the data rows</span><br />
+                                <span class="re0">$count</span> <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">;</span><br />
+                                <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$albums</span> <span class="kw1">as</span> <span class="re0">$album</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$entry</span> <span class="sy0">=</span> <a target="_blank" href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="br0">&#40;</span>int<span class="br0">&#41;</span><span class="re0">$count</span><span class="sy0">,</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; <span class="st_h">'cell'</span><span class="sy0">=&gt;</span><a target="_blank" href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="st_h">'id'</span><span class="sy0">=&gt;</span><a target="_blank" href="http://www.php.net/stripslashes"><span class="kw3">stripslashes</span></a><span class="br0">&#40;</span><span class="re0">$album</span><span class="sy0">-&gt;</span><span class="me1">ID</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="st_h">'index'</span><span class="sy0">=&gt;</span><span class="br0">&#40;</span>int<span class="br0">&#41;</span><span class="re0">$count</span><span class="sy0">,</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="st_h">'name'</span><span class="sy0">=&gt;</span><a target="_blank" href="http://www.php.net/stripslashes"><span class="kw3">stripslashes</span></a><span class="br0">&#40;</span><span class="re0">$album</span><span class="sy0">-&gt;</span><span class="me1">Name</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="st_h">'artists'</span><span class="sy0">=&gt;</span><a target="_blank" href="http://www.php.net/stripslashes"><span class="kw3">stripslashes</span></a><span class="br0">&#40;</span><span class="re0">$album</span><span class="sy0">-&gt;</span><span class="me1">Artists</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="st_h">'length'</span><span class="sy0">=&gt;</span><a target="_blank" href="http://www.php.net/stripslashes"><span class="kw3">stripslashes</span></a><span class="br0">&#40;</span>formatTime<span class="br0">&#40;</span><span class="re0">$album</span><span class="sy0">-&gt;</span><span class="me1">TotalSeconds</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="st_h">'trackCount'</span><span class="sy0">=&gt;</span><a target="_blank" href="http://www.php.net/stripslashes"><span class="kw3">stripslashes</span></a><span class="br0">&#40;</span><span class="re0">$album</span><span class="sy0">-&gt;</span><span class="me1">TrackCount</span><span class="br0">&#41;</span><br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#41;</span><span class="sy0">,</span><br />
+                                &nbsp; &nbsp; <span class="br0">&#41;</span><span class="sy0">;</span><br />
+                                &nbsp; &nbsp; <span class="re0">$jsonData</span><span class="br0">&#91;</span><span class="st_h">'rows'</span><span class="br0">&#93;</span><span class="br0">&#91;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="re0">$entry</span><span class="sy0">;</span>
+                                <br />
+                                &nbsp; &nbsp; <span class="re0">$count</span><span class="sy0">++;</span><br />
+                                <span class="br0">&#125;</span><br />
+                                <br />
+                                <span class="co1">// Encode the array</span><br />
+                                <span class="kw1">echo</span> <a target="_blank" href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$jsonData</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                            </div>
+                            <br />
+
+
+                            <div class="php">
+                                <div class="head">flexigrid.html</div>
+                                <br />
+                                &lt;html&gt;<br />
+                                &lt;head&gt;<br />
+                                &nbsp; &nbsp; &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/flexigrid.css&quot;/&gt;<br />
+                                &nbsp; &nbsp; &lt;script src=&quot;js/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;<br />
+                                &nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;js/flexigrid.js&quot;&gt;&lt;/script&gt;<br />
+                                &nbsp; &nbsp; &lt;script&gt;&nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; $(function() {<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; $(&quot;.album-results&quot;).flexigrid({<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; url : 'flexigrid.php?url=http://decibel-rest-jazz.cloudapp.net/v1/Albums/?genre=jazz&amp;depth=Publications',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dataType : 'json',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; colModel : [ {<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; display : 'ID',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name : 'id',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width : 50,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hide: true<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }, {<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; display : 'Index',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name : 'index',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width : 50,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }, {<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; display : 'Name',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name : 'name',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width : 300,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }, {<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; display : 'Artists',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name : 'artists',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width : 300,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }, {<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; display : 'Length',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name : 'length',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width : 140,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }, {&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; display : 'Track Count',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name : 'trackCount',<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width : 140,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } ],<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sortname : &quot;iso&quot;,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sortorder : &quot;asc&quot;,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; showToggleBtn : false,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; usepager : true,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; useRp : true,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; nohresize : true,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; resizable: false,
+                                <br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; onDragCol: false,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; rp : 15,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; method : &quot;GET&quot;,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width : 1024,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; height : 300,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; singleSelect: true,<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; })<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; $(&quot;.album-results&quot;).click(function(){<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $('.trSelected', this).each( function(){<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; console.log(<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ' &nbsp;id: ' + $('td[abbr=&quot;id&quot;] &gt;div', this).html() +<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ' &nbsp;index: ' + $('td[abbr=&quot;index&quot;] &gt;div', this).html() +<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ' &nbsp;name: ' + $('td[abbr=&quot;name&quot;] &gt;div', this).html() +<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ' &nbsp;artists: ' + $('td[abbr=&quot;artists&quot;] &gt;div', this).html() +<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ' &nbsp;length: ' + $('td[abbr=&quot;length&quot;] &gt;div', this).html() +<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ' &nbsp;trackCount: ' + $('td[abbr=&quot;trackCount&quot;] &gt;div', this).html()
+                                <br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; );<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br />
+                                &nbsp; &nbsp; &nbsp; &nbsp; }); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                <br />
+                                &nbsp; &nbsp; });<br />
+                                &nbsp; &nbsp; &lt;/script&gt;<br />
+                                &lt;/head&gt;<br />
+                                <br />
+                                &lt;body&gt;<br />
+                                &nbsp; &nbsp; &lt;table class=&quot;album-results&quot; style=&quot;display: none&quot;&gt;&lt;/table&gt;
+                                <br />
+                                &lt;/body&gt;<br />
+                                <br />
+                                &lt;/html&gt;
+                            </div>
+                            <p><a href="download/flexigrid.zip">Download required jQuery / Flexigrid libraries</a></p>
+
+                        </div>
+                    </td>
+                    <td valign="top" style="width: 260px">
+                        <div class="container" style="margin-left: 0px; margin-top: 0px">
+                            <h2>Contents</h2>
+
+                            <p></p>
+                            <div class="feed">
+                                <ul>
+                                    <li><span style="color: black"><strong>Calling the API</strong></span></li>
+                                    <li><a href="#curl">cURL extension</a></li>
+                                    <li><a href="#filegetcontents">file_get_contents</a></li>
+                                    <li><a href="#interpretingxml">Interpreting XML</a></li>
+                                    <li><a href="#interpretingjson">Interpreting JSON</a></li>
+                                    <li><span style="color: black"><strong>Code Examples</strong></span></li>
+                                    <li><a href="#albumssearch">Albums: Search by Title</a></li>
+                                    <li><a href="#albumsretrieve">Album: Retrieve Album</a></li>
+                                    <li><a href="#albumscoverart">Album: Get Cover Art</a></li>
+                                    <li><a href="#participantssearch">Artists: Search by Name</a></li>
+                                    <li><a href="#participantsretrieve">Artist: Retrieve Artist</a></li>
+                                    <li><a href="#trackssearch">Recordings: Search by Title</a></li>
+                                    <li><a href="#tracksretrieve">Recording: Retrieve Recording</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </table>
+        </div>
+    </div>
+    <div id="footer">
+
+        <div id="foot-wrap">
+
+            <script type="text/javascript">
+                var d = new Date();
+                document.getElementById("foot-wrap").appendChild(document.createTextNode("© " + d.getFullYear() + " Decibel Music Systems Ltd"));
+            </script>
+
+            <br />
+            The Decibel name, associated trade marks and logos and the &quot;magnifying glass note&quot; logo are trade marks of Decibel Music Systems Limited.
+        <br />
+            The Old Truman Brewery, 91 Brick Lane, London E1 6QL, UK +44 20 3657 9760
+        <br />
+
+            <a href="http://www.3scale.net/" target="_blank">
+                <img alt="Powered by 3scale" src="images/powered_by_logo.png">
+            </a>
+
+            <div id="flashWrapper" style="display: none;">
+                <div class="ajaxNoticeValid alwaysontop "></div>
+            </div>
+
+            <script type="text/javascript" charset="utf-8">
+                jQuery(document).ready(function () {
+                    setTimeout($.flash.hide, 5000);
+                });
+        </script>
+
+        </div>
+    </div>
+</body>
+</html>

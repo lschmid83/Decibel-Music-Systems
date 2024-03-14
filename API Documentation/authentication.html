@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Authentication</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="javascript/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="javascript/jquery.colorbox-min.js" type="text/javascript"></script>
+    <link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="javascript/highlight.pack.js" type="text/javascript"></script>
+    <script src="javascript/help.js" type="text/javascript"></script>
+    <script src="javascript/flash.js" type="text/javascript"></script>
+    <script src="javascript/remote.js" type="text/javascript"></script>
+    <script src="javascript/switch.js" type="text/javascript"></script>
+    <script src="javascript/ajax_upload.js" type="text/javascript"></script>
+    <script src="javascript/extra_fields.js" type="text/javascript"></script>
+    <script src="javascript/application.js" type="text/javascript"></script>
+    <link href="css/default.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#" />
+    <script type="text/javascript" src="html5.js"></script>
+    <script type="text/javascript" src="eCSStender.js"></script>
+    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="javascript/prettify.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var offset = $("#sidebar").offset(); //Sets which element is scrollable. In this case it's the div .sidebar
+            var topPadding = 30;  //Set how much top-padding the element has.
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > offset.top) {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: $(window).scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: 0
+                    });
+                };
+            });
+        });
+
+    </script>
+</head>
+
+<body class="home">
+
+    <div id="page">
+
+        <div id="header">
+            <a id="header-logo" href="index.html">
+                <img src="images/logo-white.png" /></a>
+            <div id="header-widget">
+                <div id="user_widget" class="round">
+                    <a href="login.html">Sign in</a>
+                    | <a href="signup.html">Sign up</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="content">
+            <table style="width: 100%" cellspacing="0" cellpadding="10">
+                <tr>
+                    <td style="width: 250px; vertical-align: top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+
+                            <div id='cssmenu'>
+                                <ul>
+                                    <li><a href='decibel-sdk.html'><span>Home</span></a></li>
+                                    <li><a href='news.html'><span>News</span></a></li>
+                                    <li><a href='our-api.html'><span>API Music Metadata</span></a></li>
+                                    <li><a href='authentication.html'><span>API Authentication</span></a></li>
+                                    <li><a href='rest-api-v2.html'><span>REST API Documentation</span></a></li>
+                                    <li><a href='hackathons.html'><span>Hackathons</span></a></li>
+                                    <li><a href='forum.html'><span>Forum</span></a></li>
+                                    <li><a href='support.html'><span>Support</span></a></li>
+                                    <li><a href='faq.html'><span>FAQ</span></a></li>
+                                    <li><a href='termsandconditions.html'><span>Terms and Conditions</span></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td style="vertical-align: top">
+
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <h1>Authentication</h1>
+                            Decibel’s API uses App_ID and App_Key_Pair authentication for simplified access and authorization. Using App_ID mode is simple.  Check your account details to find your access string for your app and begin!
+                        <h2>Do I need to authenticate?</h2>
+                            Yes, Decibel’s API is only accessible through the use of app_id and require the use of an app_key.  Each application you create should use a new app_id and app_key. These ids and keys are unique to the application and should be stored securely. 
+                        <h2>How do I find my App_ID and App_Key?</h2>
+                            In order to receive an App_ID, you must do the following: 
+                        <ol>
+                            <li>For new users: Sign up for a Decibel user account
+                                <ul>
+                                    <li>Upon registration, you will be asked to name and describe your application.  This will generate your first app_id </li>
+                                    <li>To retrieve the app_key, confirm your account registration and follow the App Key retrieval instructions: Dashboard <i class="fa fa-arrow-right"></i>
+                                        Applications <i class="fa fa-arrow-right"></i>
+                                        select App Name <i class="fa fa-arrow-right"></i>
+                                        View 
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>For existing users: login to Decibel account
+                                <ul>
+                                    <li>Follow the same App Key retrieval instructions for an existing app: Dashboard <i class="fa fa-arrow-right"></i>
+                                        Applications <i class="fa fa-arrow-right"></i>
+                                        select App Name <i class="fa fa-arrow-right"></i>
+                                        View 
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>To create a new app, My Applications <i class="fa fa-arrow-right"></i>
+                                Create New Application <i class="fa fa-arrow-right"></i>
+                                View
+                            </li>
+                        </ol>
+                            <h2>How do I call the API? </h2>
+
+                            <table class="apiaddresses">
+                                <tr>
+                                    <th>API</th>
+                                    <th>Address</th>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align: middle">
+                                        <table>
+                                            <tr>
+                                                <td style="vertical-align: middle">
+                                                    <img src="../s3.amazonaws.com/enterprise-multitenant.3scale.net.3scale.net/decibel/2013/11/01/api-b2e2efeb4e1cd3ce3833.png" alt="" />
+                                                </td>
+                                                <td style="vertical-align: middle; font-weight: bold">
+                                                    <a href="our-api.html">Decibel API</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="vertical-align: middle">
+                                        <span class="url" style="font-size: 11pt; color: black">http://rest.decibel.net/v2</span>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                            <p>
+                                The Rest API is stateless, which means you need to identify yourself with each call.<p />
+                            <p>On each call to the API you will need an Application ID, Application Key and Timestamp included in your HTTP request header. An Application ID and Key are provided when you <a href="signup.html">register</a></p>
+                            <ul>
+                                <li><strong>DecibelAppID</strong> = <tt>{Your Application ID}</tt></li>
+                                <li><strong>DecibelAppKey</strong> = <tt>{Your Application Key}</tt></li>
+                                <li><strong>DecibelTimeStamp</strong> = <tt>20120402 13:25:07</tt>(yyyyMMdd HH:mm:ss) - a time stamp</li>
+                            </ul>
+
+                            <p>The HTTP Request Header should look like this:</p>
+
+                            <div class="requestheaders">
+                                GET /v2/albums?artistName=fleetwood%20mac HTTP/1.1<br />
+                                Host: api.decibel.net<br />
+                                Connection: keep-alive<br />
+                                User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.83 Safari/535.11<br />
+                                Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8<br />
+                                Accept-Encoding: gzip,deflate,sdch<br />
+                                Accept-Language: en-GB,en-US;q=0.8,en;q=0.6<br />
+                                Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3<br />
+                                <strong>DecibelAppID: <em>{Your Application ID}</em><br />
+                                    DecibelAppKey: <em>{Your Application Key}</em><br />
+                                    DecibelTimestamp: 20120402 13:25:07<br />
+                                </strong>
+                            </div>
+                            <p>
+                                If you are debugging the Rest API using a web browser a variety of plugins are available for each browser which allow you to specify HTTP Request Header information.
+                            </p>
+
+                            <table class="apiaddresses">
+                                <tr>
+                                    <th colspan="2">Browser
+                                    </th>
+                                    <th>Extension/Plugin/App
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../s3.amazonaws.com/enterprise-multitenant.3scale.net.3scale.net/decibel/2012/05/08/browser-chrome-7a5de9c4e9a5.png" alt="" />
+                                    </td>
+                                    <td>Chrome
+                                    </td>
+                                    <td>
+                                        <a href="https://chrome.google.com/webstore/detail/idgpnmonknjnojddfkpgkljpfnnfcklj">ModHeader</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../s3.amazonaws.com/enterprise-multitenant.3scale.net.3scale.net/decibel/2012/05/08/browser-firefox-110a69773d8f.png" alt="" />
+                                    </td>
+                                    <td>Firefox
+                                    </td>
+                                    <td>
+                                        <a href="https://addons.mozilla.org/en-US/firefox/addon/modify-headers/">Modify Headers</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../s3.amazonaws.com/enterprise-multitenant.3scale.net.3scale.net/decibel/2012/05/08/browser-ie-dfd9b4e89620.png" alt="" />
+                                    </td>
+                                    <td>Internet Explorer
+                                    </td>
+                                    <td>
+                                        <a href="http://www.fiddlertool.com/Fiddler/dev/ScriptSamples.asp">Fiddler</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../s3.amazonaws.com/enterprise-multitenant.3scale.net.3scale.net/decibel/2012/05/08/browser-safari-c0df83533ff4.png" alt="" />
+                                    </td>
+                                    <td>Safari
+                                    </td>
+                                    <td>
+                                        <a href="http://www.fiddlertool.com/Fiddler/dev/ScriptSamples.asp">Fiddler</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <div id="footer">
+
+        <div id="foot-wrap">
+
+            <script type="text/javascript">
+                var d = new Date();
+                document.getElementById("foot-wrap").appendChild(document.createTextNode("© " + d.getFullYear() + " Decibel Music Systems Ltd"));
+            </script>
+
+            <br />
+            The Decibel name, associated trade marks and logos and the &quot;magnifying glass note&quot; logo are trade marks of Decibel Music Systems Limited.
+        <br />
+            The Old Truman Brewery, 91 Brick Lane, London E1 6QL, UK +44 20 3657 9760
+        <br />
+
+            <a href="http://www.3scale.net/" target="_blank">
+                <img alt="Powered by 3scale" src="images/powered_by_logo.png">
+            </a>
+
+            <div id="flashWrapper" style="display: none;">
+                <div class="ajaxNoticeValid alwaysontop "></div>
+            </div>
+
+            <script type="text/javascript" charset="utf-8">
+                jQuery(document).ready(function () {
+                    setTimeout($.flash.hide, 5000);
+                });
+        </script>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="DecibelRestWpf.UserControls.AlbumSearch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:my="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit" 
+             xmlns:c="clr-namespace:DecibelRestWpf.UserControls"
+             mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="1024">
+    <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="../Resources/DatePicker.xaml"/>
+                    <ResourceDictionary Source="../Resources/SearchTabItem.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="285" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="285" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28" />
+            <RowDefinition Height="28" />
+            <RowDefinition Height="28" />
+            <RowDefinition Height="28" />
+            <RowDefinition Height="22" />
+            <RowDefinition Height="22" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Search Parameters -->
+        <Label Style="{StaticResource ControlBaseStyle}" Content="Search Parameters" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Name="lblSearchParameters" />
+
+        <Label Style="{StaticResource ControlBaseStyle}" Content="Album Title" Grid.Row="1" Name="lblSearchAlbumTitle" />
+        <my:AutoCompleteBox Style="{StaticResource AutoCompleteStyle}" Grid.Column="1" Grid.Row="1" Padding="1" Name="txtSearchAlbumTitle" TextChanged="txtSearchAlbumTitle_TextChanged" KeyUp="txtSearchAlbumTitle_KeyUp" PreviewKeyDown="txtSearchAlbumTitle_PreviewKeyDown"  />
+
+        <Label Style="{StaticResource ControlBaseStyle}" Content="Barcode" Grid.Column="0" Grid.Row="2" Name="lblSearchBarcode"/>
+        <my:AutoCompleteBox Style="{StaticResource AutoCompleteStyle}" Grid.Column="1" Grid.Row="2" Name="txtSearchBarcode" TextChanged="txtSearchBarcode_TextChanged" KeyUp="txtSearchBarcode_KeyUp" PreviewTextInput="PreviewTextInputHandler" DataObject.Pasting="PastingHandler" PreviewKeyDown="txtSearchBarcode_PreviewKeyDown" />
+
+        <Label Style="{StaticResource ControlBaseStyle}" Content="Artist Name" Grid.Column="0" Grid.Row="3" Name="lblSearchArtistName" />
+        <my:AutoCompleteBox Style="{StaticResource AutoCompleteStyle}" Grid.Column="1" Grid.Row="3" Name="txtSearchArtistName" TextChanged="txtSearchArtistName_TextChanged" KeyUp="txtSearchArtistName_KeyUp" PreviewKeyDown="txtSearchArtistName_PreviewKeyDown" />
+
+        <Label Style="{StaticResource ControlBaseStyle}" Content="Genre" Grid.Column="2" Grid.Row="3" Name="lblSearchGenre" />
+        <my:AutoCompleteBox Style="{StaticResource AutoCompleteStyle}" Grid.Column="3" Grid.Row="3" Name="txtSearchGenre" TextChanged="txtSearchGenre_TextChanged" KeyUp="txtSearchGenre_KeyUp" PreviewKeyDown="txtSearchGenre_PreviewKeyDown" />
+
+        <Label Style="{StaticResource ControlBaseStyle}" Content="Label" Grid.Column="2" Grid.Row="2" Name="lblSearchLabel" />
+        <my:AutoCompleteBox Style="{StaticResource AutoCompleteStyle}" Grid.Column="3" Grid.Row="2" Name="txtSearchLabel" TextChanged="txtSearchLabel_TextChanged" KeyUp="txtSearchLabel_KeyUp" PreviewKeyDown="txtSearchLabel_PreviewKeyDown"  />
+
+        <Label Style="{StaticResource ControlBaseStyle}" Content="Depth" Grid.Column="2" Grid.Row="1" Name="lblSearchDepth" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="3" Grid.Row="1" Name="txtSearchDepth" IsReadOnly="True" />
+        <Button Content="..." Grid.Column="4" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="0,2,0,0" Name="btnSelectDepth" VerticalAlignment="Top" Width="25" Click="btnSelectDepth_Click" />
+
+        <Label Style="{StaticResource ControlBaseStyle}" Content="URL" Grid.Column="0" Grid.Row="4" Grid.RowSpan="2" Name="lbSearchlURL" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" Width="615" Height="40" IsReadOnly="True" Name="txtSearchUrl" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+    
+        <!-- Response Tabs -->
+        <TabControl Grid.ColumnSpan="6" Grid.Column="0" Grid.Row="6" Name="tbcResponse">
+            <TabItem Header="Results" Name="tabResults">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="485" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="258" />
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Search Results -->
+                    <DataGrid AutoGenerateColumns="False" SelectionMode="Single" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Stretch" Name="dtgAlbumResults" VerticalAlignment="Stretch" Width="Auto" Height="Auto" SelectionChanged="dtgAlbumResults_SelectionChanged" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Index" Width="50" Binding="{Binding Index}" />
+                            <DataGridTextColumn Header="Title" Width="295" Binding="{Binding Name}" />
+                            <DataGridTextColumn Header="Artists" Width="295"  Binding="{Binding Artists}" />
+                            <DataGridTextColumn Header="Label" Width="125" Binding="{Binding Label}" />
+                            <DataGridTextColumn Header="Length" Width="100" Binding="{Binding Length}" />
+                            <DataGridTextColumn Header="Track Count" Width="100" Binding="{Binding TrackCount}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    
+                    <!-- Album Information -->
+                    <TabControl Style="{StaticResource TabControlStyle}" Grid.Row="1" Name="tbcAlbumInformation" >
+                        <TabItem Header="Album Information" Name="tabAlbumInformation" Focusable="True" IsTabStop="True">
+                            <c:AlbumInformation x:Name="albumInformation" />
+                        </TabItem>
+                    </TabControl>
+                    
+                    <!-- Track Listing -->
+                    <TabControl Style="{StaticResource TabControlStyle}" Grid.Column="1" Grid.Row="1" Margin="2,2,0,0" Name="tbcTrackInformation">
+                        <TabItem Header="Track Listing" Name="tabTrackInformation" Focusable="True">
+                            <Grid>
+                                <ListBox HorizontalAlignment="Stretch" Margin="0,0,0,0" Name="lstTracks" VerticalAlignment="Stretch" Width="Auto" MouseDoubleClick="lstTracks_MouseDoubleClick" MouseEnter="lstTracks_MouseEnter" MouseLeave="lstTracks_MouseLeave" KeyDown="lstTracks_KeyDown" />
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+           
+            <!-- Response -->
+            <TabItem Header="XML" Name="tabResponse">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                   
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Name="txtResponse" VerticalAlignment="Stretch" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+        <!-- Search Button -->
+        <Button Content="Search" Grid.Column="3" Grid.Row="4" Height="23" HorizontalAlignment="Left" Name="btnSearch" VerticalAlignment="Top" Width="88" Margin="284,19,0,0" Grid.RowSpan="2" Click="btnSearch_Click" IsDefault="True" Grid.ColumnSpan="3" />
+        
+        <!-- Page Navigator -->
+        <StackPanel Grid.Column="1" Grid.Row="5" Grid.RowSpan="2" Height="22" HorizontalAlignment="Right" Margin="0,21,0,0" VerticalAlignment="Top" Width="934" Grid.ColumnSpan="5">
+            <c:PageNavigator x:Name="pageNavigator" HorizontalAlignment="Right" Width="156" />
+        </StackPanel>
+    </Grid>
+</UserControl>

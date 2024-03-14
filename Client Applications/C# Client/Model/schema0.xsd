@@ -1,0 +1,1846 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="QueryResultHolder" nillable="true" type="QueryResultHolder" />
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>    
+  <xs:complexType name="QueryResultHolder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="AlbumQueryResult" type="AlbumQueryResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SuggestionQueryResult" type="SuggestionQueryResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ParticipantAssociateAppearanceQueryResult" type="ParticipantAssociateAppearanceQueryResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ParticipantQueryResult" type="ParticipantQueryResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ParticipantAssociateQueryResult" type="ParticipantAssociateQueryResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ParticipantTrackAppearanceQueryResult" type="ParticipantTrackAppearanceQueryResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="WorkTrackAppearanceQueryResult" type="WorkTrackAppearanceQueryResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="WorkQueryResult" type="WorkQueryResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TrackQueryResult" type="TrackQueryResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlbumQueryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryResultBaseOfAlbumQueryObjectAlbum" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="QueryResultBaseOfAlbumQueryObjectAlbum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Search" type="AlbumQueryObject" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResultSet" type="ArrayOfAlbum" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FindType" type="FindType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="QueryResultID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Pages" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ResultCount" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PageNum" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDs" type="ArrayOfGuid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TransactionResult" type="TransactionResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlbumQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ExternalIdentifier" type="ExternalIdentifierQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FreeDbID" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FeaturedArtists" type="ArrayOfParticipantQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationality" type="NationalityQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genre" type="GenreValueQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Publisher" type="PublisherQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BarCode" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReleaseDate" type="DateQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntities" type="GeoEntityQueryObject" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="QueryObjectBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="NameFindType" type="FindType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PageSize" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDList" type="ArrayOfGuid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="FindType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Exact" />
+      <xs:enumeration value="Normalized" />
+      <xs:enumeration value="Fuzzy" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ArrayOfGuid">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="guid" type="guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TrackQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Performers" type="ArrayOfParticipantQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genre" type="GenreValueQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Album" type="AlbumQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntities" type="GeoEntityQueryObject" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExternalIdentifier" type="ExternalIdentifierQueryObject" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfParticipantQueryObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParticipantQueryObject" nillable="true" type="ParticipantQueryObject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="Gender" nillable="true" type="GenderType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DateBorn" type="DateQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DateDied" type="DateQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PlaceBorn" type="GeoEntityQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PlaceDied" type="GeoEntityQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genres" type="GenreValueQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Eras" type="EraValueQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Styles" type="StyleValueQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Activity" type="ActivityQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationality" type="NationalityQueryObject" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExternalIdentifier" type="ExternalIdentifierQueryObject" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="GenderType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Male" />
+      <xs:enumeration value="Female" />
+      <xs:enumeration value="Unassigned" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DateQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ParentTableID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ParentColumnID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StartYear" nillable="true" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StartMonth" nillable="true" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StartDay" nillable="true" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="EndYear" nillable="true" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="EndMonth" nillable="true" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="EndDay" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Text" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GeoEntityQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ParentGeoEntityQueryObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ParentGeoEntity" type="ParentGeoEntityQueryObject" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Latitude" nillable="true" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LatitudeRange" nillable="true" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Longitude" nillable="true" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LongitudeRange" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ParentGeoEntityQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="GeoCategoryType" type="GeoCategoryType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="GeoTypeID" type="guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="GeoCategoryType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotSet" />
+      <xs:enumeration value="Country" />
+      <xs:enumeration value="Region" />
+      <xs:enumeration value="Territory" />
+      <xs:enumeration value="City" />
+      <xs:enumeration value="Organization" />
+      <xs:enumeration value="Borough" />
+      <xs:enumeration value="Neighborhood" />
+      <xs:enumeration value="Feature" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="RetrievalDepth">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="None" />
+          <xs:enumeration value="Names" />
+          <xs:enumeration value="ImageThumbnail" />
+          <xs:enumeration value="ExternalIdentifiers" />
+          <xs:enumeration value="Participations" />
+          <xs:enumeration value="Genres" />
+          <xs:enumeration value="Links" />
+          <xs:enumeration value="Media" />
+          <xs:enumeration value="Relationships" />
+          <xs:enumeration value="Nationalities" />
+          <xs:enumeration value="Movements" />
+          <xs:enumeration value="Publications" />
+          <xs:enumeration value="Annotations" />
+          <xs:enumeration value="Publishers" />
+          <xs:enumeration value="GeographicAreas" />
+          <xs:enumeration value="GroupMembers" />
+          <xs:enumeration value="SectionMembers" />
+          <xs:enumeration value="ChartsAwards" />
+          <xs:enumeration value="Performances" />
+          <xs:enumeration value="Tracks" />
+          <xs:enumeration value="JugglitThumbnail" />
+          <xs:enumeration value="JugglitImage" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+  <xs:complexType name="GenreValueQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Genre" type="GenreQueryObject" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GenreQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EraValueQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Era" type="EraQueryObject" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EraQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BeginDate" type="DateQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EndDate" type="DateQueryObject" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="StyleValueQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Style" type="StyleQueryObject" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="StyleQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ActivityQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ActivityType" type="ActivityType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsAlbum" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsTrack" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsPerformance" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsWork" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsLargeWork" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationality" type="NationalityQueryObject" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ActivityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotSet" />
+      <xs:enumeration value="Composition" />
+      <xs:enumeration value="Performance" />
+      <xs:enumeration value="Production" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="NationalityQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ExternalIdentifierQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="DatabaseName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Identifier" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ClassType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Activity" />
+      <xs:enumeration value="Album" />
+      <xs:enumeration value="Annotation" />
+      <xs:enumeration value="AnnotationText" />
+      <xs:enumeration value="AnnotationType" />
+      <xs:enumeration value="Geo" />
+      <xs:enumeration value="Participant" />
+      <xs:enumeration value="Performance" />
+      <xs:enumeration value="Work" />
+      <xs:enumeration value="Movement" />
+      <xs:enumeration value="Track" />
+      <xs:enumeration value="Disc" />
+      <xs:enumeration value="ExternalDatabase" />
+      <xs:enumeration value="ExternalIdentifier" />
+      <xs:enumeration value="MusicCatalogue" />
+      <xs:enumeration value="CatalogueEntry" />
+      <xs:enumeration value="MusicGenre" />
+      <xs:enumeration value="MusicForm" />
+      <xs:enumeration value="MusicTempo" />
+      <xs:enumeration value="Publication" />
+      <xs:enumeration value="Unassigned" />
+      <xs:enumeration value="Era" />
+      <xs:enumeration value="Style" />
+      <xs:enumeration value="Character" />
+      <xs:enumeration value="Publisher" />
+      <xs:enumeration value="AlbumSeries" />
+      <xs:enumeration value="ChartAward" />
+      <xs:enumeration value="ChartAwardValue" />
+      <xs:enumeration value="Nationality" />
+      <xs:enumeration value="LinkType" />
+      <xs:enumeration value="WorkSection" />
+      <xs:enumeration value="CollectionAlbum" />
+      <xs:enumeration value="CollectionTrack" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="MusicTempoQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationality" type="NationalityQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genre" type="GenreValueQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntity" type="GeoEntityQueryObject" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MusicFormQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationality" type="NationalityQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genre" type="GenreValueQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntity" type="GeoEntityQueryObject" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="KeyValueQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WorkQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Catalogue" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CatalogueEntry" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Key" type="KeyValueQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Composers" type="ArrayOfParticipantQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicForms" type="ArrayOfMusicFormQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicTempi" type="ArrayOfMusicTempoQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genres" type="GenreValueQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Styles" type="StyleValueQueryObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Eras" type="EraValueQueryObject" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RetrievalDepth" type="RetrievalDepth" />
+          <xs:element minOccurs="1" maxOccurs="1" name="WorkSearchScope" type="WorkSearchScope" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfMusicFormQueryObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MusicFormQueryObject" nillable="true" type="MusicFormQueryObject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfMusicTempoQueryObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MusicTempoQueryObject" nillable="true" type="MusicTempoQueryObject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="WorkSearchScope">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="WorksOnly" />
+      <xs:enumeration value="MovementsOnly" />
+      <xs:enumeration value="WorksAndMovements" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="WorkTrackAppearanceQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="WorkID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CollectionID" type="guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ParticipantTrackAppearanceQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ParticipantID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CollectionID" type="guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ParticipantAssociateQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ParticipantID" type="guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ParticipantAssociateAppearanceQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ParticipantID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CollaboratorID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Limit" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PublisherQueryObject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntity" type="GeoEntityQueryObject" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfAlbum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Album" nillable="true" type="Album" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Album">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AlbumGroupID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BarCode" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Artists" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genres" type="ArrayOfGenreValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExternalIdentifiers" type="ArrayOfExternalIdentifier" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DiscCount" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TrackCount" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Discs" type="ArrayOfDisc" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Participations" type="ArrayOfParticipation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Links" type="ArrayOfLinkValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicMedium" type="MusicMedium" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Publications" type="ArrayOfPublication" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TotalSeconds" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsHomeMade" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsLive" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsBootleg" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ChannelModeID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Thumbnail" type="xs:base64Binary" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntities" type="ArrayOfGeoEntityValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ChartsAndAwards" type="ArrayOfChartAwardValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CYear" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PYear" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReleaseDate" type="DateEvent" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Tracks" type="ArrayOfTrack" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ImageUrl" type="ImageUrl" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ThumbnailUrl" type="ImageUrl" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DecibelDataObject" abstract="true" />
+  <xs:complexType name="ParticipantAssociate">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Participant" type="Participant" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ActivityType" type="ActivityType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Weighting" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Participant">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfParticipantName" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Members" type="ArrayOfParticipantMember" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genres" type="ArrayOfGenreValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Annotations" type="ArrayOfAnnotation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Eras" type="ArrayOfEraValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Styles" type="ArrayOfStyleValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DateBorn" type="DateEvent" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DateDied" type="DateEvent" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DateActive" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsGroup" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsNonPerson" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsCharacter" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Gender" type="GenderType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PlaceBorn" type="GeoEntity" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PlaceDied" type="GeoEntity" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationalities" type="ArrayOfNationality" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntities" type="ArrayOfGeoEntityValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Relationships" type="ArrayOfParticipantRelationship" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Links" type="ArrayOfLinkValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ChartsAndAwards" type="ArrayOfChartAwardValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Participations" type="ArrayOfParticipation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfParticipantName">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParticipantName" nillable="true" type="ParticipantName" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantName">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ParticipantID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Last" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="First" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Middle" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nickname" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Titles" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsAlias" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsPhonetic" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Sic" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsBirthName" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsDefault" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfParticipantMember">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParticipantMember" nillable="true" type="ParticipantMember" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantMember">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ParticipantID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Member" type="Participant" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Activities" type="ArrayOfActivity" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Dates" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfActivity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Activity" nillable="true" type="Activity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Activity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ActivityType" type="ActivityType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsAlbum" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsTrack" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsPerformance" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsWork" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsLargeWork" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationalities" type="ArrayOfNationality" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExternalIdentifiers" type="ArrayOfExternalIdentifier" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Translation" nillable="true" type="Translation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Translation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ValueAscii7" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Sic" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsAbbreviation" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsPhonetic" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsNickname" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ParentTableID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfNationality">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Nationality" nillable="true" type="Nationality" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Nationality">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalDescription" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Links" type="ArrayOfLinkValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfLinkValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LinkValue" nillable="true" type="LinkValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinkValue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LinkType" type="LinkType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UserID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Url" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LinkType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfExternalIdentifier">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExternalIdentifier" nillable="true" type="ExternalIdentifier" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExternalIdentifier">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExternalDatabase" type="ExternalDatabase" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Identifier" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ExternalDatabase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Url" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Notes" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfGenreValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GenreValue" nillable="true" type="GenreValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GenreValue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UserID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genre" type="Genre" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Genre">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalDescription" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationalities" type="ArrayOfNationalityValue" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UserID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Links" type="ArrayOfLinkValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfNationalityValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NationalityValue" nillable="true" type="NationalityValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NationalityValue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationality" type="Nationality" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UserID" type="guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfAnnotation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Annotation" nillable="true" type="Annotation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Annotation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Translations" type="ArrayOfAnnotationText" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UserID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Subject" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfAnnotationText">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AnnotationText" nillable="true" type="AnnotationText" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AnnotationText">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AnnotationID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Subject" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfEraValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EraValue" nillable="true" type="EraValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EraValue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UserID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Era" type="Era" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Era">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalDescription" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BeginDate" type="DateEvent" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EndDate" type="DateEvent" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UserID" type="guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DateEvent">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SortKey" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfStyleValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StyleValue" nillable="true" type="StyleValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StyleValue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UserID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Style" type="Style" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Style">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalDescription" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UserID" type="guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GeoEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="1" maxOccurs="1" name="GeoTypeID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoTypeName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExternalIdentifiers" type="ArrayOfExternalIdentifier" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Latitude" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Longitude" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfGeoEntityValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GeoEntityValue" nillable="true" type="GeoEntityValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GeoEntityValue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntity" type="GeoEntity" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Qualifier" type="Qualifier" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsAssociation" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Qualifier">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfParticipantRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParticipantRelationship" nillable="true" type="ParticipantRelationship" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantRelationship">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ParticipantID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ParticipantName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RelatedParticipantID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RelatedParticipantName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StartDate" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EndDate" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Relationship" type="Relationship" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Relationship">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfChartAwardValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChartAwardValue" nillable="true" type="ChartAwardValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ChartAwardValue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ChartAward" type="ChartAward" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StartDate" type="DateEvent" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EndDate" type="DateEvent" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ChartPosition" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AwardName" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ChartAward">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Links" type="ArrayOfLinkValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfParticipation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Participation" nillable="true" type="Participation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Participation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Participant" type="Participant" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ParticipantNameID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="NullParticipantMultiplier" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsSolo" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsMain" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsGuest" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Chair" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Activity" type="Activity" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ParticipantQualifier" type="QualifierType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ParticipantQualifierName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ActivityQualifier" type="QualifierType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ActivityQualifierName" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="QualifierType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Possibly" />
+      <xs:enumeration value="Probably" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TrackAppearance">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ActivityID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AlbumID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AlbumName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AlbumArtistName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TrackArtistName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TrackID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TrackName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Composer" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DiscNumber" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TrackNumber" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TotalSeconds" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PerformanceID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ActivityName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CollectionTrackID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CollectionIDs" type="ArrayOfGuid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CollaborationAppearance">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="TrackAppearance" type="TrackAppearance" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Participants" type="ArrayOfParticipant" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfParticipant">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Participant" nillable="true" type="Participant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Event">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DateEvent" type="DateEvent" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Venues" type="ArrayOfVenueValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="VenueConjunction" type="LexConjunction" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntities" type="ArrayOfGeoEntityValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoConjunction" type="LexConjunction" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfVenueValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VenueValue" nillable="true" type="VenueValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VenueValue">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Venue" type="Venue" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Qualifier" type="Qualifier" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Venue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntity" type="GeoEntity" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Links" type="ArrayOfLinkValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LexConjunction">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Text" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Publisher">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ChartsAndAwards" type="ArrayOfChartAwardValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Publication">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BarCode" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntities" type="ArrayOfGeoEntityValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PublicationDate" type="DateEvent" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Publisher" type="Publisher" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CatalogueNumber" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExternalIdentifiers" type="ArrayOfExternalIdentifier" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CYear" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PYear" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MusicCatalogue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalAbbreviation" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Note" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CatalogueEntry">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="WorkID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicCatalogue" type="MusicCatalogue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Identifier" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Character">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalDescription" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Gender" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Age" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BasedOn" type="Participant" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Activity" type="Activity" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WorkCharacter">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Character" type="Character" />
+          <xs:element minOccurs="1" maxOccurs="1" name="WorkID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Activity" type="Activity" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsMain" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Orchestration">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Activity" type="Activity" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Quantity" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MusicMode">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MusicKeynote">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MusicKey">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicKeynote" type="MusicKeynote" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicMode" type="MusicMode" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="KeyValue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ClassType" type="ClassType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicKey" type="MusicKey" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MusicForm">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationalities" type="ArrayOfNationality" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genres" type="ArrayOfGenreValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntities" type="ArrayOfGeoEntityValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WorkForm">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="WorkID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicForm" type="MusicForm" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MusicTempo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DefaultLanguageDialectID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationalities" type="ArrayOfNationality" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genres" type="ArrayOfGenreValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GeoEntities" type="ArrayOfGeoEntityValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Tempo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="WorkID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicTempo" type="MusicTempo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Movement">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="WorkID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Participations" type="ArrayOfParticipation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CompositionPlace" type="GeoEntity" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PreNameLabel" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MovementNumber" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CompositionDate" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genres" type="ArrayOfGenreValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Styles" type="ArrayOfStyleValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Tempi" type="ArrayOfTempo" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicForms" type="ArrayOfWorkForm" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Annotations" type="ArrayOfAnnotation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Keys" type="ArrayOfKeyValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Orchestrations" type="ArrayOfOrchestration" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Characters" type="ArrayOfWorkCharacter" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfTempo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tempo" nillable="true" type="Tempo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfWorkForm">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkForm" nillable="true" type="WorkForm" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfKeyValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValue" nillable="true" type="KeyValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfOrchestration">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Orchestration" nillable="true" type="Orchestration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfWorkCharacter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkCharacter" nillable="true" type="WorkCharacter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WorkSectionWork">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Movement" type="Movement" />
+          <xs:element minOccurs="0" maxOccurs="1" name="WorkSection" type="WorkSection" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WorkSection">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ParentID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="WorkSectionType" type="WorkSectionType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Members" type="ArrayOfWorkSectionWork" />
+          <xs:element minOccurs="1" maxOccurs="1" name="WorkID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Level" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Heading" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WorkSectionType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfWorkSectionWork">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkSectionWork" nillable="true" type="WorkSectionWork" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Work">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ParentWorkID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Sections" type="ArrayOfWorkSection" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Opus" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OpusNumber" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Catalogue" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CompositionDate" type="DateEvent" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CatalogueEntries" type="ArrayOfCatalogueEntry" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Keys" type="ArrayOfKeyValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicForms" type="ArrayOfWorkForm" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Tempi" type="ArrayOfTempo" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genres" type="ArrayOfGenreValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Eras" type="ArrayOfEraValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Styles" type="ArrayOfStyleValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nicknames" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Participations" type="ArrayOfParticipation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Orchestrations" type="ArrayOfOrchestration" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Annotations" type="ArrayOfAnnotation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Publications" type="ArrayOfPublication" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Publishers" type="ArrayOfPublisher" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Movements" type="ArrayOfMovement" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nationalities" type="ArrayOfNationality" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Composers" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="WorkNumber" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Characters" type="ArrayOfWorkCharacter" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ChartsAndAwards" type="ArrayOfChartAwardValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfWorkSection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkSection" nillable="true" type="WorkSection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfCatalogueEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CatalogueEntry" nillable="true" type="CatalogueEntry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfPublication">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Publication" nillable="true" type="Publication" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfPublisher">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Publisher" nillable="true" type="Publisher" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfMovement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Movement" nillable="true" type="Movement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformanceWork">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PerformanceID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TimeIndex" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Work" type="Work" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Performance">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PerformanceDate" type="DateEvent" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PerformanceCities" type="ArrayOfGeoEntityValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Participations" type="ArrayOfParticipation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Works" type="ArrayOfPerformanceWork" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genres" type="ArrayOfGenre" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Eras" type="ArrayOfEraValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Styles" type="ArrayOfStyleValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Venues" type="ArrayOfVenueValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PerformanceCitiesConjunction" type="LexConjunction" />
+          <xs:element minOccurs="0" maxOccurs="1" name="VenueConjunction" type="LexConjunction" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsFalseStart" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsIncomplete" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsLive" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Take" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Links" type="ArrayOfLinkValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExternalIdentifiers" type="ArrayOfExternalIdentifier" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ChartsAndAwards" type="ArrayOfChartAwardValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfPerformanceWork">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PerformanceWork" nillable="true" type="PerformanceWork" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfGenre">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Genre" nillable="true" type="Genre" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Track">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AlbumID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DiscID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Isrc" type="ExternalIdentifier" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TrackNumber" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DiscNumber" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Artists" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TotalSeconds" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Participations" type="ArrayOfParticipation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Performances" type="ArrayOfPerformance" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Links" type="ArrayOfLinkValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Genres" type="ArrayOfGenreValue" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExternalIdentifiers" type="ArrayOfExternalIdentifier" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Events" type="ArrayOfEvent" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Puid" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsBonus" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsHomemade" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsBootleg" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsLive" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Side" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ChartsAndAwards" type="ArrayOfChartAwardValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfPerformance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Performance" nillable="true" type="Performance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfEvent">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Event" nillable="true" type="Event" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MusicMedium">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsFile" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="HasSides" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Disc">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DecibelDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AlbumID" type="guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MusicMedium" type="MusicMedium" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Checksum" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DiscNumber" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TrackCount" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TotalSeconds" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Barcode" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Names" type="ArrayOfTranslation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Tracks" type="ArrayOfTrack" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExternalIdentifiers" type="ArrayOfExternalIdentifier" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Thumbnail" type="xs:base64Binary" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TableOfContents" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LeadIn" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LeadOut" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ChannelModeID" type="guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Bitrate" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SamplingFrequency" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfTrack">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Track" nillable="true" type="Track" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDisc">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Disc" nillable="true" type="Disc" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ImageUrl">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="ParentTableID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Url" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransactionResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="FunctionName" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Success" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="HttpStatus" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="RowsAffected" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IsException" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Errors" type="ArrayOfString" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Warnings" type="ArrayOfString" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SuggestionQueryResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Tracks" type="ArrayOfSuggestion" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Albums" type="ArrayOfSuggestion" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Participants" type="ArrayOfSuggestion" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Barcodes" type="ArrayOfSuggestion" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Publishers" type="ArrayOfSuggestion" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MusicGenres" type="ArrayOfSuggestion" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Activities" type="ArrayOfSuggestion" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Works" type="ArrayOfSuggestion" />
+      <xs:element minOccurs="0" maxOccurs="1" name="GeoEntities" type="ArrayOfSuggestion" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MusicCatalogues" type="ArrayOfSuggestion" />
+      <xs:element minOccurs="0" maxOccurs="1" name="WorksComposers" type="ArrayOfSuggestion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfSuggestion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Suggestion" nillable="true" type="Suggestion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Suggestion">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="ItemID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SuggestionValue" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Participant" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Thumbnail" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantAssociateAppearanceQueryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryResultBaseOfParticipantAssociateAppearanceQueryObjectCollaborationAppearance" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="QueryResultBaseOfParticipantAssociateAppearanceQueryObjectCollaborationAppearance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Search" type="ParticipantAssociateAppearanceQueryObject" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResultSet" type="ArrayOfCollaborationAppearance" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FindType" type="FindType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="QueryResultID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Pages" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ResultCount" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PageNum" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDs" type="ArrayOfGuid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TransactionResult" type="TransactionResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfCollaborationAppearance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CollaborationAppearance" nillable="true" type="CollaborationAppearance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantQueryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryResultBaseOfParticipantQueryObjectParticipant" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="QueryResultBaseOfParticipantQueryObjectParticipant">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Search" type="ParticipantQueryObject" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResultSet" type="ArrayOfParticipant" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FindType" type="FindType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="QueryResultID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Pages" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ResultCount" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PageNum" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDs" type="ArrayOfGuid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TransactionResult" type="TransactionResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantAssociateQueryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryResultBaseOfParticipantAssociateQueryObjectParticipantAssociate" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="QueryResultBaseOfParticipantAssociateQueryObjectParticipantAssociate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Search" type="ParticipantAssociateQueryObject" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResultSet" type="ArrayOfParticipantAssociate" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FindType" type="FindType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="QueryResultID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Pages" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ResultCount" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PageNum" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDs" type="ArrayOfGuid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TransactionResult" type="TransactionResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfParticipantAssociate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParticipantAssociate" nillable="true" type="ParticipantAssociate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantTrackAppearanceQueryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryResultBaseOfParticipantTrackAppearanceQueryObjectTrackAppearance" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="QueryResultBaseOfParticipantTrackAppearanceQueryObjectTrackAppearance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Search" type="ParticipantTrackAppearanceQueryObject" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResultSet" type="ArrayOfTrackAppearance" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FindType" type="FindType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="QueryResultID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Pages" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ResultCount" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PageNum" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDs" type="ArrayOfGuid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TransactionResult" type="TransactionResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfTrackAppearance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TrackAppearance" nillable="true" type="TrackAppearance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WorkTrackAppearanceQueryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryResultBaseOfWorkTrackAppearanceQueryObjectTrackAppearance" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="QueryResultBaseOfWorkTrackAppearanceQueryObjectTrackAppearance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Search" type="WorkTrackAppearanceQueryObject" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResultSet" type="ArrayOfTrackAppearance" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FindType" type="FindType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="QueryResultID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Pages" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ResultCount" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PageNum" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDs" type="ArrayOfGuid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TransactionResult" type="TransactionResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WorkQueryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryResultBaseOfWorkQueryObjectWork" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="QueryResultBaseOfWorkQueryObjectWork">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Search" type="WorkQueryObject" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResultSet" type="ArrayOfWork" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FindType" type="FindType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="QueryResultID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Pages" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ResultCount" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PageNum" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDs" type="ArrayOfGuid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TransactionResult" type="TransactionResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfWork">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Work" nillable="true" type="Work" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TrackQueryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="QueryResultBaseOfTrackQueryObjectTrack" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="QueryResultBaseOfTrackQueryObjectTrack">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Search" type="TrackQueryObject" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResultSet" type="ArrayOfTrack" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FindType" type="FindType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="QueryResultID" type="guid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Pages" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ResultCount" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PageNum" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IDs" type="ArrayOfGuid" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LanguageDialectID" type="guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TransactionResult" type="TransactionResult" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Authentication</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="javascript/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="javascript/jquery.colorbox-min.js" type="text/javascript"></script>
+    <link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="javascript/highlight.pack.js" type="text/javascript"></script>
+    <script src="javascript/help.js" type="text/javascript"></script>
+    <script src="javascript/flash.js" type="text/javascript"></script>
+    <script src="javascript/remote.js" type="text/javascript"></script>
+    <script src="javascript/switch.js" type="text/javascript"></script>
+    <script src="javascript/ajax_upload.js" type="text/javascript"></script>
+    <script src="javascript/extra_fields.js" type="text/javascript"></script>
+    <script src="javascript/application.js" type="text/javascript"></script>
+    <link href="css/default.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#" />
+    <script type="text/javascript" src="html5.js"></script>
+    <script type="text/javascript" src="eCSStender.js"></script>
+    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="javascript/prettify.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var offset = $("#sidebar").offset(); //Sets which element is scrollable. In this case it's the div .sidebar
+            var topPadding = 30;  //Set how much top-padding the element has.
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > offset.top) {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: $(window).scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: 0
+                    });
+                };
+            });
+        });
+
+    </script>
+</head>
+
+<body class="home">
+
+    <div id="page">
+
+        <div id="header">
+            <a id="header-logo" href="index.html">
+                <img src="images/logo-white.png" /></a>
+            <div id="header-widget">
+                <div id="user_widget" class="round">
+                    <a href="login.html">Sign in</a>
+                    | <a href="signup.html">Sign up</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="content">
+            <table style="width: 90%" cellspacing="0" cellpadding="10">
+                <tr>
+                    <td valign="top" style="width: 250px">
+                        <div style="margin-left: 0px; margin-top: 0px">
+
+                            <div id='cssmenu'>
+                                <ul>
+                                    <li><a href='decibel-sdk.html'><span>Home</span></a></li>
+                                    <li><a href='news.html'><span>News</span></a></li>
+                                    <li><a href='our-api.html'><span>API Music Metadata</span></a></li>
+                                    <li><a href='authentication.html'><span>API Authentication</span></a></li>
+                                    <li><a href='rest-api-v2.html'><span>REST API Documentation</span></a></li>
+                                    <li><a href='hackathons.html'><span>Hackathons</span></a></li>
+                                    <li><a href='forum.html'><span>Forum</span></a></li>
+                                    <li><a href='support.html'><span>Support</span></a></li>
+                                    <li><a href='faq.html'><span>FAQ</span></a></li>
+                                    <li><a href='termsandconditions.html'><span>Terms and Conditions</span></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <h1><span class="caps">DECIBEL</span> <span class="caps">API</span></h1>
+                            <h2>Terms &amp; Conditions of Purchase</h2>
+                            <h3>About these Terms and Conditions</h3>
+                            <p>
+                                <p>In these terms and conditions &#8220;we&#8221; and &#8220;us&#8221; mean Decibel Music Systems Limited, and &#8220;you&#8221; means you the customer. In these terms and conditions certain words spelt with initial capital letters are defined terms. For your ease of reference these defined terms are listed together at the end of the terms and conditions. These terms and conditions together with your Order Confirmation constitute the Contract between us and you for the supply of Products and Services. No other terms and conditions shall apply. The Contract cannot be varied unless we agree to vary it in writing or by email.</p>
+                            </p>
+                            <h3>Placing Your Product Order</h3>
+                            <p>
+                                <p>To place an Order you must be 18 years of age or over and be accessible by email and by telephone.</p>
+                            </p>
+                            <p>
+                                <p>You may place an Order by filling in the Order Form on the Decibel Web Site after logging into or creating your personal account and clicking on the appropriate submission button; or telephoning us on 020 7691 3201 between 09:00 and 18:00 Mondays to Fridays. You must use the Order Form from the Decibel Web Site. We will not accept Orders placed in any way other than those listed above.</p>
+                            </p>
+                            <p>
+                                <p>
+                                    Any orders without a valid email address will not be eligible to receive  products, and therefore your Order will not be processed.<br />
+                                    When you place your Order, we will issue you with a Web Order Number. We will do this via the Decibel Web Site, unless you have placed your Order by telephone, in which case we will issue your Web Order Number when you telephone us. Please note that such a Web Order Number is supplied for reference purposes only and does not constitute our acceptance of your Order.
+                                </p>
+                            </p>
+                            <p>
+                                <p>By placing an Order, you make an offer to us to purchase the Products you have selected on these terms and conditions. We may or may not accept your offer at our discretion.</p>
+                            </p>
+                            <p>
+                                <p>If we accept your Order, we will notify you of our acceptance by issuing an Order Confirmation. We will send your Order Confirmation to you by e-mail provided you have indicated an e-mail address on your Order Form. Otherwise we will send the Order Confirmation by post. The Order Confirmation will be effective on sending. If we cannot accept your Order we will attempt to contact you by email or telephone or post.</p>
+                            </p>
+                            <p>
+                                <p>Whilst we will make every effort to supply you with the Products listed on the Order Confirmation, there may be occasions where we are unable to supply these Products. In such circumstances we will contact you to inform you and may suggest alternative Products that you might wish to purchase. If you do not accept our suggestions then we will cancel your Order in relation to those Products we cannot supply and repay you any money that you may have paid to us in respect of those Products. In the event of a typographical error or technological error causing a mistake in price to be shown, Decibel reserves the right to correct the error and to charge you the correct price. Before it does so, Decibel will notify you of the mistake and will offer you the opportunity of a full refund. You will receive a notification with or prior to your delivery.</p>
+                            </p>
+                            <p>
+                                <p>Information contained in our advertising, brochures, other written materials, on our web sites or given to you by our agents or employees constitutes an invitation to treat. No such information constitutes an offer by us to supply any products.</p>
+                            </p>
+                            <h3>Supply of Your Products</h3>
+                            <p>
+                                <p>Subject to these terms and conditions, we will supply to you the Decibel Products indicated on your Order Confirmation via electronic mail.</p>
+                            </p>
+                            <h3>Prices</h3>
+                            <p>
+                                <p>The price for the Products will be the price indicated on your Invoice.</p>
+                            </p>
+                            <p>
+                                <p><span class="caps">VAT</span> is payable by you at the applicable rate as indicated on your Invoice. No intra-community purchases can be made on The Decibel Web Site.</p>
+                            </p>
+                            <p>
+                                <p>Delivery costs, where applicable, are payable by you as indicated on your Invoice.</p>
+                            </p>
+                            <h3>Paying for Your Products</h3>
+                            <p>
+                                <p>You may pay for your Products by the methods of payment as may be displayed on the payment paragraph of the Decibel Web Site from time to time.</p>
+                            </p>
+                            <p>
+                                <p>If you are paying by credit card, then you must supply your credit card details when you place your Order. Your credit card will be charged when we issue your Invoice or on shipment of your Products. We will supply the Products to you nor perform the Services until your credit card issuer has authorised the use of your card for payment of the Products and/or Services ordered. If we do not receive such authorisation we shall let you know. We reserve the right to verify the identity of the credit card holder by requesting appropriate documentation.</p>
+                            </p>
+                            <p>
+                                <p>We will send request for payment, your Invoice, and Products to you at the billing address indicated on your Order Confirmation. We may, however, only send the documents by e-mail where you have indicated an e-mail address on your Order Form.</p>
+                            </p>
+                            <p>To ensure that your credit, debit or charge card is not being used without your consent, we will validate name, address and other personal information supplied by you during the order process against appropriate third party databases. By accepting these terms and conditions you consent to such checks being made. In performing these checks personal information provided by you may be disclosed to a registered Credit Reference Agency which may keep a record of that information. You can rest assured that this is done only to confirm your identity, that a credit check is not performed and that your credit rating will be unaffected. All information provided by you will be treated securely and strictly in accordance with the Data Protection Act 1998.</p>
+                            <h3>Transaction Currency</h3>
+                            <p>
+                                <p>You must pay in the currency as indicated on your Invoice.</p>
+                            </p>
+                            <h3>Delivery of Your Products</h3>
+                            <p>
+                                <p>
+                                    Orders will be accepted and products will be delivered to some addresses outside the mainland United Kingdom, Northern Ireland or the Isle of Man. However, if, at a certain time, we are unable to deliver to your location, you will be informed via email, your Order will be cancelled and your card will not be charged.<br />
+                                    We will deliver your Products to the electronic delivery address as shown on your Order Confirmation.
+                                </p>
+                            </p>
+                            <p>
+                                <p>We will use our reasonable endeavours to deliver your Products within 14 days of the date of issue of your Order Confirmation.</p>
+                            </p>
+                            <p>
+                                <p>You may cancel your Order at any time prior to delivery of the Product ordered by calling us on 020 7691 3201 and quoting your Web Order Number. Delivery times for Services will need to be agreed directly between you and Decibel. Once a delivery time for Services has been agreed then you must adhere to this. If you miss the appointment or you do not have the necessary infrastructure despite acknowledging having this at the time the appointment was agreed, then there will be no further obligation on us to provide the Services purchased by you.</p>
+                            </p>
+                            <p>
+                                <p>Upon delivery of the Products we will send you a confirmation of shipment by e-mail.</p>
+                            </p>
+                            <h3>Your Rights to Withdraw from the Contract and to Return Products</h3>
+                            <p>
+                                <p><b>Right to withdraw from the contract.</b> If you are not satisfied with any Product or the terms of any entitlement to Services you have purchased from us, you may return the Product to us or cancel the entitlement to Services and obtain a refund of the price of the returned Product or Service entitlement if you contact us within 14 Calendar Days of delivery of the Product or entering into the contract for the purchase of Services.</p>
+                            </p>
+                            <p>
+                                <p>You may not obtain a refund for a Service if you have commenced use of the Service.</p>
+                            </p>
+                            <p>
+                                <p><b>Conditions to exercise the right to withdraw from the contract.</b> You can exercise your right to return the Product to us or cancel the entitlement to Services and obtain a refund of the price of the returned Product or Service entitlement provided: (i) You inform us of your decision to cancel the contract within 14 Calendar Days of delivery of the Product or the date you purchased the Services; and (ii) The Product(s) are returned in their original condition via email to Decibel</p>
+                            </p>
+                            <p>
+                                <p>Please note that while the Product(s) remain in your possession you are under a duty to ensure that the Product(s) are kept safe and secure.</p>
+                            </p>
+                            <p>
+                                <p><b>Procedure to follow to claim a refund under your right to withdraw from the contract</b> (i) Please telephone us on 020 7691 3201 between 09:00 and 18:00 Monday to Friday. Or email us at api@decibel.net You will then be provided with an <span class="caps">RMA</span> (Return Material Authorisation) number. (ii) Decibel will subsequently arrange for the Product(s) to be collected by Decibel. You will be contacted in advance to arrange for a suitable return of Products.</p>
+                            </p>
+                            <h3>Export Control</h3>
+                            <p>
+                                <p>Upon entering into a contract, you agree to comply with all Export Laws. You agree (i) not to export any Product to any country in contravention of any Export Law, and (ii) not to export any Product to any country for which an export licence or other governmental approval is required, without first obtaining all necessary licences or other approvals. You warrant that you are not located in, under the control of, or a national or resident of any country to which export of the Products is prohibited by any Export Law.</p>
+                            </p>
+                            <h3>Data Protection</h3>
+                            <p>
+                                <p>By placing your Order, you agree and understand that we may store, process and use data collected from your Order Form or telephone Order for the purposes of processing your Order.</p>
+                            </p>
+                            <p>
+                                <p>If you wish to have access to the information that we hold concerning you, if you want to make any changes, or if you do not want to receive information from us email api@decibel.net</p>
+                            </p>
+                            <h3>Circumstances beyond our reasonable control</h3>
+                            <p>
+                                <p>We will make every effort to perform our obligations under the Contract. However, we cannot be held responsible for delays or failure to perform if such delay or failure is caused by any circumstances beyond our reasonable control. In the event of a delay, we will perform our obligations as soon as reasonably possible.</p>
+                            </p>
+                            <h3>Disagreements Governing Law and Jurisdiction</h3>
+                            <p>
+                                <p>We will try to solve any disagreements quickly and efficiently. If you are not happy with the way we deal with any disagreement and you want to take court proceedings, you must do so within England or Wales and the laws of England and Wales will apply. If you are a resident of Northern Ireland, you may also bring proceedings in Northern Ireland, and if you are a resident of Scotland, you may also bring proceedings in Scotland.</p>
+                            </p>
+                            <h3>General</h3>
+                            <p>
+                                <p>Neither our failure or your failure to enforce any term of the Contract constitutes a waiver of such term. Such failure shall in no way affect the right later to enforce such term.</p>
+                            </p>
+                            <p>
+                                <p>The invalidity or unenforceability of any provision of the Contract shall not adversely affect the validity or enforceability of the remaining provisions.</p>
+                            </p>
+                        </div>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="footer">
+
+        <div id="foot-wrap">
+
+            <script type="text/javascript">
+                var d = new Date();
+                document.getElementById("foot-wrap").appendChild(document.createTextNode("© " + d.getFullYear() + " Decibel Music Systems Ltd"));
+            </script>
+
+            <br />
+            The Decibel name, associated trade marks and logos and the &quot;magnifying glass note&quot; logo are trade marks of Decibel Music Systems Limited.
+        <br />
+            The Old Truman Brewery, 91 Brick Lane, London E1 6QL, UK +44 20 3657 9760
+        <br />
+
+            <a href="http://www.3scale.net/" target="_blank">
+                <img alt="Powered by 3scale" src="images/powered_by_logo.png">
+            </a>
+
+            <div id="flashWrapper" style="display: none;">
+                <div class="ajaxNoticeValid alwaysontop "></div>
+            </div>
+
+            <script type="text/javascript" charset="utf-8">
+                jQuery(document).ready(function () {
+                    setTimeout($.flash.hide, 5000);
+                });
+        </script>
+
+        </div>
+    </div>
+</body>
+</html>

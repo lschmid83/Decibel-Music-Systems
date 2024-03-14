@@ -1,0 +1,1130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Sample Code</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="javascript/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="javascript/jquery.colorbox-min.js" type="text/javascript"></script>
+    <link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="javascript/highlight.pack.js" type="text/javascript"></script>
+    <script src="javascript/help.js" type="text/javascript"></script>
+    <script src="javascript/flash.js" type="text/javascript"></script>
+    <script src="javascript/remote.js" type="text/javascript"></script>
+    <script src="javascript/switch.js" type="text/javascript"></script>
+    <script src="javascript/ajax_upload.js" type="text/javascript"></script>
+    <script src="javascript/extra_fields.js" type="text/javascript"></script>
+    <script src="javascript/application.js" type="text/javascript"></script>
+    <link href="css/default.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="html5.js"></script>
+    <script type="text/javascript" src="eCSStender.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var offset = $("#sidebar").offset(); //Sets which element is scrollable. In this case it's the div .sidebar
+            var topPadding = 30;  //Set how much top-padding the element has.
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > offset.top) {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: $(window).scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: 0
+                    });
+                };
+            });
+        });
+
+    </script>
+</head>
+
+<body class="home">
+
+    <div id="page">
+
+        <div id="header">
+            <a id="header-logo" href="index.html">
+                <img src="images/logo-white.png" /></a>
+            <div id="header-widget">
+                <div id="user_widget" class="round">
+                    <a href="login.html">Sign in</a>
+                    | <a href="signup.html">Sign up</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="content">
+            <table style="width: 100%" cellspacing="0" cellpadding="10">
+                <tr>
+                    <td valign="top" style="width: 250px">
+                        <div style="margin-left: 0px; margin-top: 0px">
+
+                            <div id='cssmenu'>
+                                <ul>
+                                    <li><a href='decibel-sdk.html'><span>Home</span></a></li>
+                                    <li><a href='news.html'><span>News</span></a></li>
+                                    <li><a href='our-api.html'><span>API Music Metadata</span></a></li>
+                                    <li><a href='authentication.html'><span>API Authentication</span></a></li>
+                                    <li><a href='rest-api-v2.html'><span>REST API Documentation</span></a></li>
+                                    <li><a href='hackathons.html'><span>Hackathons</span></a></li>
+                                    <li><a href='forum.html'><span>Forum</span></a></li>
+                                    <li><a href='support.html'><span>Support</span></a></li>
+                                    <li><a href='faq.html'><span>FAQ</span></a></li>
+                                    <li><a href='termsandconditions.html'><span>Terms and Conditions</span></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <script type="text/javascript">
+                                function PopupCenter(pageURL, title, w, h) {
+                                    var left = (screen.width / 2) - (w / 2);
+                                    var top = (screen.height / 2) - (h / 2);
+                                    var targetWin = window.open(pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+                                }
+                            </script>
+
+                            <style type="text/css">
+                                .python td.linenos {
+                                    background-color: #f0f0f0;
+                                    padding-right: 10px;
+                                }
+
+                                .python span.lineno {
+                                    background-color: #f0f0f0;
+                                    padding: 0 5px 0 5px;
+                                }
+
+                                .python pre {
+                                    line-height: 125%;
+                                }
+
+                                .python .hll {
+                                    background-color: #ffffcc;
+                                }
+
+                                .python {
+                                    background: #ffffff;
+                                }
+
+                                    .python .c {
+                                        color: #008800;
+                                        font-style: italic;
+                                    }
+                                    /* Comment */
+                                    .python .err {
+                                        border: 1px solid #FF0000;
+                                    }
+                                    /* Error */
+                                    .python .k {
+                                        color: #AA22FF;
+                                        font-weight: bold;
+                                    }
+                                    /* Keyword */
+                                    .python .o {
+                                        color: #666666;
+                                    }
+                                    /* Operator */
+                                    .python .cm {
+                                        color: #008800;
+                                        font-style: italic;
+                                    }
+                                    /* Comment.Multiline */
+                                    .python .cp {
+                                        color: #008800;
+                                    }
+                                    /* Comment.Preproc */
+                                    .python .c1 {
+                                        color: #008800;
+                                        font-style: italic;
+                                    }
+                                    /* Comment.Single */
+                                    .python .cs {
+                                        color: #008800;
+                                        font-weight: bold;
+                                    }
+                                    /* Comment.Special */
+                                    .python .gd {
+                                        color: #A00000;
+                                    }
+                                    /* Generic.Deleted */
+                                    .python .ge {
+                                        font-style: italic;
+                                    }
+                                    /* Generic.Emph */
+                                    .python .gr {
+                                        color: #FF0000;
+                                    }
+                                    /* Generic.Error */
+                                    .python .gh {
+                                        color: #000080;
+                                        font-weight: bold;
+                                    }
+                                    /* Generic.Heading */
+                                    .python .gi {
+                                        color: #00A000;
+                                    }
+                                    /* Generic.Inserted */
+                                    .python .go {
+                                        color: #888888;
+                                    }
+                                    /* Generic.Output */
+                                    .python .gp {
+                                        color: #000080;
+                                        font-weight: bold;
+                                    }
+                                    /* Generic.Prompt */
+                                    .python .gs {
+                                        font-weight: bold;
+                                    }
+                                    /* Generic.Strong */
+                                    .python .gu {
+                                        color: #800080;
+                                        font-weight: bold;
+                                    }
+                                    /* Generic.Subheading */
+                                    .python .gt {
+                                        color: #0044DD;
+                                    }
+                                    /* Generic.Traceback */
+                                    .python .kc {
+                                        color: #AA22FF;
+                                        font-weight: bold;
+                                    }
+                                    /* Keyword.Constant */
+                                    .python .kd {
+                                        color: #AA22FF;
+                                        font-weight: bold;
+                                    }
+                                    /* Keyword.Declaration */
+                                    .python .kn {
+                                        color: #AA22FF;
+                                        font-weight: bold;
+                                    }
+                                    /* Keyword.Namespace */
+                                    .python .kp {
+                                        color: #AA22FF;
+                                    }
+                                    /* Keyword.Pseudo */
+                                    .python .kr {
+                                        color: #AA22FF;
+                                        font-weight: bold;
+                                    }
+                                    /* Keyword.Reserved */
+                                    .python .kt {
+                                        color: #00BB00;
+                                        font-weight: bold;
+                                    }
+                                    /* Keyword.Type */
+                                    .python .m {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number */
+                                    .python .s {
+                                        color: #BB4444;
+                                    }
+                                    /* Literal.String */
+                                    .python .na {
+                                        color: #BB4444;
+                                    }
+                                    /* Name.Attribute */
+                                    .python .nb {
+                                        color: #AA22FF;
+                                    }
+                                    /* Name.Builtin */
+                                    .python .nc {
+                                        color: #0000FF;
+                                    }
+                                    /* Name.Class */
+                                    .python .no {
+                                        color: #880000;
+                                    }
+                                    /* Name.Constant */
+                                    .python .nd {
+                                        color: #AA22FF;
+                                    }
+                                    /* Name.Decorator */
+                                    .python .ni {
+                                        color: #999999;
+                                        font-weight: bold;
+                                    }
+                                    /* Name.Entity */
+                                    .python .ne {
+                                        color: #D2413A;
+                                        font-weight: bold;
+                                    }
+                                    /* Name.Exception */
+                                    .python .nf {
+                                        color: #00A000;
+                                    }
+                                    /* Name.Function */
+                                    .python .nl {
+                                        color: #A0A000;
+                                    }
+                                    /* Name.Label */
+                                    .python .nn {
+                                        color: #0000FF;
+                                        font-weight: bold;
+                                    }
+                                    /* Name.Namespace */
+                                    .python .nt {
+                                        color: #008000;
+                                        font-weight: bold;
+                                    }
+                                    /* Name.Tag */
+                                    .python .nv {
+                                        color: #B8860B;
+                                    }
+                                    /* Name.Variable */
+                                    .python .ow {
+                                        color: #AA22FF;
+                                        font-weight: bold;
+                                    }
+                                    /* Operator.Word */
+                                    .python .w {
+                                        color: #bbbbbb;
+                                    }
+                                    /* Text.Whitespace */
+                                    .python .mf {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number.Float */
+                                    .python .mh {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number.Hex */
+                                    .python .mi {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number.Integer */
+                                    .python .mo {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number.Oct */
+                                    .python .sb {
+                                        color: #BB4444;
+                                    }
+                                    /* Literal.String.Backtick */
+                                    .python .sc {
+                                        color: #BB4444;
+                                    }
+                                    /* Literal.String.Char */
+                                    .python .sd {
+                                        color: #BB4444;
+                                        font-style: italic;
+                                    }
+                                    /* Literal.String.Doc */
+                                    .python .s2 {
+                                        color: #BB4444;
+                                    }
+                                    /* Literal.String.Double */
+                                    .python .se {
+                                        color: #BB6622;
+                                        font-weight: bold;
+                                    }
+                                    /* Literal.String.Escape */
+                                    .python .sh {
+                                        color: #BB4444;
+                                    }
+                                    /* Literal.String.Heredoc */
+                                    .python .si {
+                                        color: #BB6688;
+                                        font-weight: bold;
+                                    }
+                                    /* Literal.String.Interpol */
+                                    .python .sx {
+                                        color: #008000;
+                                    }
+                                    /* Literal.String.Other */
+                                    .python .sr {
+                                        color: #BB6688;
+                                    }
+                                    /* Literal.String.Regex */
+                                    .python .s1 {
+                                        color: #BB4444;
+                                    }
+                                    /* Literal.String.Single */
+                                    .python .ss {
+                                        color: #B8860B;
+                                    }
+                                    /* Literal.String.Symbol */
+                                    .python .bp {
+                                        color: #AA22FF;
+                                    }
+                                    /* Name.Builtin.Pseudo */
+                                    .python .vc {
+                                        color: #B8860B;
+                                    }
+                                    /* Name.Variable.Class */
+                                    .python .vg {
+                                        color: #B8860B;
+                                    }
+                                    /* Name.Variable.Global */
+                                    .python .vi {
+                                        color: #B8860B;
+                                    }
+                                    /* Name.Variable.Instance */
+                                    .python .il {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number.Integer.Long */
+                                    .python .n {
+                                        color: #000000;
+                                    }
+                            </style>
+
+
+                            <h1>Python REST Sample Code</h1>
+                            <p>
+                                <h2><a name="viewdemosourcecode"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">View Demo / Source Code</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <p>The following code snippets are taken from the <strong>Decibel Python 2.7 REST API Sample Code.</strong></p>
+                            <div id="user_widget" style="float: left; margin-top: -12px" class="round">
+                                <a href="download/DecibelPythonClient27.zip">Python 2.7 Source Code</a>
+                                <a href="download/DecibelPythonClient33.zip">Python 3.3 Source Code</a>
+                            </div>
+                            <div style="clear: both">
+                                <p>
+                                    The code snippets will guide you through some basic use case scenarios of the Decibel REST API.
+                                </p>
+                            </div>
+                            <p>
+                                <h2><a name="callingtheapi"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Calling the API</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                                <p>REST requests are modelled after the way a web browser sends requests to a web server. So, when we use the Python programming language for REST requests, our Python scripts mimic the way a web browser interacts with a web server.</p>
+                            <p>Python, being an extremely flexible and feature-rich language, provides a number of different modules for performing HTTP requests. The ones we recommend are:</p>
+                            <ul>
+                                <li><a href="http://docs.python.org/2/library/urllib2.html" target="_blank">urllib2</a></li>
+                                <li><a href="https://code.google.com/p/httplib2/" target="_blank">httplib2</a></li>
+                            </ul>
+                            <p>Depending on your requirements either one of these modules may be more desirable.</p>
+                            <h2><a name="urllib2"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">urllib2</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>The urllib2 module is included with the Python standard library and defines functions and classes which help in opening URLs in a complex world - basic and digest authentication, redirections, cookies and more.</p>
+
+                            <p>The following code example taken from <a href="http://www.decibel.net/developer/sample-code/python/util.py" target="_blank">util.py</a> makes a request using urllib2 and stores the response.</p>
+
+
+
+                            <br />
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="c"># Set the request authentication headers</span>
+<span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%Y%m</span><span class="si">%d</span><span class="s"> %H:%M:%S&#39;</span><span class="p">)</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;DecibelAppID&#39;</span><span class="p">:</span> <span class="s">&#39;&lt;Your Application ID&gt;&#39;</span><span class="p">,</span>
+           <span class="s">&#39;DecibelAppKey&#39;</span><span class="p">:</span> <span class="s">&#39;&lt;Your Application Key&gt;&#39;</span><span class="p">,</span>
+           <span class="s">&#39;DecibelTimestamp&#39;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">}</span>
+
+<span class="c"># Send the GET request</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Albums/?artist=miles</span><span class="si">%20d</span><span class="s">avis&amp;format=json&#39;</span>      
+<span class="n">req</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="c"># Read the response</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre>
+                            </div>
+
+
+
+
+                            <h2><a name="httplib2"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">httplib2</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>The httplib2 module is an easy to use and comprehensive HTTP client library that handles caching, keep-alive, compression, redirects and many kinds of authentication. It is not included in the Python standard library so you will need to <a href="https://code.google.com/p/httplib2/downloads/list" target="_blank">download</a> and install it separately.</p>
+                            <p>The following code example makes a request using httplib2 and stores the response.</p>
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">httplib2</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="c"># Set the request authentication headers</span>
+<span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%Y%m</span><span class="si">%d</span><span class="s"> %H:%M:%S&#39;</span><span class="p">)</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;DecibelAppID&#39;</span><span class="p">:</span> <span class="s">&#39;&lt;Your Application ID&gt;&#39;</span><span class="p">,</span>
+           <span class="s">&#39;DecibelAppKey&#39;</span><span class="p">:</span> <span class="s">&#39;&lt;Your Application Key&gt;&#39;</span><span class="p">,</span>
+           <span class="s">&#39;DecibelTimestamp&#39;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">}</span>
+
+<span class="c"># Get the HTTP object</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">httplib2</span><span class="o">.</span><span class="n">Http</span><span class="p">(</span><span class="s">&quot;.cache&quot;</span><span class="p">)</span>        
+           
+<span class="c"># Send the GET request</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Albums/?artist=miles</span><span class="si">%20d</span><span class="s">avis&amp;format=xml&#39;</span>       
+<span class="n">resp</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre>
+                            </div>
+
+
+
+                            <h2><a name="interpretingxml"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Interpreting XML</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>The Decibel REST API returns data in two formats XML and JSON. To make it easier to parse the response the data can be interpreted into manageable objects.</p>
+                            <p><a href="http://docs.python.org/2/library/xml.etree.elementtree.html" target="_blank">ElementTree</a> is a light-weight XML object model for Python. The Element type is a flexible container object, designed to store hierarchical data structures in memory. Element structures can be converted to and from XML.</p>
+                            <p>The following code example requests albums by artist name, interprets the XML response and outputs the search results.</p>
+
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">as</span> <span class="nn">et</span>
+
+<span class="c"># Set the request URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Albums/?artist=&#39;</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">artistName</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;&amp;format=xml&#39;</span>          
+
+<span class="c"># Send the GET request</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c"># Interpret the XML response </span>
+<span class="n">xml</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+<span class="c"># Set the Decibel namespace</span>
+<span class="n">namespace</span> <span class="o">=</span> <span class="s">&#39;{http://schemas.datacontract.org/2004/07/DecibelWebService}&#39;</span>
+
+<span class="c"># Get the collection of albums from the result set</span>
+<span class="n">albums</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">&#39;{0}ResultSet/{0}Album&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">namespace</span><span class="p">))</span>
+
+<span class="c"># Output the search results</span>
+<span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">albums</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">album</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;{0}Name&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">namespace</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">+</span> <span class="s">&#39; - &#39;</span> <span class="o">+</span> <span class="n">album</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;{0}Artists&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">namespace</span><span class="p">))</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre>
+                            </div>
+
+
+
+
+                            <h2><a name="interpretingjson"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Interpreting JSON</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is like XML, but without the markup around the actual payload.</p>
+                            <p>The <a href="http://docs.python.org/2/library/json.html" target="_blank">json.loads()</a> function takes a JSON encoded string and converts it into a Python object.</p>
+                            <p>The following code example requests albums by artist name, decodes the JSON response and outputs the search results.</p>
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="c"># Set the request URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Albums/?artist=&#39;</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">artistName</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>
+
+<span class="c"># Send the GET request</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c"># Interpret the JSON response </span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+<span class="c"># Get the collection of albums from the result set</span>
+<span class="n">albums</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">]</span>
+
+<span class="c"># Output the search results</span>
+<span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">albums</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39; - &#39;</span> <span class="o">+</span> <span class="n">album</span><span class="p">[</span><span class="s">&#39;Artists&#39;</span><span class="p">])</span>
+</pre>
+                            </div>
+
+
+
+                            <h2><a name="albumssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Albums: Search for albums by title</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="k">def</span> <span class="nf">beginAlbumSearch</span><span class="p">(</span><span class="n">albumTitle</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Albums/?albumTitle=&#39;</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">albumTitle</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>         
+        
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+    <span class="c"># Return the collection of album objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">]</span>
+
+<span class="c"># Search for albums by title    </span>
+<span class="n">albumTitle</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Please enter a album title:&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginAlbumSearch</span><span class="p">(</span><span class="n">albumTitle</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c"># Output the search results</span>
+<span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39; - &#39;</span> <span class="o">+</span> <span class="n">album</span><span class="p">[</span><span class="s">&#39;Artists&#39;</span><span class="p">])</span>
+</pre>
+                            </div>
+
+
+
+
+                            <h2><a name="albumsretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Albums: Retrieve Albums with Track information</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">beginAlbumRetrieve</span><span class="p">(</span><span class="n">albumID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s">&#39;ExternalIdentifiers;Tracks;ImageThumbnail;Media;Names;Genres;Publications;Performances;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Albums/?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s">&#39;&amp;id=&#39;</span> <span class="o">+</span> <span class="n">albumID</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>           
+
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+    <span class="c"># Return the album object</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c"># Retrieve album with track information </span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginAlbumRetrieve</span><span class="p">(</span><span class="n">albumID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c"># Output the results</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Name - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Artists - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Artists&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Disc Count - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;DiscCount&#39;</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Track Count - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;TrackCount&#39;</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Duration - &#39;</span> <span class="o">+</span> <span class="n">util</span><span class="o">.</span><span class="n">formatTime</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;TotalSeconds&#39;</span><span class="p">]))</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Format - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Discs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;MusicMedium&#39;</span><span class="p">][</span><span class="s">&#39;Name&#39;</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">externalIdentifiers</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;ExternalIdentifiers&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">externalIdentifier</span> <span class="ow">in</span> <span class="n">externalIdentifiers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">externalIdentifier</span><span class="p">[</span><span class="s">&#39;ExternalDatabase&#39;</span><span class="p">][</span><span class="s">&#39;Name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;UPC Barcode&#39;</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;Barcode - &#39;</span> <span class="o">+</span> <span class="n">externalIdentifier</span><span class="p">[</span><span class="s">&#39;Identifier&#39;</span><span class="p">])</span>
+            <span class="k">break</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="k">pass</span>
+    
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">genreValues</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">genres</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Genres&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">genre</span> <span class="ow">in</span> <span class="n">genres</span><span class="p">:</span>
+        <span class="n">genreValues</span> <span class="o">+=</span> <span class="n">genre</span><span class="p">[</span><span class="s">&#39;Genre&#39;</span><span class="p">][</span><span class="s">&#39;Name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39;, &#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Genres - &#39;</span> <span class="o">+</span> <span class="n">genreValues</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s">&#39;, &#39;</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="k">pass</span>
+    
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Track List:&#39;</span><span class="p">)</span>
+    <span class="n">tracks</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Tracks&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">track</span> <span class="ow">in</span> <span class="n">tracks</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">track</span><span class="p">[</span><span class="s">&#39;SequenceNo&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39;) &#39;</span> <span class="o">+</span> 
+        <span class="n">track</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39; (&#39;</span> <span class="o">+</span> <span class="n">util</span><span class="o">.</span><span class="n">formatTime</span><span class="p">(</span><span class="n">track</span><span class="p">[</span><span class="s">&#39;TotalSeconds&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39;)&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre>
+                            </div>
+
+
+
+                            <h2><a name="albumscoverart"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Albums: Get Album Cover Art</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+
+<span class="k">def</span> <span class="nf">beginAlbumArtRetrieve</span><span class="p">(</span><span class="n">albumID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Albums/&#39;</span> <span class="o">+</span> <span class="n">albumID</span> <span class="o">+</span> <span class="s">&#39;/Image&#39;</span>     
+
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s">&#39;&lt;img src=&quot;data:image/jpeg;base64,{0}&quot;&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;unicode_escape&#39;</span><span class="p">))</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginAlbumArtRetrieve</span><span class="p">(</span><span class="n">albumID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;album_art_retrieve.html&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">the_file</span><span class="p">:</span>
+    <span class="n">the_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Album art written to album_art_retrieve.html&#39;</span><span class="p">)</span>
+</pre>
+                            </div>
+
+
+
+
+                            <h2><a name="participantssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Participants: Search for participants by name</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="k">def</span> <span class="nf">beginParticipantSearch</span><span class="p">(</span><span class="n">participantName</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Participants/?name=&#39;</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">participantName</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>        
+    
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+    <span class="c"># Return the collection of participant objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">]</span>
+
+<span class="c"># Search for participants by name   </span>
+<span class="n">participantName</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Please enter a participant name:&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginParticipantSearch</span><span class="p">(</span><span class="n">participantName</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c"># Output the search results</span>
+<span class="k">for</span> <span class="n">participant</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">participant</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39; - &#39;</span> <span class="o">+</span> <span class="n">participant</span><span class="p">[</span><span class="s">&#39;DateBorn&#39;</span><span class="p">][</span><span class="s">&#39;Name&#39;</span><span class="p">])</span>
+</pre>
+                            </div>
+
+
+
+
+
+                            <h2><a name="participantsretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Participants: Retrieve participant with associations and track appearances</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">def</span> <span class="nf">beginParticipantRetrieve</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s">&#39;Names;GroupMembers;Nationalities;GeographicAreas;Annotations;ChartsAwards;Relationships;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Participants/?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s">&#39;&amp;id=&#39;</span> <span class="o">+</span> <span class="n">participantID</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>           
+    
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+    <span class="c"># Return the participant object</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">beginParticipantAssociates</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s">&#39;Names;GroupMembers;Nationalities;GeographicAreas;Annotations;ChartsAwards;Relationships;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Participants/&#39;</span> <span class="o">+</span> <span class="n">participantID</span> <span class="o">+</span> <span class="s">&#39;/Associates?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>    
+
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+    <span class="c"># Return the collection of participant associate objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">beginParticipantTrackAppearances</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s">&#39;Names;GroupMembers;Nationalities;GeographicAreas;Annotations;ChartsAwards;Relationships;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Participants/&#39;</span> <span class="o">+</span> <span class="n">participantID</span> <span class="o">+</span> <span class="s">&#39;/Tracks?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>
+
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+    <span class="c"># Return the collection of track appearance objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">]</span>
+
+<span class="c"># Retreive participant with associations and track appearances  </span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginParticipantRetrieve</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">applicationID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">applicationKey</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Participant Name - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginParticipantAssociates</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">applicationID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">applicationKey</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Associates:&#39;</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">associate</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">associate</span><span class="p">[</span><span class="s">&#39;Participant&#39;</span><span class="p">][</span><span class="s">&#39;Name&#39;</span><span class="p">]);</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginParticipantTrackAppearances</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">applicationID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">applicationKey</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Track Appearances:&#39;</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">trackAppearance</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">trackAppearance</span><span class="p">[</span><span class="s">&#39;TrackName&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39; - &#39;</span> <span class="o">+</span> <span class="n">trackAppearance</span><span class="p">[</span><span class="s">&#39;AlbumName&#39;</span><span class="p">])</span>
+</pre>
+                            </div>
+
+
+
+                            <h2><a name="trackssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Tracks: Search for tracks by title</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="k">def</span> <span class="nf">beginTrackSearch</span><span class="p">(</span><span class="n">trackTitle</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Tracks/?trackTitle=&#39;</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">trackTitle</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>
+
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+    <span class="c"># Return the collection of track objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">]</span>
+
+<span class="c"># Search for tracks by name </span>
+<span class="n">trackName</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Please enter a track name:&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginTrackSearch</span><span class="p">(</span><span class="n">trackName</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c"># Output the search results</span>
+<span class="k">for</span> <span class="n">track</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">track</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39; - &#39;</span> <span class="o">+</span> <span class="n">track</span><span class="p">[</span><span class="s">&#39;Artists&#39;</span><span class="p">])</span>
+</pre>
+                            </div>
+
+                            <h2><a name="tracksretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Tracks: Retrieve track with participations</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">def</span> <span class="nf">beginTrackRetrieve</span><span class="p">(</span><span class="n">trackID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s">&#39;Names;Participations;ExternalIdentifiers;Genres;Performances;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Tracks/?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s">&#39;&amp;id=&#39;</span> <span class="o">+</span> <span class="n">trackID</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>
+
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+    <span class="c"># Return the track object</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    
+<span class="c"># Retrieve track with participations    </span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginTrackRetrieve</span><span class="p">(</span><span class="n">trackID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c"># Output the results</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Track Information:&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Name - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Artists - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Artists&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Track Number - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;TrackNumber&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Disc Number - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;DiscNumber&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Duration - &#39;</span> <span class="o">+</span> <span class="n">util</span><span class="o">.</span><span class="n">formatTime</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;TotalSeconds&#39;</span><span class="p">]))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Participations:&#39;</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">participant</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Participations&#39;</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">participant</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">])</span>
+</pre>
+                            </div>
+
+
+
+                            <h2><a name="workssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Works: Search for works by name</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="k">def</span> <span class="nf">beginWorkSearch</span><span class="p">(</span><span class="n">workName</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Works/?name=&#39;</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">workName</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>
+
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+    <span class="c"># Return the collection of work objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">]</span>
+
+<span class="c"># Search for works by name  </span>
+<span class="n">workName</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Please enter a work name:&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginWorkSearch</span><span class="p">(</span><span class="n">workName</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c"># Output the search results</span>
+<span class="k">for</span> <span class="n">work</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">work</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39; - &#39;</span> <span class="o">+</span> <span class="n">work</span><span class="p">[</span><span class="s">&#39;Composers&#39;</span><span class="p">])</span>
+</pre>
+                            </div>
+
+
+                            <h2><a name="worksretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Works: Retrieve work with track appearances</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+                            <div class="python">
+                                <pre><span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">def</span> <span class="nf">beginWorkRetrieve</span><span class="p">(</span><span class="n">workID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s">&#39;Annotations;ChartsAwards;Genres;Movements;Names;Nationalities;Publications;Publishers;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Works/?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s">&#39;&amp;id=&#39;</span> <span class="o">+</span> <span class="n">workID</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>
+
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+    <span class="c"># Return the work object</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">beginWorkTrackAppearances</span><span class="p">(</span><span class="n">workID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">):</span>
+
+    <span class="c"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s">&#39;Annotations;ChartsAwards;Genres;Movements;Names;Nationalities;Publications;Publishers;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://api.decibel.net/v1/Works/&#39;</span> <span class="o">+</span> <span class="n">workID</span> <span class="o">+</span> <span class="s">&#39;/Tracks&#39;</span> <span class="o">+</span> <span class="s">&#39;?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s">&#39;&amp;format=json&#39;</span>
+
+    <span class="c"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">))</span>
+
+    <span class="c"># Return the collection of track appearances</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;ResultSet&#39;</span><span class="p">]</span>
+    
+<span class="c"># Retrieve work with track appearances  </span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginWorkRetrieve</span><span class="p">(</span><span class="n">workID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Name - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Name&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Composers - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Composers&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Catalogue - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;Catalogue&#39;</span><span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginWorkTrackAppearances</span><span class="p">(</span><span class="n">workID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Track Appearances:&#39;</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">trackAppearance</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">trackAppearance</span><span class="p">[</span><span class="s">&#39;TrackName&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39; - &#39;</span> <span class="o">+</span> <span class="n">trackAppearance</span><span class="p">[</span><span class="s">&#39;TrackArtistName&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39; - &#39;</span> <span class="o">+</span> <span class="n">trackAppearance</span><span class="p">[</span><span class="s">&#39;AlbumName&#39;</span><span class="p">])</span>
+</pre>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </td>
+                    <td valign="top" style="width: 260px">
+                        <div class="container" style="margin-left: 0px; margin-top: 0px">
+                            <h2>Contents</h2>
+
+                            <p></p>
+                            <div class="feed">
+                                <ul>
+                                    <li><span style="color: black"><strong>Calling the API</strong></span></li>
+                                    <li><a href="#urlib2">urllib2</a></li>
+                                    <li><a href="#httplib2">httplib2</a></li>
+                                    <li><a href="#interpretingxml">Interpreting XML</a></li>
+                                    <li><a href="#interpretingjson">Interpreting JSON</a></li>
+                                    <li><span style="color: black"><strong>Code Examples</strong></span></li>
+                                    <li><a href="#albumssearch">Albums: Search by Title</a></li>
+                                    <li><a href="#albumsretrieve">Album: Retrieve Album</a></li>
+                                    <li><a href="#albumscoverart">Album: Get Cover Art</a></li>
+                                    <li><a href="#participantssearch">Artists: Search by Name</a></li>
+                                    <li><a href="#participantsretrieve">Artist: Retrieve Artist</a></li>
+                                    <li><a href="#trackssearch">Recordings: Search by Title</a></li>
+                                    <li><a href="#tracksretrieve">Recording: Retrieve Recording</a></li>
+                                </ul>
+                            </div>
+                        </div>   
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="footer">
+
+        <div id="foot-wrap">
+
+            <script type="text/javascript">
+                var d = new Date();
+                document.getElementById("foot-wrap").appendChild(document.createTextNode("© " + d.getFullYear() + " Decibel Music Systems Ltd"));
+            </script>
+
+            <br />
+            The Decibel name, associated trade marks and logos and the &quot;magnifying glass note&quot; logo are trade marks of Decibel Music Systems Limited.
+        <br />
+            The Old Truman Brewery, 91 Brick Lane, London E1 6QL, UK +44 20 3657 9760
+        <br />
+
+            <a href="http://www.3scale.net/" target="_blank">
+                <img alt="Powered by 3scale" src="images/powered_by_logo.png">
+            </a>
+
+            <div id="flashWrapper" style="display: none;">
+                <div class="ajaxNoticeValid alwaysontop "></div>
+            </div>
+
+            <script type="text/javascript" charset="utf-8">
+                jQuery(document).ready(function () {
+                    setTimeout($.flash.hide, 5000);
+                });
+        </script>
+
+        </div>
+    </div>
+</body>
+</html>

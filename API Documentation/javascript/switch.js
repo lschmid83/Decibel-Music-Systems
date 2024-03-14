@@ -1,0 +1,1 @@
+!function(e){e.fn.enableSwitch=function(){var e=this;e.find(".disabled_block").fadeOut(function(){e.find(".enabled_block").fadeIn()})},e.fn.disableSwitch=function(){var e=this;e.find(".enabled_block").fadeOut(function(){e.find(".disabled_block").fadeIn()})}}(jQuery);

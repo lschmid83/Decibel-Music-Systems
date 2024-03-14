@@ -1,0 +1,1 @@
+function visibility_condition_for(t,e,i){var n=$("#"+t),r=$("#"+e+"_input");r.change(function(){$(this).val()==i?n.show():n.hide()}),r.trigger("change")}

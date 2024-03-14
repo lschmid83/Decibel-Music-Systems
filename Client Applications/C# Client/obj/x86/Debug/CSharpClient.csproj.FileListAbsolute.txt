@@ -1,0 +1,172 @@
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\bin\Debug\DecibelRestWpf.exe.config
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\DecibelRestWpf.exe
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\DecibelRestWpf.pdb
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\bin\Debug\JsonFormatter.dll
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\bin\Debug\System.Windows.Controls.Input.Toolkit.dll
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\bin\Debug\WPFToolkit.dll
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\bin\Debug\DecibelRestWpf.exe
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\bin\Debug\DecibelRestWpf.pdb
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\CSharpClient.csprojResolveAssemblyReference.cache
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\AlbumImage.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\Resources\AlbumInformation.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\OptionsWindow.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\AlbumInformation.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\SearchDepth.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\Resources\DatePicker.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\PageNavigator.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\TrackParticipants.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\Resources\SearchTabItem.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\AlbumImage.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\OptionsWindow.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\AlbumInformation.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\AlbumSearch.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\SearchDepth.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\PageNavigator.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\ParticipantSearch.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\TrackParticipants.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\TrackSearch.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\WorkSearch.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\App.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\DecibelRestWpf_Content.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\DecibelRestWpf_MarkupCompile.cache
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\DecibelRestWpf_MarkupCompile.lref
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\MainWindow.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\AlbumSearch.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\ParticipantSearch.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\TrackSearch.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\UserControls\WorkSearch.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\DecibelRestWpf.g.resources
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\DecibelRestWpf.Properties.Resources.resources
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharp\obj\x86\Debug\CSharpClient.csproj.GenerateResource.Cache
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\bin\Debug\JsonFormatter.dll
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\bin\Debug\System.Windows.Controls.Input.Toolkit.dll
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\bin\Debug\WPFToolkit.dll
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\bin\Debug\DecibelCSharpClient.exe.config
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\bin\Debug\DecibelCSharpClient.exe
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\bin\Debug\DecibelCSharpClient.pdb
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\AlbumImage.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\Resources\AlbumInformation.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\OptionsWindow.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\AlbumInformation.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\SearchDepth.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\Resources\DatePicker.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\PageNavigator.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\TrackParticipants.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\Resources\SearchTabItem.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\AlbumImage.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\OptionsWindow.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\AlbumInformation.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\AlbumSearch.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\SearchDepth.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\PageNavigator.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\ParticipantSearch.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\TrackParticipants.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\TrackSearch.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\WorkSearch.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\App.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient_Content.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient_MarkupCompile.cache
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient_MarkupCompile.lref
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\MainWindow.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\AlbumSearch.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\ParticipantSearch.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\TrackSearch.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\WorkSearch.baml
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient.g.resources
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelRestWpf.Properties.Resources.resources
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\CSharpClient.csproj.GenerateResource.Cache
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient.exe
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient.pdb
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Client Applications\CSharpClient\obj\x86\Debug\CSharpClient.csprojResolveAssemblyReference.cache
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\CSharpClient.csproj.AssemblyReference.cache
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\AlbumImage.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\Resources\AlbumInformation.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\OptionsWindow.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\AlbumInformation.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\SearchDepth.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\PageNavigator.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\TrackParticipants.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\Resources\SearchTabItem.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\AlbumImage.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\OptionsWindow.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\AlbumInformation.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\AlbumSearch.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\SearchDepth.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\PageNavigator.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\ParticipantSearch.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\TrackParticipants.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\TrackSearch.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\WorkSearch.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\App.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient_Content.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient_MarkupCompile.cache
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient_MarkupCompile.lref
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient.exe
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient.pdb
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\bin\Debug\JsonFormatter.dll
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\bin\Debug\System.Windows.Controls.Input.Toolkit.dll
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\bin\Debug\WPFToolkit.dll
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\bin\Debug\DecibelCSharpClient.exe.config
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\bin\Debug\DecibelCSharpClient.exe
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\bin\Debug\DecibelCSharpClient.pdb
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\Resources\DatePicker.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\MainWindow.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\AlbumSearch.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\ParticipantSearch.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\TrackSearch.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\UserControls\WorkSearch.baml
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelCSharpClient.g.resources
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\DecibelRestWpf.Properties.Resources.resources
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\CSharpClient.csproj.GenerateResource.cache
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\CSharpClient.csproj.CoreCompileInputs.cache
+C:\Users\Lawrence\github\Decibel\Client Applications\CSharpClient\obj\x86\Debug\CSharpClient.csproj.CopyComplete
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\bin\Debug\JsonFormatter.dll
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\bin\Debug\System.Windows.Controls.Input.Toolkit.dll
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\bin\Debug\WPFToolkit.dll
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\bin\Debug\DecibelCSharpClient.exe.config
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\bin\Debug\DecibelCSharpClient.exe
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\bin\Debug\DecibelCSharpClient.pdb
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\CSharpClient.csproj.AssemblyReference.cache
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\AlbumImage.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\Resources\AlbumInformation.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\OptionsWindow.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\AlbumInformation.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\SearchDepth.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\Resources\DatePicker.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\PageNavigator.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\TrackParticipants.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\Resources\SearchTabItem.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\AlbumImage.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\OptionsWindow.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\AlbumInformation.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\AlbumSearch.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\SearchDepth.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\PageNavigator.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\ParticipantSearch.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\TrackParticipants.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\TrackSearch.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\WorkSearch.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\App.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\DecibelCSharpClient_Content.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\DecibelCSharpClient_MarkupCompile.cache
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\DecibelCSharpClient_MarkupCompile.lref
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\MainWindow.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\AlbumSearch.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\ParticipantSearch.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\TrackSearch.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\UserControls\WorkSearch.baml
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\DecibelCSharpClient.g.resources
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\DecibelRestWpf.Properties.Resources.resources
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\CSharpClient.csproj.GenerateResource.cache
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\CSharpClient.csproj.CoreCompileInputs.cache
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\CSharpClient.csproj.CopyComplete
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\DecibelCSharpClient.exe
+C:\Users\Lawrence\github\Decibel Music Systems\Client Applications\C# Client\obj\x86\Debug\DecibelCSharpClient.pdb

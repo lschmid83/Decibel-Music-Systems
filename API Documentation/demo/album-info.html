@@ -1,0 +1,87 @@
+
+				<!-- Album information -->
+				<div class="leftSide" style="width:478px;">
+				
+					<div class="header">Album Information</div>
+					
+					<div style="float:left">
+						<!-- Album title -->
+						<div class="infoField">
+							<label>Album Title:</label>
+							<input readonly="readonly" style="width:280px; margin-right:0px"/>
+						</div>
+						
+						<!-- Artists -->
+						<div class="infoField" style="clear:left">
+							<label>Artists:</label>
+							<input readonly="readonly" style="width:280px; margin-right:0px"/>
+						</div>	
+						
+						<!-- Discs -->
+						<div class="infoField" style="clear:left">
+							<label>Discs:</label>
+							<select>name="infoDiscs" onchange="discChanged(this.value)">
+							</select>
+						</div>		
+
+						<!-- Tracks -->
+						<div class="infoField" style="float:left">
+							<label style="padding-left:30px">Tracks:</label>
+							<input readonly="readonly" style="width:50px"/>
+							</div>	
+						
+						<!-- Duration -->
+						<div class="infoField" style="clear:left">
+							<label>Duration:</label>
+							<input class="split" readonly="readonly"/>
+						</div>	
+					</div>
+					
+					<!-- Thumbnail -->
+					<div style="display:inline;">
+						<a href="#" ><img src="data:image/jpeg;base64," width="90" height="90" border="0" style="margin-left:9px;margin-top:2px;display:none" /></a>
+					</div>
+
+					<!-- Format -->
+					<div class="infoField" style="clear:left">
+						<label>Format:</label>
+						<input class="split" readonly="readonly"/>
+					</div>		
+					
+					<!-- Label -->
+					<div class="infoField" style="float:left">
+						<label>Label:</label>
+						<input class="split" style="margin-right:0px" readonly="readonly"/>
+					</div>	
+					
+					<!-- Release date -->
+					<div class="infoField" style="clear:left">
+						<label>Release:</label>
+						<input class="split" readonly="readonly"/>
+					</div>	
+					
+					<!-- Region -->
+					<div class="infoField" style="float:left">
+						<label>Region:</label>
+						<input class="split" style="margin-right:0px" readonly="readonly"/>
+					</div>	
+					
+					<!-- Catalogue -->
+					<div class="infoField" style="clear:left">
+						<label>Catalogue:</label>
+						<input class="split" readonly="readonly"/>
+					</div>	
+					
+					<!-- Barcode -->
+					<div class="infoField" style="float:left">
+						<label>Barcode:</label>
+						<input class="split" style="margin-right:0px" readonly="readonly"/>
+					</div>	
+					
+					<!-- Genres -->
+					<div class="infoField" style="float:left">
+						<label>Genres:</label>
+						<input style="margin-right:0px" readonly="readonly"/>
+					</div>	
+
+				</div>

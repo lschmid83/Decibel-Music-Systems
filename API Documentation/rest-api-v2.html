@@ -1,0 +1,1156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>REST API v2.0</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="javascript/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="javascript/jquery.colorbox-min.js" type="text/javascript"></script>
+    <link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="javascript/highlight.pack.js" type="text/javascript"></script>
+    <script src="javascript/help.js" type="text/javascript"></script>
+    <script src="javascript/flash.js" type="text/javascript"></script>
+    <script src="javascript/remote.js" type="text/javascript"></script>
+    <script src="javascript/switch.js" type="text/javascript"></script>
+    <script src="javascript/ajax_upload.js" type="text/javascript"></script>
+    <script src="javascript/extra_fields.js" type="text/javascript"></script>
+    <script src="javascript/application.js" type="text/javascript"></script>
+    <link href="css/default.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#" />
+    <script type="text/javascript" src="html5.js"></script>
+    <script type="text/javascript" src="eCSStender.js"></script>
+    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="javascript/prettify.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var offset = $("#sidebar").offset(); //Sets which element is scrollable. In this case it's the div .sidebar
+            var topPadding = 30;  //Set how much top-padding the element has.
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > offset.top) {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: $(window).scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: 0
+                    });
+                };
+            });
+        });
+
+    </script>
+</head>
+
+
+<body class="home">
+
+    <div id="page">
+
+        <div id="header">
+            <a id="header-logo" href="index.html">
+                <img src="images/logo-white.png" /></a>
+            <div id="header-widget">
+                <div id="user_widget" class="round">
+                    <a href="login.html">Sign in</a>
+                    | <a href="signup.html">Sign up</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="content">
+            <table style="width: 100%" cellspacing="0" cellpadding="10">
+                <tr>
+                    <td style="width: 250px; vertical-align: top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+
+                            <div id='cssmenu'>
+                                <ul>
+                                    <li><a href='decibel-sdk.html'><span>Home</span></a></li>
+                                    <li><a href='news.html'><span>News</span></a></li>
+                                    <li><a href='our-api.html'><span>API Music Metadata</span></a></li>
+                                    <li><a href='authentication.html'><span>API Authentication</span></a></li>
+                                    <li><a href='rest-api-v2.html'><span>REST API Documentation</span></a></li>
+                                    <li><a href='hackathons.html'><span>Hackathons</span></a></li>
+                                    <li><a href='forum.html'><span>Forum</span></a></li>
+                                    <li><a href='support.html'><span>Support</span></a></li>
+                                    <li><a href='faq.html'><span>FAQ</span></a></li>
+                                    <li><a href='termsandconditions.html'><span>Terms and Conditions</span></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align: top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <h1>Introduction</h1>
+                            <p>Thanks for taking a look at our API. On this page you can read about how to get the most out of it. To get access, you’ll need to register with us – you can do that <a href="signup.html">here</a>. The first three months are on us!</p>
+                            <p>Our API is structured to make our detailed metadata as easy for you to access as possible. Working across a number of topics, you can either search for key terms or specify one of our IDs. To tell us what information you want, include a depth parameter too – all this is outlined in the reference key below. Happy coding!</p>
+                        </div>
+
+                        <h2><a name="overview"></a>Overview</h2>
+                        <h3>Data Structure</h3>
+                        <p>
+                            The Decibel API represents the clearest way to capture all the relevant data about music and recordings. This means there are a couple of things that might take you by surprise: firstly, an <i>album</i> is different from a <i>release</i> – different releases of the same album may have different track listings, dates, etc. – and secondly, <i>tracks</i> are not the same as <i>recordings</i> – the same recording may appear on different releases, meaning that it’s a different “track” on each.
+                        </p>
+                        <p>So we do things a little differently at Decibel. To keep things clean, we stick to albums and stay away from particular album releases, unless you ask us not to. And instead of dealing with tracks, we do recordings. Read the below, and have a look around the API – it won’t take long to get used to.</p>
+
+                        <h3>Searching by ID</h3>
+                        <p>You can search the Decibel API by various external IDs, including IDs for Spotify and Discogs, as well as by Decibel’s own IDs – you just need to specify which ID type you are using. All the available ID types are listed in the documentation reference below.</p>
+
+                    </td>
+                    <td style="width: 260px; vertical-align: top">
+                        <div class="container" style="margin-left: 0px; margin-top: 0px">
+                            <h4>TABLE OF CONTENTS</h4>
+
+                            <div class="feed">
+                                <ul>
+                                    <li>
+                                        <span style="color: black"><strong>Rest API v2.0 Documentation</strong></span>
+                                    </li>
+                                    <li>
+                                        <a href="#apiaddresses">Addresses</a>
+                                    </li>
+                                    <li>
+                                        <a href="#callingtheapi">Calling the API</a>
+                                    </li>
+                                    <li>
+                                        <a href="#overview">Overview</a>
+                                    </li>
+                                    <li>
+                                        <span style="color: black"><strong>Rest API Reference</strong></span>
+                                    </li>
+                                    <li>
+                                        <a href="#album">Album</a>
+                                    </li>
+                                    <li>
+                                        <a href="#albums">Albums</a>
+                                    </li>
+                                    <li>
+                                        <a href="#artist">Artist</a>
+                                    </li>
+                                    <li>
+                                        <a href="#artists">Artists</a>
+                                    </li>
+                                    <li>
+                                        <a href="#disctags">Disctags</a>
+                                    </li>
+                                    <li>
+                                        <a href="#image">Image</a>
+                                    </li>
+                                    <li>
+                                        <a href="#recording">Recording</a>
+                                    </li>
+                                    <li>
+                                        <a href="#recordings">Recordings</a>
+                                    </li>
+                                    <li>
+                                        <span style="color: black"><strong>Resources</strong></span>
+                                    </li>
+                                    <li>
+                                        <a href="#sdk">Decibel SDK</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="vertical-align: top">
+                    <td style="width: 250px; vertical-align: top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            
+                            <h3>Topics</h3>
+                            <h4>Searching</h4>
+                            <p>Our URLs firstly need a sub-URL to specify what type of item you are looking for. If you’re searching, this is one of the following topics:</p>
+                            <ul>
+                                <li>Albums</li>
+                                <li>Artists</li>
+                                <li>Disctags</li>
+                                <li>Recordings</li>
+                            </ul>
+
+                            <h4>By ID</h4>
+                            <p>You can look up items by a range of IDs. We have our own Decibel IDs, but Decibel also works with Spotify IDs, Discogs IDs, and various others too – see below to find out more. The topics you can use with these IDs are:</p>
+                            <ul>
+                                <li>Album</li>
+                                <li>Artist</li>
+                                <li>Image</li>
+                                <li>Recording</li>
+                            </ul>
+                            <p>
+                                So a basic query will look like this:
+                            </p>
+                            <p><a class="url" href="http://rest.decibel.net/v2/artists?name=fleetwood%20mac" target="_blank">http://rest.decibel.net/v2/artists?title=fleetwood%20mac</a></p>
+                            <p>or</p>
+                            <p><a class="url" href="http://rest.decibel.net/v2/artist?id=4aea91de-318f-e311-be87-ac220b82800d" target="_blank">http://rest.decibel.net/v2/artist?id=4aea91de-318f-e311-be87-ac220b82800d</a></p>
+
+                            <h3>Retrieval Depth</h3>
+                            <p>
+                                By default, the API will return a basic object with no extra information. All further information can be requested by specifying a retrieval depth. This means that we only provide the information you ask for, and we don’t waste bandwidth and time giving you details you don’t want. You can specify multiple retrieval depths, separating them with a semicolon. Valid depth parameters for each possible sub-URL are detailed in the reference below.
+                            </p>
+
+                            <h3>Return Values</h3>
+                            <p>
+                                Objects are returned as JSON by default, or alternatively XML. The type of object returned depends on the topic – for a full list of topics and the objects they return, see the reference below.
+                            </p>
+
+                            <h3>Deserializing Results</h3>
+                            <p>
+                                We provide XSD schemas for every return type: <a href="https://s3.amazonaws.com/enterprise-multitenant.3scale.net.3scale.net/decibel/2014/06/17/DecibelObjectModel-45d776d551f78ed7.xsd?AWSAccessKeyId=AKIAIRYLTWBQ37ZNGBZA&amp;Expires=1410206786&amp;Signature=%2FQoQgbkRVXEqVEfk57%2BaXX4O59A%3D&amp;response-content-disposition=attachment%3B%20filename%3D%22DecibelObjectModel.xsd%22">click here</a> to download them. These can be used to deserialize the results of an API request. There are tools avalible for most languages and development envoirnments that will create an object model based off the schemas for this purpose. For your convience, we have provided object models for <a href="sample-code-restv2-csharp.html">C#</a> and <a href="sample-code-restv2-java.html">Java</a>.
+                            </p>
+
+                            <p>Take a look at the Sample code section below for more resources.</p>
+
+                            <h3>Paging</h3>
+                            <p>
+                                When Decibel performs a query, it returns all of the IDs found. However, it only resolves the first page of items. To request another page, you need to specify this using the parameter pageNumber=. The first page number is 1.
+                            </p>
+
+                            <h3>Images</h3>
+                            <p>
+                                Images are currently only available for albums, though in the future we will have them for participants, performances and other items too. Standard images are 600x600 pixels, and thumbnails are 95x95. You do need to specify what type of image you need, either using /standard or /thumbnail, or by using the parameter ?imageType=standard or ?imageType=thumbnail.
+                            </p>
+                            <br />
+                        </div>
+
+                        <div class="restapireference">
+                            <h1>REST API REFERENCE</h1>
+
+                            <table style="width: 100%">
+                                <tr>
+                                    <td><a name="album"></a>
+                                        <h2>album </h2>
+                                    </td>
+                                    <td style="text-align: right; vertical-align: middle">
+                                        <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                            <blockquote>
+                                Finds an album by Id
+                            </blockquote>
+                            <br />
+                            <div class="restsection">
+                                <span class="param">Request URL</span>
+                                <tt>/album</tt>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Verb</span>
+                                GET
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Returns</span>
+                                SingleAlbumQueryResult
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Parameters</span>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width: 25%; color: black">Name</th>
+                                            <th style="width: 10%; color: black">Required</th>
+                                            <th style="width: 55%; color: black">Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">depth</td>
+                                            <td>N</td>
+                                            <td>Information to bring back
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Genres</strong> - Genres of the recording</li>
+                                                    <li><strong>Identifiers</strong> - Catalog numbers, bar codes, media checksums, etc.</li>
+                                                    <li><strong>None</strong> - Minimum information</li>
+                                                    <li><strong>Participations</strong> - Track and album Participations</li>
+                                                    <li><strong>Recordings</strong> - Include track listings</li>
+                                                    <li><strong>Works</strong> - Works on each recording - includes authors if participants is also set</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">id</td>
+                                            <td>Y</td>
+                                            <td>Valid album ID
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">idType</td>
+                                            <td>N</td>
+                                            <td>Type of ID - from list
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>CatalogNumber</strong> - Label catalog number</li>
+                                                    <li><strong>Decibel</strong> - Decibel ID: generic version of an album</li>
+                                                    <li><strong>EAN</strong> - 13-digit bar code</li>
+                                                    <li><strong>FreeDBChecksum</strong> - Disk checksum in FreeDB database</li>
+                                                    <li><strong>FullName</strong> - Names exactly matching this string</li>
+                                                    <li><strong>PartialName</strong> - Names containing this string</li>
+                                                    <li><strong>Spotify</strong> - Spotify locator</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Examples</span><table class="examples">
+                                    <tbody>
+                                        <tr>
+                                            <td style="color: black;">
+                                                <a href="http://rest.decibel.net/v2/album?id=156dda6c-358f-e311-be87-ac220b82800d&amp;depth=Recordings;Identifiers;Works;Participations;Genres;ArtistDetails;Releases;"><tt> http://rest.decibel.net/v2/album?id=156dda6c-358f-e311-be87-ac220b82800d&depth=Recordings;Identifiers;Works;Participations;Genres;ArtistDetails;Releases;</tt></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+
+                            <table style="width: 100%">
+                                <tr>
+                                    <td><a name="albums"></a>
+                                        <h2>albums </h2>
+                                    </td>
+                                    <td style="text-align: right; vertical-align: middle">
+                                        <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                    </td>
+                                </tr>
+                            </table>
+                            Gets matching albums
+                        <br />
+                            <div class="restsection">
+                                <span class="param">Request URL</span>
+                                <tt>/albums</tt>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Verb</span>
+                                GET
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Returns</span>
+                                AlbumQueryResult
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Parameters</span>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width: 25%; color: black">Name</th>
+                                            <th style="width: 10%; color: black">Required</th>
+                                            <th style="width: 55%; color: black">Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">artist</td>
+                                            <td>N</td>
+                                            <td>The name of the main or featured artist
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">artistName</td>
+                                            <td>N</td>
+                                            <td>Deprecated - Use artist
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">artistSearchType</td>
+                                            <td>N</td>
+                                            <td>Choose whether to search by FullName, PartialName, or Identifier for main artist
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Decibel</strong> - Decibel artist ID</li>
+                                                    <li><strong>DiscogsArtist</strong> - Discogs artist ID</li>
+                                                    <li><strong>FullName</strong> - Names exactly matching this string</li>
+                                                    <li><strong>PartialName</strong> - Names containing this string</li>
+                                                    <li><strong>Spotify</strong> - Spotify artist locator</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">dateReleased</td>
+                                            <td>N</td>
+                                            <td>The original date when this album was first released
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">depth</td>
+                                            <td>N</td>
+                                            <td>Items to bring back: Tracks, etc.
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Genres</strong> - Genres of the recording</li>
+                                                    <li><strong>Identifiers</strong> - Catalog numbers, bar codes, media checksums, etc.</li>
+                                                    <li><strong>None</strong> - Minimum information</li>
+                                                    <li><strong>Participations</strong> - Track and album Participations</li>
+                                                    <li><strong>Recordings</strong> - Include track listings</li>
+                                                    <li><strong>Works</strong> - Works on each recording - includes authors if participants is also set</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">isLive</td>
+                                            <td>N</td>
+                                            <td>Whether the album is a live album
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">pageNumber</td>
+                                            <td>N</td>
+                                            <td>Which page of results to bring back. The first page is page 1.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">pageSize</td>
+                                            <td>N</td>
+                                            <td>The size of result pages. Maximum is 50
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">participant</td>
+                                            <td>N</td>
+                                            <td>Participant who worked on the album as a whole, such as on the liner notes or cover art
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">participantSearchType</td>
+                                            <td>N</td>
+                                            <td>Choose whether to search by FullName, PartialName, or Identifier for participant
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Decibel</strong> - Decibel artist ID</li>
+                                                    <li><strong>DiscogsArtist</strong> - Discogs artist ID</li>
+                                                    <li><strong>FullName</strong> - Names exactly matching this string</li>
+                                                    <li><strong>PartialName</strong> - Names containing this string</li>
+                                                    <li><strong>Spotify</strong> - Spotify artist locator</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">recording</td>
+                                            <td>N</td>
+                                            <td>A recording on the album
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">recordingSearchType</td>
+                                            <td>N</td>
+                                            <td>Choose whether to search by FullName, PartialName, or Identifier for recording
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Decibel</strong> - Decibel recording ID</li>
+                                                    <li><strong>FullName</strong> - Names exactly matching this string</li>
+                                                    <li><strong>PartialName</strong> - Names containing this string</li>
+                                                    <li><strong>Spotify</strong> - Spotify locator</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">title</td>
+                                            <td>N</td>
+                                            <td>The title of the album
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">titleSearchType</td>
+                                            <td>N</td>
+                                            <td>Choose whether to search by FullName, PartialName, or Identifier for title
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>CatalogNumber</strong> - Label catalog number</li>
+                                                    <li><strong>Decibel</strong> - Decibel ID: generic version of an album</li>
+                                                    <li><strong>EAN</strong> - 13-digit bar code</li>
+                                                    <li><strong>FreeDBChecksum</strong> - Disk checksum in FreeDB database</li>
+                                                    <li><strong>FullName</strong> - Names exactly matching this string</li>
+                                                    <li><strong>PartialName</strong> - Names containing this string</li>
+                                                    <li><strong>Spotify</strong> - Spotify locator</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Examples</span><table class="examples">
+                                    <tbody>
+                                        <tr>
+                                            <td style="color: black;">
+                                                <a href="http://rest.decibel.net/v2/albums?title=rumours&amp;depth=Recordings;Identifiers;Works;Participations;Genres;ArtistDetails;Releases;"><tt> http://rest.decibel.net/v2/albums?title=rumours&depth=Recordings;Identifiers;Works;Participations;Genres;ArtistDetails;Releases;</tt></a>
+                                                </style></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+
+                            <h2><a name="artist"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">artist</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <blockquote>
+                                Gets a single participant using a unique identifier
+                            </blockquote>
+                            <br />
+                            <div class="restsection">
+                                <span class="param">Request URL</span>
+                                <tt>/artist</tt>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Verb</span>
+                                GET
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Returns</span>
+                                SingleParticipantQueryResult
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Parameters</span>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width: 25%; color: black">Name</th>
+                                            <th style="width: 10%; color: black">Required</th>
+                                            <th style="width: 55%; color: black">Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">depth</td>
+                                            <td>N</td>
+                                            <td>Info to bring back
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Biography</strong> - Biographical sketch (in English, where available)</li>
+                                                    <li><strong>BiographySnippet</strong> - A single line of biography</li>
+                                                    <li><strong>Dates</strong> - Dates of birth, death and other significant life events</li>
+                                                    <li><strong>Genres</strong> - Genres associated with this artist</li>
+                                                    <li><strong>Groups</strong> - Dates of birth, death and other significant life events</li>
+                                                    <li><strong>Identifiers</strong> - IDs, where available</li>
+                                                    <li><strong>Members</strong> - If a band, retrieve individual members</li>
+                                                    <li><strong>None</strong> - Minimum information</li>
+                                                    <li><strong>Urls</strong> - Urls associated with this artist</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">id</td>
+                                            <td>Y</td>
+                                            <td>Identifier
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">idType</td>
+                                            <td>N</td>
+                                            <td>Type of identifier, from list
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Decibel</strong> - Decibel artist ID</li>
+                                                    <li><strong>DiscogsArtist</strong> - Discogs artist ID</li>
+                                                    <li><strong>FullName</strong> - Names exactly matching this string</li>
+                                                    <li><strong>PartialName</strong> - Names containing this string</li>
+                                                    <li><strong>Spotify</strong> - Spotify artist locator</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+
+                            <h2><a name="artists"></a>
+                                <table style="width: 100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">artists</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <blockquote>
+                                Gets artists whomatch the criteria
+                            </blockquote>
+                            <br />
+                            <div class="restsection">
+                                <span class="param">Request URL</span>
+                                <tt>/artists</tt>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Verb</span>
+                                GET
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Returns</span>
+                                ParticipantQueryResult
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Parameters</span>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width: 25%; color: black">Name</th>
+                                            <th style="width: 10%; color: black">Required</th>
+                                            <th style="width: 55%; color: black">Description</th>
+                                            </font>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">dateBorn</td>
+                                            <td>N</td>
+                                            <td>Date artist was born (if applicable)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">dateDied</td>
+                                            <td>N</td>
+                                            <td>Date artist died (if applicable)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">depth</td>
+                                            <td>N</td>
+                                            <td>Info to bring back
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Biography</strong> - Biographical sketch (in English, where available)</li>
+                                                    <li><strong>BiographySnippet</strong> - A single line of biography</li>
+                                                    <li><strong>Dates</strong> - Dates of birth, death and other significant life events</li>
+                                                    <li><strong>Genres</strong> - Genres associated with this artist</li>
+                                                    <li><strong>Groups</strong> - Dates of birth, death and other significant life events</li>
+                                                    <li><strong>Identifiers</strong> - IDs, where available</li>
+                                                    <li><strong>Members</strong> - If a band, retrieve individual members</li>
+                                                    <li><strong>None</strong> - Minimum information</li>
+                                                    <li><strong>Urls</strong> - Urls associated with this artist</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">gender</td>
+                                            <td>N</td>
+                                            <td>Artist gender
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Female</strong> - Identifies as female</li>
+                                                    <li><strong>Male</strong> - Identifies as male</li>
+                                                    <li><strong>Other</strong> - Not exclusively male or female</li>
+                                                    <li><strong>Unknown</strong> - Not known, or the individual does not wish their gender to be known</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">name</td>
+                                            <td>N</td>
+                                            <td>Artist name
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">nameSearchType</td>
+                                            <td>N</td>
+                                            <td>Choose whether to search by FullName, PartialName, or Identifier for name
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">pageNumber</td>
+                                            <td>N</td>
+                                            <td>Which page of results to bring back. The first page is page 1.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">pageSize</td>
+                                            <td>N</td>
+                                            <td>The size of result pages. Maximum is 50
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+
+                            <h2><a name="disctags"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">disctags</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <blockquote>
+                                Gets tags for every tag on a disc or release - by various ids
+                            </blockquote>
+                            <br />
+                            <div class="restsection">
+                                <span class="param">Request URL</span>
+                                <tt>/disctags</tt>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Verb</span>
+                                GET
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Returns</span>
+                                DiscTagQueryResult
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Parameters</span>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width: 25%; color: black">Name</th>
+                                            <th style="width: 10%; color: black">Required</th>
+                                            <th style="width: 55%; color: black">Description</th>
+                                            </font>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">id</td>
+                                            <td>Y</td>
+                                            <td>Identifier
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">idType</td>
+                                            <td>N</td>
+                                            <td>Type of identifier, from list
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+
+                            <h2><a name="image"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">image</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <blockquote>
+                                Gets an image by ID
+                            </blockquote>
+                            <br />
+                            <div class="restsection">
+                                <span class="param">Request URL</span>
+                                <tt>/image</tt>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Verb</span>
+                                GET
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Returns</span>
+
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Parameters</span>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width: 25%; color: black">Name</th>
+                                            <th style="width: 10%; color: black">Required</th>
+                                            <th style="width: 55%; color: black">Description</th>
+                                            </font>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">id</td>
+                                            <td>Y</td>
+                                            <td>Valid image ID
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">imageType</td>
+                                            <td>N</td>
+                                            <td>Standard, Thumbnail, Full
+                        <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Full</strong> - Largest size available</li>
+                                                    <li><strong>Standard</strong> - 600 px image</li>
+                                                    <li><strong>Thumbnail</strong> - 100-pixel image</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+
+                            <h2><a name="recording"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">recording</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <blockquote>
+                                Gets a single recording using a unique identifier
+                            </blockquote>
+                            <br />
+                            <div class="restsection">
+                                <span class="param">Request URL</span>
+                                <tt>/recording</tt>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Verb</span>
+                                GET
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Returns</span>
+                                SingleRecordingQueryResult
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Parameters</span>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width: 25%; color: black">Name</th>
+                                            <th style="width: 10%; color: black">Required</th>
+                                            <th style="width: 55%; color: black">Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">depth</td>
+                                            <td>N</td>
+                                            <td>Info to bring back
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>ArtistDetails</strong> - Detail about the main artists on the recording</li>
+                                                    <li><strong>Genres</strong> - Genres of the recording</li>
+                                                    <li><strong>Identifiers</strong> - ISRC, fingerprint and other identifiers (if available)</li>
+                                                    <li><strong>None</strong> - Minimum information</li>
+                                                    <li><strong>Participations</strong> - Details of people and their roles</li>
+                                                    <li><strong>SessionInfo</strong> - Recording and production session(s): dates and locations</li>
+                                                    <li><strong>Works</strong> - Recording works, including work participations if participations is set</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">id</td>
+                                            <td>Y</td>
+                                            <td>Identifier
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">idType</td>
+                                            <td>N</td>
+                                            <td>The type of identifier, from list
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Decibel</strong> - Decibel recording ID</li>
+                                                    <li><strong>FullName</strong> - Names exactly matching this string</li>
+                                                    <li><strong>PartialName</strong> - Names containing this string</li>
+                                                    <li><strong>Spotify</strong> - Spotify locator</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Examples</span><table class="examples">
+                                    <tbody>
+                                        <tr>
+                                            <td style="color: black;">
+                                                <a href="http://rest.decibel.net/v2/recording?id=41187a61-a8a2-11e3-be90-ac220b82800d&amp;depth=Participations;ArtistDetails;Works;Genres;Identifiers;SessionInfo;"><tt> http://rest.decibel.net/v2/recording?id=41187a61-a8a2-11e3-be90-ac220b82800d&depth=Participations;ArtistDetails;Works;Genres;Identifiers;SessionInfo;</tt></a>
+                                                </style></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+
+                            <h2><a name="recordings"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">recordings</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <blockquote>
+                                Gets a list of recordings which match criteria
+                            </blockquote>
+                            <br />
+                            <div class="restsection">
+                                <span class="param">Request URL</span>
+                                <tt>/recordings</tt>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Verb</span>
+                                GET
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Returns</span>
+                                RecordingQueryResult
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Parameters</span>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width: 25%; color: black">Name</th>
+                                            <th style="width: 10%; color: black">Required</th>
+                                            <th style="width: 55%; color: black">Description</th>
+                                            </font>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">artist</td>
+                                            <td>N</td>
+                                            <td>One or more artist names (repeat tag, or delimit list with ';'). Result tracks will be the intersection.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">artistName</td>
+                                            <td>N</td>
+                                            <td>Deprecated - use 'artist'
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">artistSearchType</td>
+                                            <td>N</td>
+                                            <td>Choose whether to search by FullName, PartialName, or Identifier for artist
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Decibel</strong> - Decibel artist ID</li>
+                                                    <li><strong>DiscogsArtist</strong> - Discogs artist ID</li>
+                                                    <li><strong>FullName</strong> - Names exactly matching this string</li>
+                                                    <li><strong>PartialName</strong> - Names containing this string</li>
+                                                    <li><strong>Spotify</strong> - Spotify artist locator</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">composer</td>
+                                            <td>N</td>
+                                            <td>One or more composers whose works are played. Multiple composers - shared works.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">composerSearchType</td>
+                                            <td>N</td>
+                                            <td>Choose whether to search by FullName, PartialName, or Identifier for composer
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Decibel</strong> - Decibel artist ID</li>
+                                                    <li><strong>DiscogsArtist</strong> - Discogs artist ID</li>
+                                                    <li><strong>FullName</strong> - Names exactly matching this string</li>
+                                                    <li><strong>PartialName</strong> - Names containing this string</li>
+                                                    <li><strong>Spotify</strong> - Spotify artist locator</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">dateProduced</td>
+                                            <td>N</td>
+                                            <td>The date that this recording was recorded, mixed, mastered, or mastered
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">depth</td>
+                                            <td>N</td>
+                                            <td>Info to bring back (repeat tag, or delimit list with ';'.   Values: Participations, SessionInfo  Authors, Identifiers
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>ArtistDetails</strong> - Detail about the main artists on the recording</li>
+                                                    <li><strong>Genres</strong> - Genres of the recording</li>
+                                                    <li><strong>Identifiers</strong> - ISRC, fingerprint and other identifiers (if available)</li>
+                                                    <li><strong>None</strong> - Minimum information</li>
+                                                    <li><strong>Participations</strong> - Details of people and their roles</li>
+                                                    <li><strong>SessionInfo</strong> - Recording and production session(s): dates and locations</li>
+                                                    <li><strong>Works</strong> - Recording works, including work participations if participations is set</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">isLive</td>
+                                            <td>N</td>
+                                            <td>Live track, explicitly labeled
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">maxSeconds</td>
+                                            <td>N</td>
+                                            <td>Maximum duration in seconds
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">minSeconds</td>
+                                            <td>N</td>
+                                            <td>Minimum duration in seconds
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">pageNumber</td>
+                                            <td>N</td>
+                                            <td>Which page of results to bring back. The first page is page 1.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">pageSize</td>
+                                            <td>N</td>
+                                            <td>The size of result pages. Maximum is 50
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">participant</td>
+                                            <td>N</td>
+                                            <td>Participant(s) in any capacity. Multiple=intersection
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">participantSearchType</td>
+                                            <td>N</td>
+                                            <td>Choose whether to search by FullName, PartialName, or Identifier for participant
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>Decibel</strong> - Decibel artist ID</li>
+                                                    <li><strong>DiscogsArtist</strong> - Discogs artist ID</li>
+                                                    <li><strong>FullName</strong> - Names exactly matching this string</li>
+                                                    <li><strong>PartialName</strong> - Names containing this string</li>
+                                                    <li><strong>Spotify</strong> - Spotify artist locator</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">title</td>
+                                            <td>N</td>
+                                            <td>Full name of recording
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fieldName">titleSearchType</td>
+                                            <td>N</td>
+                                            <td>Choose whether to search by FullName, PartialName, or Identifier for title
+                                            <br />
+                                                <div style="padding-top: 10px">Valid values are:</div>
+                                                <ul>
+                                                    <li><strong>CatalogNumber</strong> - Label catalog number</li>
+                                                    <li><strong>Decibel</strong> - Decibel ID: generic version of an album</li>
+                                                    <li><strong>EAN</strong> - 13-digit bar code</li>
+                                                    <li><strong>FreeDBChecksum</strong> - Disk checksum in FreeDB database</li>
+                                                    <li><strong>FullName</strong> - Names exactly matching this string</li>
+                                                    <li><strong>PartialName</strong> - Names containing this string</li>
+                                                    <li><strong>Spotify</strong> - Spotify locator</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="restsection">
+                                <span class="param">Examples</span><table class="examples">
+                                    <tbody>
+                                        <tr>
+                                            <td style="color: black;">
+                                                <a href="http://rest.decibel.net/v2/recordings?title=go%20your%20own%20way&amp;depth=Participations;ArtistDetails;Works;Genres;Identifiers;SessionInfo;"><tt> http://rest.decibel.net/v2/recordings?title=go your own way&depth=Participations;ArtistDetails;Works;Genres;Identifiers;SessionInfo;</tt></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+
+                            <div class="restapireference">
+                                <h1>Resources</h1>
+                                <h2><a name="sdk"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Decibel SDK</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                                <p>The new Decibel SDKs include tools to make using the API easier. Each one can generate Deciel REST calls and return the results in usable objects. They work with Albums, Recordings and Artists</p>
+                                <p>A list of currently avalible SDKs can be found below. Click on one to find out more</p>
+                                <ul>
+                                    <li>
+                                        <p><a href="decibel-sdk.html">Decibel C# SDK - Beta</a></p>
+                                    </li>
+                                </ul>
+                            </div>
+                    </td>
+            </table>
+        </div>
+    </div>
+    <div id="footer">
+
+        <div id="foot-wrap">
+
+            <script type="text/javascript">
+                var d = new Date();
+                document.getElementById("foot-wrap").appendChild(document.createTextNode("© " + d.getFullYear() + " Decibel Music Systems Ltd"));
+            </script>
+
+            <br />
+            The Decibel name, associated trade marks and logos and the &quot;magnifying glass note&quot; logo are trade marks of Decibel Music Systems Limited.
+        <br />
+            The Old Truman Brewery, 91 Brick Lane, London E1 6QL, UK +44 20 3657 9760
+        <br />
+
+            <a href="http://www.3scale.net/" target="_blank">
+                <img alt="Powered by 3scale" src="images/powered_by_logo.png">
+            </a>
+
+            <div id="flashWrapper" style="display: none;">
+                <div class="ajaxNoticeValid alwaysontop "></div>
+            </div>
+
+            <script type="text/javascript" charset="utf-8">
+                jQuery(document).ready(function () {
+                    setTimeout($.flash.hide, 5000);
+                });
+        </script>
+
+        </div>
+    </div>
+</body>
+</html>

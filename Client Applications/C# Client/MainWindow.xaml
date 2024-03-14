@@ -1,0 +1,102 @@
+﻿<Window x:Class="DecibelRestWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:my="clr-namespace:DecibelRestWpf.UserControls"
+        ResizeMode="CanResizeWithGrip"
+        Title="Decibel C# Client" Width="1024" Height="768" SizeChanged="Window_SizeChanged" LocationChanged="Window_LocationChanged" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" /> 
+            <RowDefinition Height="*" /> 
+            <RowDefinition Height="23" />
+        </Grid.RowDefinitions>
+        
+        <Grid.Resources> 
+            <Style x:Key="TabControlStyle" TargetType="{x:Type TabControl}">
+                <Setter Property="Margin" Value="0,2,0,0" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+                <Setter Property="Width" Value="Auto" />
+                <Setter Property="Height" Value="Auto" />
+            </Style>
+        </Grid.Resources>
+        
+        <!-- Main Menu -->
+        <Menu Height="23" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" Name="mnuMenu" VerticalAlignment="Top" Width="Auto">
+            <MenuItem Header="File">
+                <MenuItem Header="New" Name="mnuNew" Click="mnuNew_Click" />
+                <MenuItem Header="Save As..." Name="mnuSaveAs" Click="mnuSaveAs_Click" />
+                <MenuItem Header="Print..." Name="mnuPrint" Click="mnuPrint_Click" />
+                <MenuItem Header="Exit" Name="mnuExit" Click="mnuExit_Click" />
+            </MenuItem>
+            
+            <MenuItem Header="Edit">
+                <MenuItem Header="Cut" Command="ApplicationCommands.Cut" />
+                <MenuItem Header="Copy"  Command="ApplicationCommands.Copy" />
+                <MenuItem Header="Paste" Command="ApplicationCommands.Paste" />
+            </MenuItem>
+            
+            <MenuItem Header="Tools">
+                <MenuItem Header="Options" Name="mnuOptions" Click="mnuOptions_Click" />
+                <MenuItem Header="Response Format" HorizontalAlignment="Left" Width="180">
+                    <MenuItem Header="XML" Name="mnuXmlResponse" IsCheckable="True" Click="mnuXmlResponse_Click" />
+                    <MenuItem Header="JSON" Name="mnuJsonResponse"  IsCheckable="True" Click="mnuJsonResponse_Click"/>
+                </MenuItem>
+            </MenuItem>
+            
+            <MenuItem Header="Help">
+                <MenuItem Header="C# REST Documentation" Name="mnuDocumentation"  Click="mnuDocumentation_Click" />
+                <MenuItem Header="About" Name="mnuAbout" Click="mnuAbout_Click" />
+            </MenuItem>
+        </Menu>
+        
+        <!-- Search Tabs -->
+        <TabControl Style="{StaticResource TabControlStyle}" Grid.Column="0" Grid.Row="1" Name="tbcSearchTabs" >
+            <TabItem Header="Albums" >
+                <my:AlbumSearch x:Name="tabAlbums" />
+            </TabItem>
+            
+            <TabItem Header="Participants" >
+                <my:ParticipantSearch x:Name="tabParticipants" />
+            </TabItem>
+            
+            <TabItem Header="Tracks" >
+                <my:TrackSearch x:Name="tabTracks" />
+            </TabItem>
+            
+            <TabItem Header="Works" >
+                <my:WorkSearch x:Name="tabWorks" />
+            </TabItem>
+        </TabControl>
+        
+        <!-- StatusBar -->
+        <StatusBar Grid.Column="0" Grid.Row="2" Height="23" HorizontalAlignment="Stretch" Name="stsStatus" VerticalAlignment="Top" Width="Auto">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            
+            <StatusBarItem Margin="0,0,-915,0">
+                <TextBlock Name="txtStatus" Margin="8,0,0,0">Ready</TextBlock>
+            </StatusBarItem>
+            
+            <StatusBarItem Grid.Column="1">
+                <ProgressBar Value="0" Width="80" Visibility="Hidden" Name="pgbProgress" Height="12" IsIndeterminate="True"  />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

@@ -1,0 +1,1 @@
+C:\Users\Lawrence\Documents\Visual Studio 2012\Projects\Decibel\Sample Projects\CSharp\bin\Debug\DecibelRestWpf.exe.config

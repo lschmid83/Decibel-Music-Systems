@@ -1,0 +1,16 @@
+﻿<Window x:Class="DecibelRestWpf.AlbumImage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:winForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="Cover Art" Height="450" Width="480">
+    <Grid>
+        <Image Height="Auto" HorizontalAlignment="Left" Name="imgAlbum" Stretch="Fill" VerticalAlignment="Top" Width="Auto" />
+        
+        <wfi:WindowsFormsHost x:Name="wfiHost" Width="66" Height="66" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <winForms:PictureBox x:Name="picLoading">
+            </winForms:PictureBox>
+        </wfi:WindowsFormsHost>
+    </Grid>
+</Window>

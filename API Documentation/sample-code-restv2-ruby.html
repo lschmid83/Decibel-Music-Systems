@@ -1,0 +1,1191 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ruby Sample Code</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="javascript/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="javascript/jquery.colorbox-min.js" type="text/javascript"></script>
+    <link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="javascript/highlight.pack.js" type="text/javascript"></script>
+    <script src="javascript/help.js" type="text/javascript"></script>
+    <script src="javascript/flash.js" type="text/javascript"></script>
+    <script src="javascript/remote.js" type="text/javascript"></script>
+    <script src="javascript/switch.js" type="text/javascript"></script>
+    <script src="javascript/ajax_upload.js" type="text/javascript"></script>
+    <script src="javascript/extra_fields.js" type="text/javascript"></script>
+    <script src="javascript/application.js" type="text/javascript"></script>
+    <link href="css/default.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="html5.js"></script>
+    <script type="text/javascript" src="eCSStender.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var offset = $("#sidebar").offset(); //Sets which element is scrollable. In this case it's the div .sidebar
+            var topPadding = 30;  //Set how much top-padding the element has.
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > offset.top) {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: $(window).scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: 0
+                    });
+                };
+            });
+        });
+
+    </script>
+</head>
+
+<body class="home">
+
+    <div id="page">
+
+        <div id="header">
+            <a id="header-logo" href="index.html">
+                <img src="images/logo-white.png" /></a>
+            <div id="header-widget">
+                <div id="user_widget" class="round">
+                    <a href="login.html">Sign in</a>
+                    | <a href="signup.html">Sign up</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="content">
+            <table style="width: 100%" cellspacing="0" cellpadding="10">
+                <tr>
+                    <td valign="top" style="width: 250px">
+                        <div style="margin-left: 0px; margin-top: 0px">
+
+                            <div id='cssmenu'>
+                                <ul>
+                                    <li><a href='decibel-sdk.html'><span>Home</span></a></li>
+                                    <li><a href='news.html'><span>News</span></a></li>
+                                    <li><a href='our-api.html'><span>API Music Metadata</span></a></li>
+                                    <li><a href='authentication.html'><span>API Authentication</span></a></li>
+                                    <li><a href='rest-api-v2.html'><span>REST API Documentation</span></a></li>
+                                    <li><a href='hackathons.html'><span>Hackathons</span></a></li>
+                                    <li><a href='forum.html'><span>Forum</span></a></li>
+                                    <li><a href='support.html'><span>Support</span></a></li>
+                                    <li><a href='faq.html'><span>FAQ</span></a></li>
+                                    <li><a href='termsandconditions.html'><span>Terms and Conditions</span></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <script type="text/javascript">
+                                function PopupCenter(pageURL, title, w, h) {
+                                    var left = (screen.width / 2) - (w / 2);
+                                    var top = (screen.height / 2) - (h / 2);
+                                    var targetWin = window.open(pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+                                }
+                            </script>
+
+                            <style type="text/css">
+                                .ruby td.linenos {
+                                    background-color: #f0f0f0;
+                                    padding-right: 10px;
+                                }
+
+                                .ruby span.lineno {
+                                    background-color: #f0f0f0;
+                                    padding: 0 5px 0 5px;
+                                }
+
+                                .ruby pre {
+                                    line-height: 125%;
+                                }
+
+                                .ruby .hll {
+                                    background-color: #ffffcc;
+                                }
+
+                                .ruby {
+                                    background: #ffffff;
+                                }
+
+                                    .ruby .c {
+                                        color: #408080;
+                                        font-style: italic;
+                                    }
+                                    /* Comment */
+                                    .ruby .err {
+                                        border: 1px solid #FF0000;
+                                    }
+                                    /* Error */
+                                    .ruby .k {
+                                        color: #008000;
+                                        font-weight: bold;
+                                    }
+                                    /* Keyword */
+                                    .ruby .o {
+                                        color: #666666;
+                                    }
+                                    /* Operator */
+                                    .ruby .cm {
+                                        color: #408080;
+                                        font-style: italic;
+                                    }
+                                    /* Comment.Multiline */
+                                    .ruby .cp {
+                                        color: #BC7A00;
+                                    }
+                                    /* Comment.Preproc */
+                                    .ruby .c1 {
+                                        color: #408080;
+                                        font-style: italic;
+                                    }
+                                    /* Comment.Single */
+                                    .ruby .cs {
+                                        color: #408080;
+                                        font-style: italic;
+                                    }
+                                    /* Comment.Special */
+                                    .ruby .gd {
+                                        color: #A00000;
+                                    }
+                                    /* Generic.Deleted */
+                                    .ruby .ge {
+                                        font-style: italic;
+                                    }
+                                    /* Generic.Emph */
+                                    .ruby .gr {
+                                        color: #FF0000;
+                                    }
+                                    /* Generic.Error */
+                                    .ruby .gh {
+                                        color: #000080;
+                                        font-weight: bold;
+                                    }
+                                    /* Generic.Heading */
+                                    .ruby .gi {
+                                        color: #00A000;
+                                    }
+                                    /* Generic.Inserted */
+                                    .ruby .go {
+                                        color: #888888;
+                                    }
+                                    /* Generic.Output */
+                                    .ruby .gp {
+                                        color: #000080;
+                                        font-weight: bold;
+                                    }
+                                    /* Generic.Prompt */
+                                    .ruby .gs {
+                                        font-weight: bold;
+                                    }
+                                    /* Generic.Strong */
+                                    .ruby .gu {
+                                        color: #800080;
+                                        font-weight: bold;
+                                    }
+                                    /* Generic.Subheading */
+                                    .ruby .gt {
+                                        color: #0044DD;
+                                    }
+                                    /* Generic.Traceback */
+                                    .ruby .kc {
+                                        color: #008000;
+                                        font-weight: bold;
+                                    }
+                                    /* Keyword.Constant */
+                                    .ruby .kd {
+                                        color: #008000;
+                                        font-weight: bold;
+                                    }
+                                    /* Keyword.Declaration */
+                                    .ruby .kn {
+                                        color: #008000;
+                                        font-weight: bold;
+                                    }
+                                    /* Keyword.Namespace */
+                                    .ruby .kp {
+                                        color: #008000;
+                                    }
+                                    /* Keyword.Pseudo */
+                                    .ruby .kr {
+                                        color: #008000;
+                                        font-weight: bold;
+                                    }
+                                    /* Keyword.Reserved */
+                                    .ruby .kt {
+                                        color: #B00040;
+                                    }
+                                    /* Keyword.Type */
+                                    .ruby .m {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number */
+                                    .ruby .s {
+                                        color: #BA2121;
+                                    }
+                                    /* Literal.String */
+                                    .ruby .na {
+                                        color: #7D9029;
+                                    }
+                                    /* Name.Attribute */
+                                    .ruby .nb {
+                                        color: #008000;
+                                    }
+                                    /* Name.Builtin */
+                                    .ruby .nc {
+                                        color: #0000FF;
+                                        font-weight: bold;
+                                    }
+                                    /* Name.Class */
+                                    .ruby .no {
+                                        color: #880000;
+                                    }
+                                    /* Name.Constant */
+                                    .ruby .nd {
+                                        color: #AA22FF;
+                                    }
+                                    /* Name.Decorator */
+                                    .ruby .ni {
+                                        color: #999999;
+                                        font-weight: bold;
+                                    }
+                                    /* Name.Entity */
+                                    .ruby .ne {
+                                        color: #D2413A;
+                                        font-weight: bold;
+                                    }
+                                    /* Name.Exception */
+                                    .ruby .nf {
+                                        color: #0000FF;
+                                    }
+                                    /* Name.Function */
+                                    .ruby .nl {
+                                        color: #A0A000;
+                                    }
+                                    /* Name.Label */
+                                    .ruby .nn {
+                                        color: #0000FF;
+                                        font-weight: bold;
+                                    }
+                                    /* Name.Namespace */
+                                    .ruby .nt {
+                                        color: #008000;
+                                        font-weight: bold;
+                                    }
+                                    /* Name.Tag */
+                                    .ruby .nv {
+                                        color: #19177C;
+                                    }
+                                    /* Name.Variable */
+                                    .ruby .ow {
+                                        color: #AA22FF;
+                                        font-weight: bold;
+                                    }
+                                    /* Operator.Word */
+                                    .ruby .w {
+                                        color: #bbbbbb;
+                                    }
+                                    /* Text.Whitespace */
+                                    .ruby .mf {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number.Float */
+                                    .ruby .mh {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number.Hex */
+                                    .ruby .mi {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number.Integer */
+                                    .ruby .mo {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number.Oct */
+                                    .ruby .sb {
+                                        color: #BA2121;
+                                    }
+                                    /* Literal.String.Backtick */
+                                    .ruby .sc {
+                                        color: #BA2121;
+                                    }
+                                    /* Literal.String.Char */
+                                    .ruby .sd {
+                                        color: #BA2121;
+                                        font-style: italic;
+                                    }
+                                    /* Literal.String.Doc */
+                                    .ruby .s2 {
+                                        color: #BA2121;
+                                    }
+                                    /* Literal.String.Double */
+                                    .ruby .se {
+                                        color: #BB6622;
+                                        font-weight: bold;
+                                    }
+                                    /* Literal.String.Escape */
+                                    .ruby .sh {
+                                        color: #BA2121;
+                                    }
+                                    /* Literal.String.Heredoc */
+                                    .ruby .si {
+                                        color: #BB6688;
+                                        font-weight: bold;
+                                    }
+                                    /* Literal.String.Interpol */
+                                    .ruby .sx {
+                                        color: #008000;
+                                    }
+                                    /* Literal.String.Other */
+                                    .ruby .sr {
+                                        color: #BB6688;
+                                    }
+                                    /* Literal.String.Regex */
+                                    .ruby .s1 {
+                                        color: #BA2121;
+                                    }
+                                    /* Literal.String.Single */
+                                    .ruby .ss {
+                                        color: #19177C;
+                                    }
+                                    /* Literal.String.Symbol */
+                                    .ruby .bp {
+                                        color: #008000;
+                                    }
+                                    /* Name.Builtin.Pseudo */
+                                    .ruby .vc {
+                                        color: #19177C;
+                                    }
+                                    /* Name.Variable.Class */
+                                    .ruby .vg {
+                                        color: #19177C;
+                                    }
+                                    /* Name.Variable.Global */
+                                    .ruby .vi {
+                                        color: #19177C;
+                                    }
+                                    /* Name.Variable.Instance */
+                                    .ruby .il {
+                                        color: #666666;
+                                    }
+                                    /* Literal.Number.Integer.Long */
+                                    .ruby .n {
+                                        color: #000000;
+                                    }
+                            </style>
+
+
+                            <h1>Ruby REST Sample Code</h1>
+                            <p>
+                                <h2><a name="viewdemosourcecode"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Ruby Source Code</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <p>The following code snippets are taken from the <strong>Decibel Ruby REST API Sample Code.</strong></</p>
+                            <div id="user_widget" style="float: left; margin-top: -12px" class="round">
+                                <a href="download/DecibelRubyClient.zip">Ruby Source Code</a>
+                            </div>
+                            <div style="clear: both">
+                                <p>
+                                    The code snippets will guide you through some basic use case scenarios of the Decibel REST API.
+                                </p>
+                            </div>
+                            <p>
+                                <h2><a name="callingtheapi"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Calling the API</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+
+                                <p>REST requests are modelled after the way a web browser sends requests to a web server. So, when we use the Ruby programming language for REST requests, our Ruby scripts mimic the way a web browser interacts with a web server.</p>
+                            <p>Ruby, being an extremely flexible and feature-rich language, provides a number of different modules for performing HTTP requests. The ones we recommend are:</p>
+                            <ul>
+                                <li><a href="http://ruby-doc.org/stdlib-2.0/libdoc/net/http/rdoc/Net/HTTP.html" target="_blank">Net::HTTP</a></li>
+                                <li><a href="http://ruby-doc.org/stdlib-1.9.2/libdoc/open-uri/rdoc/OpenURI.html" target="_blank">OpenURI</a></li>
+                            </ul>
+                            <p>Depending on your requirements either one of these modules may be more desirable.</p>
+
+
+
+
+                            <h2><a name="net::http"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Net::HTTP</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>Sending HTTP requests in Ruby is extremely easy. Net::HTTP provides a rich library which can be used to build HTTP user-agents.</p>
+
+                            <p>The following code example taken from <a href="http://www.decibel.net/developer/sample-code/python/util.rb" target="_blank">util.rb</a> makes a request using Net::HTTP and stores the response.</p>
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;net/https&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;uri&#39;</span>
+
+<span class="c1"># Set the request URL</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;http://api.decibel.net/v1/Albums/?artist=miles%20davis&amp;format=json&#39;</span><span class="p">)</span>
+<span class="n">http</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">::</span><span class="no">Get</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">request_uri</span><span class="p">)</span>
+
+<span class="c1"># Set the request authentication headers</span>
+<span class="n">timestamp</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m%d %H:%M:%S&#39;</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">initialize_http_header</span><span class="p">({</span><span class="s1">&#39;DecibelAppID&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&lt;Your Application ID&gt;&#39;</span><span class="p">,</span> 
+                                <span class="s1">&#39;DecibelAppKey&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&lt;Your Application Key&gt;&#39;</span><span class="p">,</span> 
+                                <span class="s1">&#39;DecibelTimestamp&#39;</span> <span class="o">=&gt;</span> <span class="n">timestamp</span><span class="p">})</span>
+                                
+<span class="c1"># Send the GET request</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">body</span>
+</pre>
+                            </div>
+
+
+
+
+                            <h2><a name="openuri"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">OpenURI</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>OpenURI is a wrapper for net/http with a simple and easy to use interface. To read a web page, you simply open its URI and read the data.</p>
+                            <p>The following code example makes a request using OpenURI and stores the response.</p>
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+
+<span class="c1"># Set the request URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Albums/?artist=miles%20davis&amp;format=json&#39;</span>
+
+<span class="c1"># Set the request authentication headers</span>
+<span class="n">timestamp</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m%d %H:%M:%S&#39;</span><span class="p">)</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DecibelAppID&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&lt;Your Application ID&gt;&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;DecibelAppKey&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&lt;Your Application Key&gt;&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;DecibelTimestamp&#39;</span> <span class="o">=&gt;</span> <span class="n">timestamp</span><span class="p">}</span>
+
+<span class="c1"># Send the GET request                              </span>
+<span class="n">resp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
+</pre>
+                            </div>
+
+
+
+                            <h2><a name="interpretingxml"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Interpreting XML</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>The Decibel REST API returns data in two formats XML and JSON. To make it easier to parse the response the data can be interpreted into manageable objects.</p>
+                            <p><a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/rexml/rdoc/REXML.html" target="_blank">REXML</a> is a conformant XML processor for the Ruby programming language. It is reasonably fast, and is implemented in pure Ruby. Best of all, it has a clean, intuitive API. Since Ruby 1.8, REXML is included in the standard Ruby distribution.</p>
+                            <p>The following code example requests albums by artist name, interprets the XML response and outputs the search results.</p>
+
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;./util&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rexml/document&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+
+<span class="c1"># Set the request URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Albums/?artist=&#39;</span> <span class="o">+</span> <span class="ss">URI</span><span class="p">:</span><span class="ss">:encode</span><span class="p">(</span><span class="n">artistName</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=xml&#39;</span><span class="p">;</span>           
+
+<span class="c1"># Send the GET request</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c1"># Interpret the XML response </span>
+<span class="n">xmldoc</span> <span class="o">=</span> <span class="ss">REXML</span><span class="p">:</span><span class="ss">:Document</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+<span class="c1"># Get the collection of albums from the result set</span>
+<span class="n">albums</span> <span class="o">=</span> <span class="n">xmldoc</span><span class="o">.</span><span class="n">elements</span><span class="o">[</span><span class="s1">&#39;AlbumQueryResult/ResultSet&#39;</span><span class="o">]</span>
+
+<span class="c1"># Output the search results</span>
+<span class="n">albums</span><span class="o">.</span><span class="n">each</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="o">|</span><span class="n">album</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">album</span><span class="o">.</span><span class="n">elements</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">].</span><span class="n">text</span>
+<span class="p">}</span>
+</pre>
+                            </div>
+
+
+
+                            <h2><a name="interpretingjson"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Interpreting JSON</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is like XML, but without the markup around the actual payload.</p>
+                            <p>
+                                It's easy to jump into parsing and generating JSON in Ruby with the json gem. It provides an API for parsing JSON from text. On Ruby 1.8.7 and below, you will need to install a gem by entering the following command <b>gem install json</b>
+                            <p>The following code example requests albums by artist name, decodes the JSON response and outputs the search results.</p>
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;./util&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+
+<span class="c1"># Set the request URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Albums/?artist=&#39;</span> <span class="o">+</span> <span class="ss">URI</span><span class="p">:</span><span class="ss">:encode</span><span class="p">(</span><span class="n">artistName</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span><span class="p">;</span>          
+
+<span class="c1"># Send the GET request</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c1"># Interpret the JSON response </span>
+<span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+<span class="c1"># Get the collection of albums from the result set</span>
+<span class="n">albums</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">]</span>
+
+<span class="c1"># Output the search results</span>
+<span class="n">albums</span><span class="o">.</span><span class="n">each</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="o">|</span><span class="n">album</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">album</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span>
+<span class="p">}</span>
+</pre>
+                            </div>
+
+
+
+
+                            <br />
+
+
+                            <h2><a name="albumssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Albums: Search for albums by title</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;./util&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+
+<span class="k">def</span> <span class="nf">beginAlbumSearch</span><span class="p">(</span><span class="n">albumTitle</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Set the request URL</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Albums/?albumTitle=&#39;</span> <span class="o">+</span> <span class="ss">URI</span><span class="p">:</span><span class="ss">:encode</span><span class="p">(</span><span class="n">albumTitle</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span>
+        
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="c1"># Return the collection of album objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">]</span>
+    
+<span class="k">end</span>
+
+<span class="c1"># Search for albums by title    </span>
+<span class="nb">puts</span> <span class="s1">&#39;Please enter a album title:&#39;</span>
+<span class="n">albumTitle</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginAlbumSearch</span><span class="p">(</span><span class="n">albumTitle</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c1"># Output the search results</span>
+<span class="n">result</span><span class="o">.</span><span class="n">each</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="o">|</span><span class="n">album</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">album</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">album</span><span class="o">[</span><span class="s1">&#39;Artists&#39;</span><span class="o">]</span>
+<span class="p">}</span>
+</pre>
+                            </div>
+
+
+
+
+                            <h2><a name="albumsretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Albums: Retrieve Albums with Track information</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;./util&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./settings&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+
+<span class="k">def</span> <span class="nf">beginAlbumRetrieve</span><span class="p">(</span><span class="n">albumID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s1">&#39;ExternalIdentifiers;Tracks;ImageThumbnail;Media;Names;Genres;Publications;Performances;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Albums/?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s1">&#39;&amp;id=&#39;</span> <span class="o">+</span> <span class="n">albumID</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span>
+
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="c1"># Return the album object</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
+    
+<span class="k">end</span>
+
+<span class="c1"># Retrieve album with track information     </span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginAlbumRetrieve</span><span class="p">(</span><span class="n">albumID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c1"># Output the search results</span>
+<span class="nb">puts</span> <span class="s1">&#39;Name - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span>
+<span class="nb">puts</span> <span class="s1">&#39;Artists - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;Artists&#39;</span><span class="o">]</span>
+<span class="nb">puts</span> <span class="s1">&#39;Disc Count - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;DiscCount&#39;</span><span class="o">].</span><span class="n">to_s</span>
+<span class="nb">puts</span> <span class="s1">&#39;Track Count - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;TrackCount&#39;</span><span class="o">].</span><span class="n">to_s</span>
+<span class="nb">puts</span> <span class="s1">&#39;Duration - &#39;</span> <span class="o">+</span> <span class="n">formatTime</span><span class="p">(</span><span class="n">result</span><span class="o">[</span><span class="s1">&#39;TotalSeconds&#39;</span><span class="o">].</span><span class="n">to_f</span><span class="p">)</span>
+
+<span class="k">begin</span>
+    <span class="nb">puts</span> <span class="s1">&#39;Format - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;Discs&#39;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s1">&#39;MusicMedium&#39;</span><span class="o">][</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span>
+<span class="k">rescue</span> <span class="no">Exception</span><span class="o">=&gt;</span><span class="n">e</span>
+<span class="k">end</span>
+
+<span class="k">begin</span>
+    <span class="k">begin</span>
+        <span class="n">externalIdentifiers</span> <span class="o">=</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;ExternalIdentifiers&#39;</span><span class="o">]</span>
+        <span class="n">externalIdentifiers</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span>
+            <span class="o">|</span><span class="n">externalIdentifier</span><span class="o">|</span>
+            <span class="k">if</span> <span class="n">externalIdentifier</span><span class="o">[</span><span class="s1">&#39;ExternalDatabase&#39;</span><span class="o">][</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;UPC Barcode&#39;</span>
+                <span class="nb">puts</span> <span class="s1">&#39;Barcode - &#39;</span> <span class="o">+</span> <span class="n">externalIdentifier</span><span class="o">[</span><span class="s1">&#39;Identifier&#39;</span><span class="o">]</span>
+                <span class="k">break</span>
+            <span class="k">end</span>
+        <span class="p">}</span>
+    <span class="k">rescue</span> <span class="no">Exception</span><span class="o">=&gt;</span><span class="n">e</span>
+    <span class="k">end</span>
+<span class="k">rescue</span> <span class="no">Exception</span><span class="o">=&gt;</span><span class="n">e</span>
+<span class="k">end</span>
+
+<span class="k">begin</span>
+    <span class="n">genreValues</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">genres</span> <span class="o">=</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;Genres&#39;</span><span class="o">]</span>
+    <span class="n">genres</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span>
+        <span class="o">|</span><span class="n">genre</span><span class="o">|</span> <span class="n">genreValues</span> <span class="o">+=</span> <span class="n">genre</span><span class="o">[</span><span class="s1">&#39;Genre&#39;</span><span class="o">][</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span>    
+    <span class="p">}</span>
+    <span class="nb">puts</span> <span class="s1">&#39;Genres - &#39;</span> <span class="o">+</span> <span class="n">genreValues</span><span class="o">.</span><span class="n">chomp</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
+<span class="k">rescue</span> <span class="no">Exception</span><span class="o">=&gt;</span><span class="n">e</span>
+<span class="k">end</span>
+    
+<span class="k">begin</span>
+    <span class="nb">puts</span> <span class="s1">&#39;Track List:&#39;</span>
+    <span class="n">tracks</span> <span class="o">=</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;Tracks&#39;</span><span class="o">]</span>
+    <span class="n">tracks</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span>
+        <span class="o">|</span><span class="n">track</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">track</span><span class="o">[</span><span class="s1">&#39;SequenceNo&#39;</span><span class="o">].</span><span class="n">to_s</span> <span class="o">+</span> <span class="s1">&#39;) &#39;</span> <span class="o">+</span> <span class="n">track</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">formatTime</span><span class="p">(</span><span class="n">track</span><span class="o">[</span><span class="s1">&#39;TotalSeconds&#39;</span><span class="o">].</span><span class="n">to_f</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+    <span class="p">}</span>
+<span class="k">rescue</span> <span class="no">Exception</span><span class="o">=&gt;</span><span class="n">e</span>
+<span class="k">end</span>
+</pre>
+                            </div>
+
+
+
+                            <h2><a name="albumscoverart"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Albums: Get Album Cover Art</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;./util&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./settings&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s2">&quot;base64&quot;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+
+<span class="k">def</span> <span class="nf">beginAlbumArtRetrieve</span><span class="p">(</span><span class="n">albumID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Set the request URL</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Albums/&#39;</span> <span class="o">+</span> <span class="n">albumID</span> <span class="o">+</span> <span class="s1">&#39;/Image&#39;</span>
+
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s1">&#39;&lt;img src=&quot;data:image/jpeg;base64,&#39;</span> <span class="o">+</span> <span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;&#39;</span>
+
+<span class="k">end</span>
+    
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginAlbumArtRetrieve</span><span class="p">(</span><span class="n">albumID</span><span class="p">,</span> <span class="vg">$applicationID</span><span class="p">,</span> <span class="vg">$applicationKey</span><span class="p">)</span>
+
+<span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;album_art_retrieve.html&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="o">|</span><span class="n">file</span><span class="o">|</span> <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> 
+<span class="p">}</span>
+
+<span class="nb">puts</span> <span class="s1">&#39;Album art written to album_art_retrieve.html&#39;</span>
+</pre>
+                            </div>
+
+
+
+
+                            <h2><a name="participantssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Participants: Search for participants by name</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;./util&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./settings&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+
+<span class="k">def</span> <span class="nf">beginParticipantSearch</span><span class="p">(</span><span class="n">participantName</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Set the request URL</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Participants/?name=&#39;</span> <span class="o">+</span> <span class="ss">URI</span><span class="p">:</span><span class="ss">:encode</span><span class="p">(</span><span class="n">participantName</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span>
+        
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="c1"># Return the collection of participant objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">]</span>
+    
+<span class="k">end</span>
+
+<span class="c1"># Search for participants by name </span>
+<span class="nb">puts</span> <span class="s1">&#39;Please enter a participant name:&#39;</span>
+<span class="n">participantName</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginParticipantSearch</span><span class="p">(</span><span class="n">participantName</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c1"># Output the search results</span>
+<span class="n">result</span><span class="o">.</span><span class="n">each</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="o">|</span><span class="n">participant</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">participant</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">participant</span><span class="o">[</span><span class="s1">&#39;DateBorn&#39;</span><span class="o">][</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span>
+<span class="p">}</span>
+</pre>
+                            </div>
+
+
+
+
+
+                            <h2><a name="participantsretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Participants: Retrieve participant with associations and track appearances</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;./util&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./settings&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+
+<span class="k">def</span> <span class="nf">beginParticipantRetrieve</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s1">&#39;Names;GroupMembers;Nationalities;GeographicAreas;Annotations;ChartsAwards;Relationships;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Participants/?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s1">&#39;&amp;id=&#39;</span> <span class="o">+</span> <span class="n">participantID</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span>
+
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="c1"># Return the participant object</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
+    
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">beginParticipantAssociates</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s1">&#39;Names;GroupMembers;Nationalities;GeographicAreas;Annotations;ChartsAwards;Relationships;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Participants/&#39;</span> <span class="o">+</span> <span class="n">participantID</span> <span class="o">+</span> <span class="s1">&#39;/Associates?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span>    
+
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="c1"># Return the collection of participant associate objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">]</span>
+
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">beginParticipantTrackAppearances</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+    
+    <span class="c1"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s1">&#39;Names;GroupMembers;Nationalities;GeographicAreas;Annotations;ChartsAwards;Relationships;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Participants/&#39;</span> <span class="o">+</span> <span class="n">participantID</span> <span class="o">+</span> <span class="s1">&#39;/Tracks?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span>
+
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="c1"># Return the collection of track appearance objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">]</span>
+    
+<span class="k">end</span>
+
+<span class="c1"># Retreive participant with associations and track appearances  </span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginParticipantRetrieve</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="s1">&#39;Participant Name - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginParticipantAssociates</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="s1">&#39;Associates:&#39;</span><span class="p">;</span>
+<span class="n">result</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span>
+    <span class="o">|</span><span class="n">associate</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">associate</span><span class="o">[</span><span class="s1">&#39;Participant&#39;</span><span class="o">][</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginParticipantTrackAppearances</span><span class="p">(</span><span class="n">participantID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="s1">&#39;Track Appearances:&#39;</span><span class="p">;</span>
+<span class="n">result</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span>
+    <span class="o">|</span><span class="n">trackAppearance</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">trackAppearance</span><span class="o">[</span><span class="s1">&#39;TrackName&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">trackAppearance</span><span class="o">[</span><span class="s1">&#39;AlbumName&#39;</span><span class="o">]</span>
+<span class="p">}</span>
+</pre>
+                            </div>
+
+
+
+                            <h2><a name="trackssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Tracks: Search for tracks by title</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;./util&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./settings&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+
+<span class="k">def</span> <span class="nf">beginTrackSearch</span><span class="p">(</span><span class="n">trackTitle</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Set the request URL</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Tracks/?trackTitle=&#39;</span> <span class="o">+</span> <span class="ss">URI</span><span class="p">:</span><span class="ss">:encode</span><span class="p">(</span><span class="n">trackTitle</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span>
+        
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="c1"># Return the collection of track objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">]</span>
+    
+<span class="k">end</span>
+
+<span class="c1"># Search for tracks by name</span>
+<span class="nb">puts</span> <span class="s1">&#39;Please enter a track name:&#39;</span>
+<span class="n">trackName</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginTrackSearch</span><span class="p">(</span><span class="n">trackName</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c1"># Output the search results</span>
+<span class="n">result</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> 
+    <span class="o">|</span><span class="n">track</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">track</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">track</span><span class="o">[</span><span class="s1">&#39;Artists&#39;</span><span class="o">]</span>
+<span class="p">}</span>
+</pre>
+                            </div>
+
+                            <h2><a name="tracksretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Tracks: Retrieve track with participations</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;./util&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./settings&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+
+<span class="k">def</span> <span class="nf">beginTrackRetrieve</span><span class="p">(</span><span class="n">trackID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s1">&#39;Names;Participations;ExternalIdentifiers;Genres;Performances;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Tracks/?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s1">&#39;&amp;id=&#39;</span> <span class="o">+</span> <span class="n">trackID</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span>
+
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="c1"># Return the track object</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
+    
+<span class="k">end</span>
+
+<span class="c1"># Retrieve track with participations</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginTrackRetrieve</span><span class="p">(</span><span class="n">trackID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c1"># Output the results</span>
+<span class="nb">puts</span> <span class="s1">&#39;Track Information:&#39;</span>
+<span class="nb">puts</span> <span class="s1">&#39;Name - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span>
+<span class="nb">puts</span> <span class="s1">&#39;Artists - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;Artists&#39;</span><span class="o">]</span>
+<span class="nb">puts</span> <span class="s1">&#39;Track Number - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;TrackNumber&#39;</span><span class="o">]</span>
+<span class="nb">puts</span> <span class="s1">&#39;Disc Number - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;DiscNumber&#39;</span><span class="o">]</span>
+<span class="nb">puts</span> <span class="s1">&#39;Duration - &#39;</span> <span class="o">+</span> <span class="n">formatTime</span><span class="p">(</span><span class="n">result</span><span class="o">[</span><span class="s1">&#39;TotalSeconds&#39;</span><span class="o">].</span><span class="n">to_f</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="s1">&#39;Participations:&#39;</span><span class="p">;</span>
+<span class="n">result</span><span class="o">[</span><span class="s1">&#39;Participations&#39;</span><span class="o">].</span><span class="n">each</span> <span class="p">{</span>
+    <span class="o">|</span><span class="n">participant</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">participant</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span><span class="p">;</span>
+<span class="p">}</span>
+</pre>
+                            </div>
+
+
+                            <h2><a name="workssearch"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Works: Search for works by name</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;./util&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./settings&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+
+<span class="k">def</span> <span class="nf">beginWorkSearch</span><span class="p">(</span><span class="n">workName</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Set the request URL</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Works/?name=&#39;</span> <span class="o">+</span> <span class="ss">URI</span><span class="p">:</span><span class="ss">:encode</span><span class="p">(</span><span class="n">workName</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span>
+        
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="c1"># Return the collection of track objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">]</span>
+    
+<span class="k">end</span>
+
+<span class="c1"># Search for works by name</span>
+<span class="nb">puts</span> <span class="s1">&#39;Please enter a work name:&#39;</span>
+<span class="n">workName</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginWorkSearch</span><span class="p">(</span><span class="n">workName</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+<span class="c1"># Output the search results</span>
+<span class="n">result</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> 
+    <span class="o">|</span><span class="n">work</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">work</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">work</span><span class="o">[</span><span class="s1">&#39;Composers&#39;</span><span class="o">]</span>
+<span class="p">}</span>
+</pre>
+                            </div>
+
+
+                            <h2><a name="worksretrieve"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Works: Retrieve work with track appearances</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+
+
+
+                            <div class="ruby">
+                                <pre><span class="nb">require</span> <span class="s1">&#39;./util&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./settings&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+
+<span class="k">def</span> <span class="nf">beginWorkRetrieve</span><span class="p">(</span><span class="n">workID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s1">&#39;Annotations;ChartsAwards;Genres;Movements;Names;Nationalities;Publications;Publishers;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Works/?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s1">&#39;&amp;id=&#39;</span> <span class="o">+</span> <span class="n">workID</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span>
+
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="c1"># Return the work object</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
+    
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">beginWorkTrackAppearances</span><span class="p">(</span><span class="n">workID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Set the request URL</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="s1">&#39;Annotations;ChartsAwards;Genres;Movements;Names;Nationalities;Publications;Publishers;&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.decibel.net/v1/Works/&#39;</span> <span class="o">+</span> <span class="n">workID</span> <span class="o">+</span> <span class="s1">&#39;/Tracks&#39;</span> <span class="o">+</span> <span class="s1">&#39;?depth=&#39;</span> <span class="o">+</span> <span class="n">depth</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span>   
+
+    <span class="c1"># Send the GET request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+
+    <span class="c1"># Interpret the JSON response </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="c1"># Return the collection of participant associate objects</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;ResultSet&#39;</span><span class="o">]</span>
+
+<span class="k">end</span>
+
+<span class="c1"># Retrieve work with track appearances  </span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginWorkRetrieve</span><span class="p">(</span><span class="n">workID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="s1">&#39;Name - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;Name&#39;</span><span class="o">]</span>
+<span class="nb">puts</span> <span class="s1">&#39;Composers - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;Composers&#39;</span><span class="o">]</span>
+<span class="nb">puts</span> <span class="s1">&#39;Catalogue - &#39;</span> <span class="o">+</span> <span class="n">result</span><span class="o">[</span><span class="s1">&#39;Catalogue&#39;</span><span class="o">]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">beginWorkTrackAppearances</span><span class="p">(</span><span class="n">workID</span><span class="p">,</span> <span class="n">applicationID</span><span class="p">,</span> <span class="n">applicationKey</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="s1">&#39;Track Appearances:&#39;</span><span class="p">;</span>
+<span class="n">result</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span>
+    <span class="o">|</span><span class="n">trackAppearance</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">trackAppearance</span><span class="o">[</span><span class="s1">&#39;TrackName&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">trackAppearance</span><span class="o">[</span><span class="s1">&#39;TrackArtistName&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">trackAppearance</span><span class="o">[</span><span class="s1">&#39;AlbumName&#39;</span><span class="o">]</span>
+<span class="p">}</span>
+</pre>
+                            </div>
+                        </div>
+                        
+                    </td>
+                    <td valign="top" style="width: 260px">
+                        <div class="container" style="margin-left: 0px; margin-top: 0px">
+                            <h2>Contents</h2>
+
+                            <p></p>
+                            <div class="feed">
+                                <ul>
+                                    <li><span style="color: black"><strong>Calling the API</strong></span></li>
+                                    <li><a href="#net::http">Net::HTTP</a></li>
+                                    <li><a href="#openuri">OpenURI</a></li>
+                                    <li><a href="#interpretingxml">Interpreting XML</a></li>
+                                    <li><a href="#interpretingjson">Interpreting JSON</a></li>
+                                    <li><span style="color: black"><strong>Code Examples</strong></span></li>
+                                    <li><a href="#albumssearch">Albums: Search by Title</a></li>
+                                    <li><a href="#albumsretrieve">Album: Retrieve Album</a></li>
+                                    <li><a href="#albumscoverart">Album: Get Cover Art</a></li>
+                                    <li><a href="#participantssearch">Artists: Search by Name</a></li>
+                                    <li><a href="#participantsretrieve">Artist: Retrieve Artist</a></li>
+                                    <li><a href="#trackssearch">Recordings: Search by Title</a></li>
+                                    <li><a href="#tracksretrieve">Recording: Retrieve Recording</a></li>
+                                </ul>
+                            </div>
+                        </div>                    
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="footer">
+
+        <div id="foot-wrap">
+
+            <script type="text/javascript">
+                var d = new Date();
+                document.getElementById("foot-wrap").appendChild(document.createTextNode("© " + d.getFullYear() + " Decibel Music Systems Ltd"));
+            </script>
+
+            <br />
+            The Decibel name, associated trade marks and logos and the &quot;magnifying glass note&quot; logo are trade marks of Decibel Music Systems Limited.
+        <br />
+            The Old Truman Brewery, 91 Brick Lane, London E1 6QL, UK +44 20 3657 9760
+        <br />
+
+            <a href="http://www.3scale.net/" target="_blank">
+                <img alt="Powered by 3scale" src="images/powered_by_logo.png">
+            </a>
+
+            <div id="flashWrapper" style="display: none;">
+                <div class="ajaxNoticeValid alwaysontop "></div>
+            </div>
+
+            <script type="text/javascript" charset="utf-8">
+                jQuery(document).ready(function () {
+                    setTimeout($.flash.hide, 5000);
+                });
+        </script>
+
+        </div>
+    </div>
+</body>
+</html>

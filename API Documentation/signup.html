@@ -1,0 +1,1446 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Java Sample Code</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="javascript/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="javascript/jquery.colorbox-min.js" type="text/javascript"></script>
+    <link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="javascript/highlight.pack.js" type="text/javascript"></script>
+    <script src="javascript/help.js" type="text/javascript"></script>
+    <script src="javascript/flash.js" type="text/javascript"></script>
+    <script src="javascript/remote.js" type="text/javascript"></script>
+    <script src="javascript/switch.js" type="text/javascript"></script>
+    <script src="javascript/ajax_upload.js" type="text/javascript"></script>
+    <script src="javascript/extra_fields.js" type="text/javascript"></script>
+    <script src="javascript/application.js" type="text/javascript"></script>
+    <link href="css/default.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#" />
+    <script type="text/javascript" src="html5.js"></script>
+    <script type="text/javascript" src="eCSStender.js"></script>
+    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="javascript/prettify.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var offset = $("#sidebar").offset(); //Sets which element is scrollable. In this case it's the div .sidebar
+            var topPadding = 30;  //Set how much top-padding the element has.
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > offset.top) {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: $(window).scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: 0
+                    });
+                };
+            });
+        });
+
+    </script>
+</head>
+
+<body class="home">
+
+    <div id="page">
+
+        <div id="header">
+            <a id="header-logo" href="index.html">
+                <img src="images/logo-white.png" /></a>
+            <div id="header-widget">
+                <div id="user_widget" class="round">
+                    <a href="login.html">Sign in</a>
+                    | <a href="signup.html">Sign up</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="content">
+
+            <table style="width: 90%" cellspacing="0" cellpadding="10">
+                <tr>
+                    <td valign="top" style="width: 250px">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <div id='cssmenu'>
+                                <ul>
+                                    <li><a href='decibel-sdk.html'><span>Home</span></a></li>
+                                    <li><a href='news.html'><span>News</span></a></li>
+                                    <li><a href='our-api.html'><span>API Music Metadata</span></a></li>
+                                    <li><a href='authentication.html'><span>API Authentication</span></a></li>
+                                    <li><a href='rest-api-v2.html'><span>REST API Documentation</span></a></li>
+                                    <li><a href='hackathons.html'><span>Hackathons</span></a></li>
+                                    <li><a href='forum.html'><span>Forum</span></a></li>
+                                    <li><a href='support.html'><span>Support</span></a></li>
+                                    <li><a href='faq.html'><span>FAQ</span></a></li>
+                                    <li><a href='termsandconditions.html'><span>Terms and Conditions</span></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <h2>Signup</h2>
+
+
+
+
+                            <form accept-charset="UTF-8" action="https://developer.decibel.net/signup" class="formtastic account formtastic" id="signup_form" method="post">
+                                <div style="margin: 0; padding: 0; display: inline">
+                                    <input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="AC/50CWstHJXfHgBhAsYFl8Vnpq+TvQ0FB5+TyYGcOk=" /><input name="_method" type="hidden" value="post" />
+                                </div>
+                                <fieldset class="inputs" name="User Information">
+                                    <legend><span>User Information</span></legend>
+                                    <ol>
+                                        <li class="string false"
+                                            id="account_user_title_input">
+                                            <label for="account_user_title_id">
+                                                Title
+          
+     
+                                            </label>
+                                            <input type="text"
+                                                name="account[user][title]"
+                                                id="account_user_title_id"
+                                                value=""
+                                                class="" />
+
+                                        </li>
+
+                                        <li class="string true"
+                                            id="account_user_first_name_input">
+                                            <label for="account_user_first_name_id">
+                                                First name
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <input type="text"
+                                                name="account[user][first_name]"
+                                                id="account_user_first_name_id"
+                                                value=""
+                                                class="" />
+
+                                        </li>
+
+                                        <li class="string true"
+                                            id="account_user_last_name_input">
+                                            <label for="account_user_last_name_id">
+                                                Last name
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <input type="text"
+                                                name="account[user][last_name]"
+                                                id="account_user_last_name_id"
+                                                value=""
+                                                class="" />
+
+                                        </li>
+
+                                        <li class="string true"
+                                            id="account_user_username_input">
+                                            <label for="account_user_username_id">
+                                                Username
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <input type="text"
+                                                name="account[user][username]"
+                                                id="account_user_username_id"
+                                                value=""
+                                                class="" />
+
+                                        </li>
+                                        <li class="string true"
+                                            id="account_user_email_input">
+                                            <label for="account_user_email_id">
+                                                Email
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <input type="text"
+                                                name="account[user][email]"
+                                                id="account_user_email_id"
+                                                value=""
+                                                class="" />
+
+                                        </li>
+                                        <li class="password required" id="account_user_password_input">
+                                            <label for="account_user_password">Password<abbr title="required">*</abbr></label>
+                                            <input id="account_user_password" name="account[user][password]" type="password">
+                                        </li>
+
+                                        <li class="password required" id="account_user_password_confirmation_input">
+                                            <label for="account_user_password_confirmation">
+                                                Password confirmation
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <input id="account_user_password_confirmation" name="account[user][password_confirmation]" type="password">
+                                        </li>
+
+                                    </ol>
+                                </fieldset>
+
+                                <fieldset class="inputs" name="Contact Details">
+                                    <legend><span>Contact Details</span></legend>
+                                    <ol>
+                                        <li class="string true"
+                                            id="account_org_name_input">
+                                            <label for="account_org_name_id">
+                                                Company/Organization Name
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <input type="text"
+                                                name="account[org_name]"
+                                                id="account_org_name_id"
+                                                value=""
+                                                class="" />
+
+                                        </li>
+                                        <li class="string true"
+                                            id="account_role_input">
+                                            <label for="account_role_id">
+                                                Your Role
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <input type="text"
+                                                name="account[role]"
+                                                id="account_role_id"
+                                                value=""
+                                                class="" />
+
+                                        </li>
+                                        <li class="select true"
+                                            id="account_industry_sector_input">
+                                            <label for="account_industry_sector_id">
+                                                Industry Sector
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <select name="account[industry_sector]" id="account_industry_sector_id"
+                                                class="">
+                                                <option />
+
+                                                <option
+                                                    value="Broadcaster">Broadcaster</option>
+
+                                                <option
+                                                    value="Digital Service Provider">Digital Service Provider</option>
+
+                                                <option
+                                                    value="Freelance">Freelance</option>
+
+                                                <option
+                                                    value="Record Label">Record Label</option>
+
+                                                <option
+                                                    value="Music Publisher">Music Publisher</option>
+
+                                                <option
+                                                    value="Research">Research</option>
+
+                                                <option
+                                                    value="Retailer">Retailer</option>
+
+                                                <option
+                                                    value="Student">Student</option>
+
+                                                <option
+                                                    value="TV/Film">TV/Film</option>
+
+                                                <option
+                                                    value="Other">Other</option>
+
+                                            </select>
+
+                                        </li>
+                                        <li class="string true"
+                                            id="account_url_input">
+                                            <label for="account_url_id">
+                                                Your URL 
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <input type="text"
+                                                name="account[url]"
+                                                id="account_url_id"
+                                                value=""
+                                                class="" />
+
+                                        </li>
+                                        <li class="select true"
+                                            id="account_country_input">
+                                            <label for="account_country_id">
+                                                Country
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <select name="account[country_id]" id="account_country_id"
+                                                class="">
+                                                <option />
+
+                                                <option
+                                                    value="46">Afghanistan</option>
+
+                                                <option
+                                                    value="176">Åland Islands</option>
+
+                                                <option
+                                                    value="76">Albania</option>
+
+                                                <option
+                                                    value="676">Algeria</option>
+
+                                                <option
+                                                    value="136">American Samoa</option>
+
+                                                <option
+                                                    value="26">Andorra</option>
+
+                                                <option
+                                                    value="106">Angola</option>
+
+                                                <option
+                                                    value="66">Anguilla</option>
+
+                                                <option
+                                                    value="116">Antarctica</option>
+
+                                                <option
+                                                    value="56">Antigua and Barbuda</option>
+
+                                                <option
+                                                    value="126">Argentina</option>
+
+                                                <option
+                                                    value="86">Armenia</option>
+
+                                                <option
+                                                    value="166">Aruba</option>
+
+                                                <option
+                                                    value="16">Ascension Island</option>
+
+                                                <option
+                                                    value="156">Australia</option>
+
+                                                <option
+                                                    value="146">Austria</option>
+
+                                                <option
+                                                    value="186">Azerbaijan</option>
+
+                                                <option
+                                                    value="346">Bahamas</option>
+
+                                                <option
+                                                    value="256">Bahrain</option>
+
+                                                <option
+                                                    value="216">Bangladesh</option>
+
+                                                <option
+                                                    value="206">Barbados</option>
+
+                                                <option
+                                                    value="386">Belarus</option>
+
+                                                <option
+                                                    value="226">Belgium</option>
+
+                                                <option
+                                                    value="396">Belize</option>
+
+                                                <option
+                                                    value="276">Benin</option>
+
+                                                <option
+                                                    value="296">Bermuda</option>
+
+                                                <option
+                                                    value="356">Bhutan</option>
+
+                                                <option
+                                                    value="316">Bolivia</option>
+
+                                                <option
+                                                    value="196">Bosnia and Herzegovina</option>
+
+                                                <option
+                                                    value="376">Botswana</option>
+
+                                                <option
+                                                    value="366">Bouvet Island</option>
+
+                                                <option
+                                                    value="336">Brazil</option>
+
+                                                <option
+                                                    value="326">British Antarctic Territory</option>
+
+                                                <option
+                                                    value="1156">British Indian Ocean Territory</option>
+
+                                                <option
+                                                    value="2546">British Virgin Islands</option>
+
+                                                <option
+                                                    value="306">Brunei</option>
+
+                                                <option
+                                                    value="246">Bulgaria</option>
+
+                                                <option
+                                                    value="236">Burkina Faso</option>
+
+                                                <option
+                                                    value="266">Burundi</option>
+
+                                                <option
+                                                    value="1276">Cambodia</option>
+
+                                                <option
+                                                    value="496">Cameroon</option>
+
+                                                <option
+                                                    value="406">Canada</option>
+
+                                                <option
+                                                    value="1096">Canary Islands</option>
+
+                                                <option
+                                                    value="556">Canton and Enderbury Islands</option>
+
+                                                <option
+                                                    value="576">Cape Verde</option>
+
+                                                <option
+                                                    value="1346">Cayman Islands</option>
+
+                                                <option
+                                                    value="436">Central African Republic</option>
+
+                                                <option
+                                                    value="686">Ceuta and Melilla</option>
+
+                                                <option
+                                                    value="2306">Chad</option>
+
+                                                <option
+                                                    value="486">Chile</option>
+
+                                                <option
+                                                    value="506">China</option>
+
+                                                <option
+                                                    value="586">Christmas Island</option>
+
+                                                <option
+                                                    value="526">Clipperton Island</option>
+
+                                                <option
+                                                    value="416">Cocos [Keeling] Islands</option>
+
+                                                <option
+                                                    value="516">Colombia</option>
+
+                                                <option
+                                                    value="1296">Comoros</option>
+
+                                                <option
+                                                    value="446">Congo - Brazzaville</option>
+
+                                                <option
+                                                    value="426">Congo - Kinshasa</option>
+
+                                                <option
+                                                    value="476">Cook Islands</option>
+
+                                                <option
+                                                    value="536">Costa Rica</option>
+
+                                                <option
+                                                    value="466">Côte d'Ivoire</option>
+
+                                                <option
+                                                    value="1066">Croatia</option>
+
+                                                <option
+                                                    value="566">Cuba</option>
+
+                                                <option
+                                                    value="596">Cyprus</option>
+
+                                                <option
+                                                    value="606">Czech Republic</option>
+
+                                                <option
+                                                    value="646">Denmark</option>
+
+                                                <option
+                                                    value="626">Diego Garcia</option>
+
+                                                <option
+                                                    value="636">Djibouti</option>
+
+                                                <option
+                                                    value="656">Dominica</option>
+
+                                                <option
+                                                    value="666">Dominican Republic</option>
+
+                                                <option
+                                                    value="1806">Dronning Maud Land</option>
+
+                                                <option
+                                                    value="696">Ecuador</option>
+
+                                                <option
+                                                    value="716">Egypt</option>
+
+                                                <option
+                                                    value="2256">El Salvador</option>
+
+                                                <option
+                                                    value="966">Equatorial Guinea</option>
+
+                                                <option
+                                                    value="736">Eritrea</option>
+
+                                                <option
+                                                    value="706">Estonia</option>
+
+                                                <option
+                                                    value="746">Ethiopia</option>
+
+                                                <option
+                                                    value="756">European Union</option>
+
+                                                <option
+                                                    value="786">Falkland Islands</option>
+
+                                                <option
+                                                    value="806">Faroe Islands</option>
+
+                                                <option
+                                                    value="776">Fiji</option>
+
+                                                <option
+                                                    value="766">Finland</option>
+
+                                                <option
+                                                    value="826">France</option>
+
+                                                <option
+                                                    value="886">French Guiana</option>
+
+                                                <option
+                                                    value="1886">French Polynesia</option>
+
+                                                <option
+                                                    value="816">French Southern and Antarctic Territories</option>
+
+                                                <option
+                                                    value="2316">French Southern Territories</option>
+
+                                                <option
+                                                    value="846">Gabon</option>
+
+                                                <option
+                                                    value="936">Gambia</option>
+
+                                                <option
+                                                    value="876">Georgia</option>
+
+                                                <option
+                                                    value="616">Germany</option>
+
+                                                <option
+                                                    value="906">Ghana</option>
+
+                                                <option
+                                                    value="916">Gibraltar</option>
+
+                                                <option
+                                                    value="976">Greece</option>
+
+                                                <option
+                                                    value="926">Greenland</option>
+
+                                                <option
+                                                    value="866">Grenada</option>
+
+                                                <option
+                                                    value="956">Guadeloupe</option>
+
+                                                <option
+                                                    value="1006">Guam</option>
+
+                                                <option
+                                                    value="996">Guatemala</option>
+
+                                                <option
+                                                    value="896">Guernsey</option>
+
+                                                <option
+                                                    value="946">Guinea</option>
+
+                                                <option
+                                                    value="1016">Guinea-Bissau</option>
+
+                                                <option
+                                                    value="1026">Guyana</option>
+
+                                                <option
+                                                    value="1076">Haiti</option>
+
+                                                <option
+                                                    value="1046">Heard Island and McDonald Islands</option>
+
+                                                <option
+                                                    value="1056">Honduras</option>
+
+                                                <option
+                                                    value="1036">Hong Kong SAR China</option>
+
+                                                <option
+                                                    value="1086">Hungary</option>
+
+                                                <option
+                                                    value="1186">Iceland</option>
+
+                                                <option
+                                                    value="1146">India</option>
+
+                                                <option
+                                                    value="1106">Indonesia</option>
+
+                                                <option
+                                                    value="1176">Iran</option>
+
+                                                <option
+                                                    value="1166">Iraq</option>
+
+                                                <option
+                                                    value="1116">Ireland</option>
+
+                                                <option
+                                                    value="1136">Isle of Man</option>
+
+                                                <option
+                                                    value="1126">Israel</option>
+
+                                                <option
+                                                    value="1196">Italy</option>
+
+                                                <option
+                                                    value="1216">Jamaica</option>
+
+                                                <option
+                                                    value="1236">Japan</option>
+
+                                                <option
+                                                    value="1206">Jersey</option>
+
+                                                <option
+                                                    value="1246">Johnston Island</option>
+
+                                                <option
+                                                    value="1226">Jordan</option>
+
+                                                <option
+                                                    value="1356">Kazakhstan</option>
+
+                                                <option
+                                                    value="1256">Kenya</option>
+
+                                                <option
+                                                    value="1286">Kiribati</option>
+
+                                                <option
+                                                    value="1336">Kuwait</option>
+
+                                                <option
+                                                    value="1266">Kyrgyzstan</option>
+
+                                                <option
+                                                    value="1366">Laos</option>
+
+                                                <option
+                                                    value="1456">Latvia</option>
+
+                                                <option
+                                                    value="1376">Lebanon</option>
+
+                                                <option
+                                                    value="1426">Lesotho</option>
+
+                                                <option
+                                                    value="1416">Liberia</option>
+
+                                                <option
+                                                    value="1466">Libya</option>
+
+                                                <option
+                                                    value="1396">Liechtenstein</option>
+
+                                                <option
+                                                    value="1436">Lithuania</option>
+
+                                                <option
+                                                    value="1446">Luxembourg</option>
+
+                                                <option
+                                                    value="1596">Macau SAR China</option>
+
+                                                <option
+                                                    value="1556">Macedonia</option>
+
+                                                <option
+                                                    value="1526">Madagascar</option>
+
+                                                <option
+                                                    value="1676">Malawi</option>
+
+                                                <option
+                                                    value="1696">Malaysia</option>
+
+                                                <option
+                                                    value="1666">Maldives</option>
+
+                                                <option
+                                                    value="1566">Mali</option>
+
+                                                <option
+                                                    value="1646">Malta</option>
+
+                                                <option
+                                                    value="1536">Marshall Islands</option>
+
+                                                <option
+                                                    value="1616">Martinique</option>
+
+                                                <option
+                                                    value="1626">Mauritania</option>
+
+                                                <option
+                                                    value="1656">Mauritius</option>
+
+                                                <option
+                                                    value="2636">Mayotte</option>
+
+                                                <option
+                                                    value="836">Metropolitan France</option>
+
+                                                <option
+                                                    value="1686">Mexico</option>
+
+                                                <option
+                                                    value="796">Micronesia</option>
+
+                                                <option
+                                                    value="1546">Midway Islands</option>
+
+                                                <option
+                                                    value="1496">Moldova</option>
+
+                                                <option
+                                                    value="1486">Monaco</option>
+
+                                                <option
+                                                    value="1586">Mongolia</option>
+
+                                                <option
+                                                    value="1506">Montenegro</option>
+
+                                                <option
+                                                    value="1636">Montserrat</option>
+
+                                                <option
+                                                    value="1476">Morocco</option>
+
+                                                <option
+                                                    value="1706">Mozambique</option>
+
+                                                <option
+                                                    value="1576">Myanmar [Burma]</option>
+
+                                                <option
+                                                    value="1716">Namibia</option>
+
+                                                <option
+                                                    value="1816">Nauru</option>
+
+                                                <option
+                                                    value="1796">Nepal</option>
+
+                                                <option
+                                                    value="1776">Netherlands</option>
+
+                                                <option
+                                                    value="96">Netherlands Antilles</option>
+
+                                                <option
+                                                    value="1726">New Caledonia</option>
+
+                                                <option
+                                                    value="1836">New Zealand</option>
+
+                                                <option
+                                                    value="1766">Nicaragua</option>
+
+                                                <option
+                                                    value="1736">Niger</option>
+
+                                                <option
+                                                    value="1756">Nigeria</option>
+
+                                                <option
+                                                    value="1826">Niue</option>
+
+                                                <option
+                                                    value="1746">Norfolk Island</option>
+
+                                                <option
+                                                    value="1316">North Korea</option>
+
+                                                <option
+                                                    value="1606">Northern Mariana Islands</option>
+
+                                                <option
+                                                    value="1786">Norway</option>
+
+                                                <option
+                                                    value="1846">Oman</option>
+
+                                                <option
+                                                    value="2036">Outlying Oceania</option>
+
+                                                <option
+                                                    value="1866">Pacific Islands Trust Territory</option>
+
+                                                <option
+                                                    value="1916">Pakistan</option>
+
+                                                <option
+                                                    value="1996">Palau</option>
+
+                                                <option
+                                                    value="1966">Palestinian Territories</option>
+
+                                                <option
+                                                    value="1856">Panama</option>
+
+                                                <option
+                                                    value="2016">Panama Canal Zone</option>
+
+                                                <option
+                                                    value="1896">Papua New Guinea</option>
+
+                                                <option
+                                                    value="2006">Paraguay</option>
+
+                                                <option
+                                                    value="2616">People's Democratic Republic of Yemen</option>
+
+                                                <option
+                                                    value="1876">Peru</option>
+
+                                                <option
+                                                    value="1906">Philippines</option>
+
+                                                <option
+                                                    value="1946">Pitcairn Islands</option>
+
+                                                <option
+                                                    value="1926">Poland</option>
+
+                                                <option
+                                                    value="1976">Portugal</option>
+
+                                                <option
+                                                    value="1956">Puerto Rico</option>
+
+                                                <option
+                                                    value="2026">Qatar</option>
+
+                                                <option
+                                                    value="2046">Réunion</option>
+
+                                                <option
+                                                    value="2056">Romania</option>
+
+                                                <option
+                                                    value="2076">Russia</option>
+
+                                                <option
+                                                    value="2086">Rwanda</option>
+
+                                                <option
+                                                    value="286">Saint Barthélemy</option>
+
+                                                <option
+                                                    value="2156">Saint Helena</option>
+
+                                                <option
+                                                    value="1306">Saint Kitts and Nevis</option>
+
+                                                <option
+                                                    value="1386">Saint Lucia</option>
+
+                                                <option
+                                                    value="1516">Saint Martin</option>
+
+                                                <option
+                                                    value="1936">Saint Pierre and Miquelon</option>
+
+                                                <option
+                                                    value="2526">Saint Vincent and the Grenadines</option>
+
+                                                <option
+                                                    value="2606">Samoa</option>
+
+                                                <option
+                                                    value="2206">San Marino</option>
+
+                                                <option
+                                                    value="2246">São Tomé and Príncipe</option>
+
+                                                <option
+                                                    value="2096">Saudi Arabia</option>
+
+                                                <option
+                                                    value="2216">Senegal</option>
+
+                                                <option
+                                                    value="2066">Serbia</option>
+
+                                                <option
+                                                    value="546">Serbia and Montenegro</option>
+
+                                                <option
+                                                    value="2116">Seychelles</option>
+
+                                                <option
+                                                    value="2196">Sierra Leone</option>
+
+                                                <option
+                                                    value="2146">Singapore</option>
+
+                                                <option
+                                                    value="2186">Slovakia</option>
+
+                                                <option
+                                                    value="2166">Slovenia</option>
+
+                                                <option
+                                                    value="2106">Solomon Islands</option>
+
+                                                <option
+                                                    value="2226">Somalia</option>
+
+                                                <option
+                                                    value="2646">South Africa</option>
+
+                                                <option
+                                                    value="986">South Georgia and the South Sandwich Islands</option>
+
+                                                <option
+                                                    value="1326">South Korea</option>
+
+                                                <option
+                                                    value="6">Spain</option>
+
+                                                <option
+                                                    value="1406">Sri Lanka</option>
+
+                                                <option
+                                                    value="2126">Sudan</option>
+
+                                                <option
+                                                    value="2236">Suriname</option>
+
+                                                <option
+                                                    value="2176">Svalbard and Jan Mayen</option>
+
+                                                <option
+                                                    value="2276">Swaziland</option>
+
+                                                <option
+                                                    value="2136">Sweden</option>
+
+                                                <option
+                                                    value="456">Switzerland</option>
+
+                                                <option
+                                                    value="2266">Syria</option>
+
+                                                <option
+                                                    value="2436">Taiwan</option>
+
+                                                <option
+                                                    value="2346">Tajikistan</option>
+
+                                                <option
+                                                    value="2446">Tanzania</option>
+
+                                                <option
+                                                    value="2336">Thailand</option>
+
+                                                <option
+                                                    value="2366">Timor-Leste</option>
+
+                                                <option
+                                                    value="2326">Togo</option>
+
+                                                <option
+                                                    value="2356">Tokelau</option>
+
+                                                <option
+                                                    value="2396">Tonga</option>
+
+                                                <option
+                                                    value="2416">Trinidad and Tobago</option>
+
+                                                <option
+                                                    value="2286">Tristan da Cunha</option>
+
+                                                <option
+                                                    value="2386">Tunisia</option>
+
+                                                <option
+                                                    value="2406">Turkey</option>
+
+                                                <option
+                                                    value="2376">Turkmenistan</option>
+
+                                                <option
+                                                    value="2296">Turks and Caicos Islands</option>
+
+                                                <option
+                                                    value="2426">Tuvalu</option>
+
+                                                <option
+                                                    value="2476">U.S. Minor Outlying Islands</option>
+
+                                                <option
+                                                    value="1986">U.S. Miscellaneous Pacific Islands</option>
+
+                                                <option
+                                                    value="2556">U.S. Virgin Islands</option>
+
+                                                <option
+                                                    value="2466">Uganda</option>
+
+                                                <option
+                                                    value="2456">Ukraine</option>
+
+                                                <option
+                                                    value="36">United Arab Emirates</option>
+
+                                                <option
+                                                    value="856">United Kingdom</option>
+
+                                                <option
+                                                    value="2486">United States</option>
+
+                                                <option
+                                                    value="2496">Uruguay</option>
+
+                                                <option
+                                                    value="2506">Uzbekistan</option>
+
+                                                <option
+                                                    value="2576">Vanuatu</option>
+
+                                                <option
+                                                    value="2516">Vatican City</option>
+
+                                                <option
+                                                    value="2536">Venezuela</option>
+
+                                                <option
+                                                    value="2566">Vietnam</option>
+
+                                                <option
+                                                    value="2596">Wake Island</option>
+
+                                                <option
+                                                    value="2586">Wallis and Futuna</option>
+
+                                                <option
+                                                    value="726">Western Sahara</option>
+
+                                                <option
+                                                    value="2626">Yemen</option>
+
+                                                <option
+                                                    value="2656">Zambia</option>
+
+                                                <option
+                                                    value="2666">Zimbabwe</option>
+
+                                            </select>
+
+                                        </li>
+
+                                        <li class="string true"
+                                            id="account_telephone_number_input">
+                                            <label for="account_telephone_number_id">
+                                                Telephone Number
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <input type="text"
+                                                name="account[telephone_number]"
+                                                id="account_telephone_number_id"
+                                                value=""
+                                                class="" />
+
+                                        </li>
+                                        <li class="string true"
+                                            id="account_application_name_input">
+                                            <label for="account_application_name_id">
+                                                Application Name
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <input type="text"
+                                                name="account[application_name]"
+                                                id="account_application_name_id"
+                                                value=""
+                                                class="" />
+
+                                        </li>
+                                        <li class="string true"
+                                            id="account_application_description_input">
+                                            <label for="account_application_description_id">
+                                                Describe Your Application
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <input type="text"
+                                                name="account[application_description]"
+                                                id="account_application_description_id"
+                                                value=""
+                                                class="" />
+
+                                        </li>
+                                        <li class="select true"
+                                            id="account_application_platform_input">
+                                            <label for="account_application_platform_id">
+                                                Platform Or Device That The API Will Be Used On
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <select name="account[application_platform]" id="account_application_platform_id"
+                                                class="">
+                                                <option />
+
+                                                <option
+                                                    value="Mobile">Mobile</option>
+
+                                                <option
+                                                    value="Web">Web</option>
+
+                                                <option
+                                                    value="Tablet">Tablet</option>
+
+                                                <option
+                                                    value="Broadcast">Broadcast</option>
+
+                                                <option
+                                                    value="Internal">Internal</option>
+
+                                            </select>
+
+                                        </li>
+                                        <li class="select true"
+                                            id="account_how_did_you_hear_input">
+                                            <label for="account_how_did_you_hear_id">
+                                                How Did You Hear About Decibel?
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <select name="account[how_did_you_hear]" id="account_how_did_you_hear_id"
+                                                class="">
+                                                <option />
+
+                                                <option
+                                                    value="Decibel Client">Decibel Client</option>
+
+                                                <option
+                                                    value="Decibel Team Member">Decibel Team Member</option>
+
+                                                <option
+                                                    value="Search Engine">Search Engine</option>
+
+                                                <option
+                                                    value="Industry Event">Industry Event</option>
+
+                                                <option
+                                                    value="Programmable Web">Programmable Web</option>
+
+                                                <option
+                                                    value="Wikipedia">Wikipedia</option>
+
+                                                <option
+                                                    value="Twitter">Twitter</option>
+
+                                                <option
+                                                    value="Other">Other</option>
+
+                                            </select>
+
+                                        </li>
+                                        <li class="select true"
+                                            id="account_dev_lang_input">
+                                            <label for="account_dev_lang_id">
+                                                Development Language
+          
+                                                <abbr title="required">*</abbr>
+                                            </label>
+                                            <select name="account[dev_lang]" id="account_dev_lang_id"
+                                                class="">
+                                                <option />
+
+                                                <option
+                                                    value="C#">C#</option>
+
+                                                <option
+                                                    value="Ruby">Ruby</option>
+
+                                                <option
+                                                    value="Python">Python</option>
+
+                                                <option
+                                                    value="Java">Java</option>
+
+                                                <option
+                                                    value="Javascript">Javascript</option>
+
+                                                <option
+                                                    value="PHP">PHP</option>
+
+                                                <option
+                                                    value="iPhone">iPhone</option>
+
+                                                <option
+                                                    value="Android">Android</option>
+
+                                                <option
+                                                    value="Other">Other</option>
+
+                                            </select>
+
+                                        </li>
+                                    </ol>
+                                </fieldset>
+                                <p>
+                                    By signing up you agree to the following Legal Terms and Conditions
+              (<a id="legal-terms-trigger" href="#">show</a>)
+           
+                                </p>
+
+                                <div id="legal-terms" style="display: none; overflow-y: scroll; height: 30em;">
+                                    <h1>DECIBEL API Terms of Use</h1>
+                                    <h3>Registration</h3>
+
+                                    <p>In order to use the Decibel APIs you must first register by submitting an API Request Form. You agree to provide complete, truthful and accurate information in connection with such registration. Decibel reserves the right, at its sole discretion, to reject your registration.</p>
+
+
+                                    <h3>Key Points</h3>
+                                    <p>Your use of Decibel API is at your own risk. We make no warranty that these services will be uninterrupted, timely, secure, or error-free.</p>
+                                    <p>Decibel is not responsible for any damages or losses that occur as a result of the use of (or inability to use) Decibel API.</p>
+                                    <p>Decibel reserves the right to throttle, limit, or disallow your use of Decibel API, at any time, without notice.</p>
+
+
+                                    <h3>YOUR AGREEMENT WITH DECIBEL</h3>
+                                    <p>Decibel’s data and APIs (“API”), other ‘Decibel’ branded software and associated documentation (whether in printed or electronic form) including any improvements, modifications, enhancements, fixes, updates, upgrades and future versions thereto (“Updates”) and whether made available for free or for a fee, (collectively the “API”) is licensed (not sold) to you by Decibel Music Systems Limited.</p>
+
+
+                                    <h3>Licence</h3>
+                                    <p>Subject to your compliance with these Terms, you are granted a limited, nonexclusive, non-sublicensable, non-assignable, license to use the Decibel API.</p>
+                                    <p>This license does not grant to you any right to any version enhancement, update, or guarantee the continuous availability of the Decibel API. Decibel may revise, modify or cease to provide, require you to immediately cease using the Decibel API, or its functionality or any part thereof, which may result in loss of compatibility or denial of access to the functionality of the Decibel API and commercial activities related thereto, from time to time without notice.</p>
+                                    <p>For the purposes of these API Terms, "Permitted Purpose" shall mean either:</p>
+                                    <p>(a) the purpose of developing software or code to interface and connect a software application (the “Software Application”) with the Decibel API; or</p>
+                                    <p>(b) the purpose of developing software or code to interface a hardware device or other physical equipment (including any software embedded thereupon) (the "Hardware Device") with the Decibel API.</p>
+
+
+                                    <h3>Restrictions</h3>
+                                    <p>Your Software Application or Hardware Device (as applicable) shall in no way and to no extent whether directly or indirectly adversely affect, impede or otherwise hinder or disrupt the functionality or performance of the API provided by Decibel.</p>
+                                    <p>Without limiting the generality of the foregoing, you shall ensure that Your Software Application or Hardware Device (as applicable):</p>
+                                    <p>(i) does not adversely impact the quality of using API;</p>
+                                    <p>(ii) does not adversely impact the stability of the API;</p>
+                                    <p>(iii) does not adversely impact the behavior of other applications using thw API;</p>
+                                    <p>(iv) does not attempt to install spyware or malware on the servers;</p>
+                                    <p>(v) does not attempt to redistribute information about the use of API without express permission of the user;</p>
+                                    <p>(vi) correctly identifies itself to Decibel when requesting authorization;</p>
+                                    <p>(vii) does not attempt to modify the API in any way;</p>
+                                    <p>Save as expressly approved in writing by Decibel, You will not distribute the Software Application or Hardware Device (as applicable) online through website(s) that in Decibel’s opinion is/are in any way similar to, or infringe the intellectual property rights of Decibel or use Decibel’s trademarks or words describing Decibel’s products or services as, or as part of, the registered URL for website(s).</p>
+                                    <p>You will at all times maintain the value and reputation of the Decibel API, brand or name, to the best of Your abilities.</p>
+                                    <p>You will not use the Decibel API in any Software Application or Hardware Device (as applicable) that in Decibel’s opinion is actually or potentially fraudulent or inappropriate</p>
+                                    <p>You will not collect any user’s personal information or data in a misleading, illegal, unauthorised or unfair way</p>
+                                    <p>You agree that You are solely responsible for (and that Decibel has no responsibility to You or to any third party for) any services and/or products You provide through Your Software Application or Hardware Device</p>
+                                    <p>You may not and you agree not to:</p>
+                                    <p>(a) sub-license, sell, assign, rent, lease, export, import, distribute or transfer or otherwise grant rights to any third party in the API;</p>
+                                    <p>(b) undertake, cause, permit or authorize the modification, creation of derivative works or improvements, translation, reverse engineering, decompiling, disassembling, decryption, emulation, hacking, discovery or attempted discovery of the source code or protocols of the API or any part or features thereof (except to the extent permitted by law);</p>
+                                    <p>(c) remove, obscure or alter any copyright notices or other proprietary notices included in the API</p>
+                                    <p>(d) use the API or cause the API (or any part of it) to be used within or to provide commercial products or services to third parties. The foregoing shall not preclude you using the API for your own business</p>
+                                    <p>If you are using Decibel API in software or services available to the public, you must ensure that the content owners appropriately license your product or service.</p>
+                                    <p>Visit http://www.prsformusic.com/users/Pages/default.aspx for more information on licensing or visit the licensing organization appropriate to your country of operation.</p>
+                                    <p>If you are using Decibel API and gather user information as part of your business, you must ensure that your service or product complies with the data protection laws of your country of operation.</p>
+                                    <p>Visit http://www.informationshield.com/intprivacylaws.html for more details.</p>
+                                    <p>If you are an existing Decibel client, using a trial account for a different application, or using a different Decibel API, please let us know in advance.</p>
+
+
+                                    <h3>Use</h3>
+                                    <p>API keys are for a single use only. Please request a separate API Key for each product you develop.</p>
+                                    <p>In the event that You wish to use the Decibel API in a manner other than as expressly set out in these API Terms such use is expressly prohibited unless and until Decibel enters into a specific licence with You.</p>
+                                    <p>Decibel agrees to permit you a limited, personal, terminable, non-transferable, nonexclusive right to access the Decibel API for the purpose of integration between the Decibel database and your website or software.</p>
+
+
+                                    <h3>Warranty Disclaimers</h3>
+                                    <p>The Decibel API and the use of the Decibel API are provided ‘as is’. Decibel, to the fullest extent permitted by law, disclaims all warrantees express or implied, statutory or otherwise, including, but not limited to warranties of merchantability, title, noninfringement of 3rd party rights, and fitness for particular purpose. Decibel further makes no warrantees about the accuracy, reliability, completeness, condition or timeliness of the Decibel API. Decibel does not warrant that your use of the Decibel API will be uninterrupted, secure, or error free</p>
+
+
+                                    <h3>Limitation of Liability</h3>
+                                    <p>In no event will Decibel be liable to you or any third party for any special, indirect, incidental, exemplar, punitive or consequential damages or penalties (including, without limitation, for lost profits or inability to access the Decibel API arising hereunder, or in conjunction herewith, even if Decibel has been advised of the possibility of such damages or penalties</p>
+
+
+                                    <h3>IP Rights</h3>
+                                    <p>When You use the Decibel API for a Permitted Purpose, You retain the IP Rights You may have in Your Software Application and/or Hardware Device</p>
+
+
+                                    <h3>Termination</h3>
+                                    <p>Decibel may terminate, suspend, throttle, limit access, update, alter or supplement, at its sole discretion, all or any part of the Decibel API at any time without notice. By permitting you access to the Decibel API, Decibel does not convey any interest in or to the Decibel API. All right, title and interest in and to the Decibel API is and shall remain in Decibel.</p>
+                                    <p>These API Terms will become effective upon first use of the Decibel API and will remain effective until terminated by either Decibel or You as set out herein. Decibel will not be liable in relation to any damage caused by the modification or termination of these API Terms and/or any other applicable Additional Terms.</p>
+                                    <p>Upon termination of these API Terms by You or by Decibel for any reason: (a) all licenses and rights to use the Decibel API shall immediately terminate and (b) You will immediately cease any and all use of the Decibel API and return any data that has been cached by your services, and delete your data cache</p>
+
+
+                                    <h3>Permitted Use</h3>
+                                    <p>You are permitted to store Decibel data for caching purposes for up to, but not exceeding, twenty-four (24) hours. You must refresh, re-display and/or re-request product links or product information at least once every twenty-four (24) hours via a web request to the Decibel API.</p>
+
+
+                                    <h3>Non-Permitted Use</h3>
+                                    <p>You are prohibited from violating or attempting to violate the security of the Decibel API, including, without limitation: (i) accessing data not intended for the purposes of this Agreement or attempting to access a server or database which you are not authorized to access; (ii) attempting to probe, scan or test the vulnerability of a system or network or to breach security or authentication measures without proper authorization; (iii) attempting to interfere with the service to any other developer, host or network, including, without limitation, via means of submitting a virus to the Decibel API; (iv) sending unsolicited e-mail, including promotions and/or advertising of products or services in violation of the Decibel Privacy Policy. Violations of system or network security may result in civil or criminal liability. If your software or services are available to the public, you may not modify or resell the cached product links or information nor submit user applications on a user’s behalf without the user’s explicit direction. Decibel reserves the right, at any time, to direct you to delete any and all product links and/or product information cached for the purposes of this Agreement. You hereby acknowledge and agree that you will comply with such direction at the time directed.</p>
+
+
+                                    <h3>Indemnification</h3>
+                                    <p>You agree to defend, indemnify, and hold harmless Decibel (and its officers, directors, employees and agents) from and against any third party claims, actions or demands (including, without limitation, costs, damages and reasonable legal and accounting fees) alleging or resulting from or in connection with your use of the Decibel API or your breach of this Agreement. Decibel shall use reasonable efforts to provide you prompt notice of any such claim, suit, or proceeding and may assist you, at your expense, in defending any such claim, suit or proceeding.</p>
+
+
+                                    <h3>Amendments</h3>
+                                    <p>Decibel reserves the right to modify the terms and conditions of this Agreement or provide additional usage requirements or limitations in its sole discretion at any time by posting a revised version hereof on this Webpage or by otherwise making such revised terms available for your review. Any such modifications will supersede all prior versions after the revised version has been posted on this Webpage or otherwise made available as described above. Your continued use of the Decibel API constitutes your agreement to any such revisions.</p>
+
+
+                                    <h3>Language</h3>
+                                    <p>The original English version of these API Terms may have been translated into other languages. In the event of inconsistency or discrepancy between the English version and any other language version, the English language version shall prevail.</p>
+
+
+                                    <h3>Miscellaneous</h3>
+                                    <p>Entire Agreement: The terms and conditions of these API Terms constitute the entire agreement between You and Decibel with respect to the subject matter hereof and will supersede and replace all prior understandings and agreements, in whatever form, regarding the subject matter. Nothing in this clause shall exclude or restrict the liability of either You or Decibel arising out of fraud or fraudulent misrepresentation.</p>
+                                    <p>Partial Invalidity: If any provision of these API Terms, or any part of a provision, is found by any court or administrative body of competent jurisdiction to be illegal, invalid or unenforceable, and the provision (or part-provision) in question is not of a fundamental nature to these API Terms as a whole, the legality, validity or enforceability of the remainder of these API Terms (including the remainder of the term which contains the relevant provision) shall not be affected.</p>
+                                    <p>No waiver: The failure to exercise, or delay in exercising, a right, power or remedy provided by these API Terms or by law shall not constitute a waiver of that right, power or remedy. If Decibel waives a breach of any provision of these API Terms this shall not operate as a waiver of a subsequent breach of that provision, or as a waiver of a breach of any other provision.</p>
+                                    <p>Assignment: You are not allowed to assign these API Terms or any rights hereunder. Decibel is allowed at its sole discretion to assign these API Terms or any rights hereunder to any third party, without giving prior notice.</p>
+                                    <p>Applicable Law and Competent Court: These API Terms shall be governed by and interpreted in accordance with the laws of England & Wales, and shall be subject to the jurisdiction of the courts of England & Wales</p>
+
+
+                                    <h3>EULA for Free Accounts</h3>
+                                    <p>Requests are limited each day to 1000 hits. Your account will be frozen if you exceed your daily quota and you will need to contact api@decibel.net to have your free account unfrozen.</p>
+                                    <p>If you feel you will exceed these, please let us know in advance so we can work to prevent your account being frozen, by emailing api@decibel.net</p>
+                                    <p>Please email us in advance if you intend to use a free account in software or services available to the public. We'd appreciate the notice, and would like to work with you to ensure everything is well tested.</p>
+
+
+                                    <h3>Important Notes</h3>
+                                    <p>Please make sure you have read and understand the End User License Agreement</p>
+                                    <p>These terms and conditions, together with your registration as an API use, located form a binding agreement (the "Agreement") between you and Decibel Music Systems Limited (“Decibel”).</p>
+                                    <p>This Agreement shall commence as of the date you click “I accept,” agreeing to be bound by the terms and conditions of this Agreement (the “Effective Date”) and shall continue until terminated by Decibel as provided herein.</p>
+                                    <p>
+                                        <b>YOU EXPRESSLY ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS AND UNDERSTAND THE RIGHTS, OBLIGATIONS, TERMS AND CONDITIONS SET FORTH HEREIN. BY SUBMITTING A REQUEST TO USE THE DECIBEL API, YOU EXPRESSLY CONSENT TO BE BOUND BY ITS TERMS AND CONDITIONS AND GRANT TO DECIBEL THE RIGHTS SET FORTH HEREIN.HOW TO CONTACT DECIBEL
+                                        </b>
+                                    </p>
+                                    <p>To contact Decibel in relation to the API, please submit a support request to api@decibel.net</p>
+                                </div>
+
+                                <script type="text/javascript">
+                                    //<![CDATA[
+                                    $('#legal-terms-trigger').toggle(
+                                      function () {
+                                          $('#legal-terms').fadeIn();
+                                          $('#legal-terms-trigger').text('hide');
+                                      },
+                                      function () {
+                                          $('#legal-terms').fadeOut();
+                                          $('#legal-terms-trigger').text('show');
+                                      }
+                                     );
+                                    //]]>
+                                </script>
+
+                                <fieldset class="buttons">
+                                    <ol>
+                                        <li class="commit">
+                                            <input class="important-button create" name="commit" type="submit" value="Sign up">
+                                        </li>
+                                    </ol>
+                                </fieldset>
+
+                                <fieldset class="inputs">
+                                    <ol>
+                                        <script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6LfV_wgAAAAAABzjN95onLoYxsSxnaEaNcYuwQBx&amp;error=expression"></script>
+                                        <noscript>
+                                            <iframe src="https://www.google.com/recaptcha/api/noscript?k=6LfV_wgAAAAAABzjN95onLoYxsSxnaEaNcYuwQBx" height="300" width="500" style="border: none;"></iframe>
+                                            <br />
+                                            <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                                            <input type="hidden" name="recaptcha_response_field" value="manual_challenge" />
+                                        </noscript>
+                                    </ol>
+                                </fieldset>
+                            </form>
+
+                        </div>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="footer">
+
+        <div id="foot-wrap">
+
+            <script type="text/javascript">
+                var d = new Date();
+                document.getElementById("foot-wrap").appendChild(document.createTextNode("© " + d.getFullYear() + " Decibel Music Systems Ltd"));
+            </script>
+
+            <br />
+            The Decibel name, associated trade marks and logos and the &quot;magnifying glass note&quot; logo are trade marks of Decibel Music Systems Limited.
+        <br />
+            The Old Truman Brewery, 91 Brick Lane, London E1 6QL, UK +44 20 3657 9760
+        <br />
+
+            <a href="http://www.3scale.net/" target="_blank">
+                <img alt="Powered by 3scale" src="images/powered_by_logo.png">
+            </a>
+
+            <div id="flashWrapper" style="display: none;">
+                <div class="ajaxNoticeValid alwaysontop "></div>
+            </div>
+
+            <script type="text/javascript" charset="utf-8">
+                jQuery(document).ready(function () {
+                    setTimeout($.flash.hide, 5000);
+                });
+        </script>
+
+        </div>
+    </div>
+</body>
+</html>

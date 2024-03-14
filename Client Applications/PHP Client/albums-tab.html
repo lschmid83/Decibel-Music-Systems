@@ -1,0 +1,83 @@
+
+	<!-- Albums tab -->
+	<div id="tabAlbums" style="padding:5px; margin:0px; height:100%;">		
+
+		<!-- Search parameters -->
+		<div class="header">Search Parameters</div>
+				
+		<!-- Search album title -->
+		<div class="searchField">
+			<label for="searchAlbumTitle">Album Title</label>
+			<input id="searchAlbumTitle" />
+		</div>
+		
+		<!-- Search genre -->
+		<div class="searchField">
+			<label for="searchAlbumGenre">Genre</label>
+			<input id="searchAlbumGenre"/>
+		</div>	
+		
+		<!-- Search label -->
+		<div class="searchField" style="clear:left">
+			<label for="searchAlbumLabel">Label</label>
+			<input id="searchAlbumLabel"/>
+		</div>
+		
+		<!-- Search barcode -->
+		<div class="searchField">
+			<label for="searchAlbumBarcode">Barcode</label>
+			<input id="searchAlbumBarcode"/>
+		</div>
+		
+		<!-- Search artist name -->
+		<div class="searchField" style="clear:left">
+			<label for="searchAlbumArtistName">Artist Name</label>
+			<input id="searchAlbumArtistName"/>
+		</div>
+		
+		<!-- Search region -->
+		<div class="searchField">
+			<label for="searchAlbumRegion">Region</label>
+			<input id="searchAlbumRegion"/>
+		</div>		
+		
+		<!-- Search URL -->
+		<div class="searchField" style="clear:left;">
+			<label for="albumSearchURL" style="line-height:40px">URL</label>
+			<textarea id="albumSearchURL" readonly="readonly"></textarea>
+			<script>updateAlbumSearchUrl(albumSearchParam);</script>
+		</div>				
+		
+		<!-- Search button -->
+		<div class="searchField">
+			<button id="albumSearchButton">Search</button>
+		</div>						
+
+		<!-- Results -->
+		<div class="header">Results</div>
+
+		<!-- Results table -->
+		<div class="resultsTable"> 
+			<table class="albumResults" style="display: none"></table>	
+		</div>
+
+		<!-- Album information -->	
+		<div class="wrapper" id="tabAlbumsAlbumInformation">
+			<?php
+				require("album-info.html"); // Include the album-info layout
+			?>
+			<!-- Track listing -->
+			<div class="rightSide" style="max-width:300px;">	
+				<div class="header">Track Listing</div>
+				<table class="tabAlbumsTrackList" style="display: none"></table>					
+			</div> 		
+		
+		</div>
+		
+		<!-- Footer -->
+		<div id="tabAlbumsFooter" class="footer">
+			<img id="statusProgress" src="css/images/load.gif" visible="false"/><div id="statusText"></div>
+		</div> 		
+		<script>setStatus("tabAlbumsFooter", "Ready", false)</script>
+
+	</div>

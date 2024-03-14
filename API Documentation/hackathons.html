@@ -1,0 +1,429 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Hackathons</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="javascript/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="javascript/jquery.colorbox-min.js" type="text/javascript"></script>
+    <link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="javascript/highlight.pack.js" type="text/javascript"></script>
+    <script src="javascript/help.js" type="text/javascript"></script>
+    <script src="javascript/flash.js" type="text/javascript"></script>
+    <script src="javascript/remote.js" type="text/javascript"></script>
+    <script src="javascript/switch.js" type="text/javascript"></script>
+    <script src="javascript/ajax_upload.js" type="text/javascript"></script>
+    <script src="javascript/extra_fields.js" type="text/javascript"></script>
+    <script src="javascript/application.js" type="text/javascript"></script>
+    <link href="css/default.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#" />
+    <script type="text/javascript" src="html5.js"></script>
+    <script type="text/javascript" src="eCSStender.js"></script>
+    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="javascript/prettify.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var offset = $("#sidebar").offset(); //Sets which element is scrollable. In this case it's the div .sidebar
+            var topPadding = 30;  //Set how much top-padding the element has.
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > offset.top) {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: $(window).scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: 0
+                    });
+                };
+            });
+        });
+
+    </script>
+</head>
+
+<body class="home">
+
+    <div id="page">
+
+        <div id="header">
+            <a id="header-logo" href="index.html">
+                <img src="images/logo-white.png" /></a>
+            <div id="header-widget">
+                <div id="user_widget" class="round">
+                    <a href="login.html">Sign in</a>
+                    | <a href="signup.html">Sign up</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="content">
+
+            <table style="width: 90%" cellspacing="0" cellpadding="10">
+                <tr>
+                    <td style="width: 250px; vertical-align: top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+
+                            <div id='cssmenu'>
+                                <ul>
+                                    <li><a href='decibel-sdk.html'><span>Home</span></a></li>
+                                    <li><a href='news.html'><span>News</span></a></li>
+                                    <li><a href='our-api.html'><span>API Music Metadata</span></a></li>
+                                    <li><a href='authentication.html'><span>API Authentication</span></a></li>
+                                    <li><a href='rest-api-v2.html'><span>REST API Documentation</span></a></li>
+                                    <li><a href='hackathons.html'><span>Hackathons</span></a></li>
+                                    <li><a href='forum.html'><span>Forum</span></a></li>
+                                    <li><a href='support.html'><span>Support</span></a></li>
+                                    <li><a href='faq.html'><span>FAQ</span></a></li>
+                                    <li><a href='termsandconditions.html'><span>Terms and Conditions</span></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align: top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <br>
+                            <h2>Happy Hacking!</h2>
+                            <p>
+                                Salut, Hackers!
+                                <br>
+                                <br>
+                                We're very excited to have you play with our our API and create the newest creations that will disrupt and shake the industry.  The world is your oyster!
+                                <br>
+                                <br>
+                                <h2>Accessing Support </h2>
+                                <br>
+                                If you have any specific queries or encounter problems along the way, you can contact us via <strong>IRC</strong> or speak to a developer in person if we have a representative at the hack, or via <strong>Skype</strong>.  
+                                <br>
+                                <br>
+                                <strong>For IRC support:</strong>
+                                <br>
+                                &nbsp;&nbsp;&nbsp;IRC (Internet Relay Chat) : install an IRC client (Colloquy, mIRC, AndroIRC)
+                                <br>
+                                &nbsp;&nbsp;&nbsp;Server : chat.freenode.net
+                                <br>
+                                &nbsp;&nbsp;&nbsp;Channel : #decibel
+                                <br>
+                                &nbsp;&nbsp;&nbsp;To join, type : /join #decibel
+                                <br>
+                                <br>
+                                To contact us via Skype, search us by <strong>username DecibelMusicSystemsLtd </strong>or by email on api@decibel.net.  We'll be online at your service!
+                                <br>
+                                <br>
+                                If you wish to contact us in advance with some general problems, you can alternatively just email us at api@decibel.net which will direct you to everyone on the team.
+                                <br>
+                                <br>
+                                We may have some live support on-site at the hackathon.  Lookout for the Decibel logo on the back of someone's shirt!
+                                <br>
+                                <h2>Suggested Albums </h2>
+                                <br>
+                                We're still populating our database, so please be patient with our migration.  As such, we've compiled a list of suggested completely populated albums that might be of interest to you!  
+                                <br>
+                                <br>
+                                You can take a chance with other artists--we have many more!
+                                <br>
+                                Listed by [Artist Name] | [Album]
+                                <br>
+                            </p>
+                            <table class="block">
+                                <tr>
+                                    <td style="vertical-align:top">
+                                        <p><strong>POP ALBUMS</strong></p>
+                                        <ul>
+                                            <li>Britney Spears	 | 	Britney Jean	</li>
+                                            <li>Bruno Mars	 | 	Unorthodox Jukebox	</li>
+                                            <li>Ellie Goulding	 | 	Halcyon	</li>
+                                            <li>Jason Mraz	 | 	Love Is A Four Letter Word	</li>
+                                            <li>John Newman	 | 	Tribute	</li>
+                                            <li>Justin Timberlake	 | 	The 20/20 Experience	</li>
+                                            <li>Katy Perry	 | 	Prism	</li>
+                                            <li>Lady Gaga	 | 	ARTPOP	</li>
+                                            <li>Lana del Rey	 | 	Born To Die	</li>
+                                            <li>Lissie	 | 	Back to Forever	</li>
+                                            <li>Lorde	 | 	Pure Heroine	</li>
+                                            <li>Michael Bublé	 | 	To Be Loved	</li>
+                                            <li>OneRepublic	 | 	Native	</li>
+                                            <li>P!nk	 | 	The Truth About Love 	</li>
+                                            <li>Pitbull	 | 	Global Warming	</li>
+                                            <li>Rihanna	 | 	Unapologetic	</li>
+                                            <li>Robin Thicke	 | 	Blurred Lines	</li>
+                                            <li>Sara Bareilles	 | 	The Blessed Unrest	</li>
+                                            <li>Tom Odell	 | 	Long Way Down	</li>
+
+                                        </ul>
+                                        <p><strong>ALTERNATIVE/INDIE ALBUMS </strong></p>
+                                        <ul>
+                                            <li>Arcade Fire	 | 	Reflektor	</li>
+                                            <li>Atoms For Peace	 | 	Amok	</li>
+                                            <li>Blondie	 | 	Panic Of Girls	</li>
+                                            <li>Broken Bells	 | 	After The Disco	</li>
+                                            <li>Edward Sharpe and the Magnetic Zeros	 | 	Edward Sharpe and the Magnetic Zeros	</li>
+                                            <li>Haim	 | 	Days Are Gone	</li>
+                                            <li>Imagine Dragons	 | 	Night Visions	</li>
+                                            <li>Jack Johnson	 | 	From Here To Now	</li>
+                                            <li>Neko Case	 | 	The Worse Things Get, The Harder I Fight, The Harder I Fight, The More I Love You 	</li>
+                                            <li>Neutral Milk Hotel	 | 	In The Aeroplane Over The Sea	</li>
+                                            <li>Nine Inch Nails	 | 	Hesitation Marks	</li>
+                                            <li>Of Monsters And Men	 | 	My Head Is An Animal	</li>
+                                            <li>Tame Impala	 | 	Lonerism	</li>
+                                            <li>The 1975	 | 	The 1975	</li>
+                                            <li>The Flaming Lips	 | 	The Terror	</li>
+                                            <li>The Hold Steady	 | 	Heaven Is Whenever	</li>
+                                            <li>The National	 | 	Trouble Will Find Me	</li>
+                                            <li>Warpaint	 | 	Warpaint	</li>
+                                            <li>Young the Giant	 | 	Young the Giant	</li>
+
+                                        </ul>
+                                        <p><strong>ROCK ALBUMS</strong></p>
+                                        <ul>
+                                            <li>30 Seconds To Mars	 | 	Love, Lust, Faith and Dreams	</li>
+                                            <li>4 Non Blondes	 | 	Bigger, Better, Faster, More!	</li>
+                                            <li>Alabama Shakes	 | 	Boys & Girls	</li>
+                                            <li>Arctic Monkeys	 | 	AM	</li>
+                                            <li>Bruce Springsteen 	 | 	High Hopes	</li>
+                                            <li>Coldplay	 | 	Mylo Xyloto	</li>
+                                            <li>Dave Matthews Band	 | 	Away From The World	</li>
+                                            <li>David Bowie	 | 	The Next Day	</li>
+                                            <li>Eric Clapton	 | 	Old Sock	</li>
+                                            <li>Franz Ferdinand	 | 	Right Thoughts, Right Words, Right Action	</li>
+                                            <li>John Mayer	 | 	Paradise Valley	</li>
+                                            <li>Kings Of Leon	 | 	Mechanical Bull	</li>
+                                            <li>Nick Cave and the Bad Seeds	 | 	Push the Sky Away	</li>
+                                            <li>Paul McCartney	 | 	New	</li>
+                                            <li>Pearl Jam 	 | 	Lighting Bolt	</li>
+                                            <li>Queens of the Stone Age	 | 	...Like Clockwork	</li>
+                                            <li>Soundgarden	 | 	Superunknown	</li>
+                                            <li>The Killers	 | 	Battle Born	</li>
+                                            <li>Tom Petty And The Heartbreakers	 | 	Mojo	</li>
+
+                                        </ul>
+                                        <p><strong>ELECTRONIC ALBUMS</strong></p>
+                                        <ul>
+                                            <li>Avicii	 | 	TRUE	</li>
+                                            <li>Boards Of Canada		Tomorrow's Harvest	</li>
+                                            <li>Calvin Harris	 | 	18 Months	</li>
+                                            <li>Charli XCX	 | 	True Romance	</li>
+                                            <li>Chase & Status	 | 	Brand New Machine	</li>
+                                            <li>Chromatics		Kill For Love	</li>
+                                            <li>Chvrches	 | 	The Bones of What You Believe	</li>
+                                            <li>Daft Punk	 | 	Random Access Memories	</li>
+                                            <li>Disclosure	 | 	Settle	</li>
+                                            <li>Flying Lotus	 | 	Until the Quiet Comes 	</li>
+                                            <li>Grimes	 | 	Visions	</li>
+                                            <li>James Blake	 | 	Overgrown	</li>
+                                            <li>Kavinsky	 | 	OutRun	</li>
+                                            <li>Little Dragon	 | 	Ritual Union	</li>
+                                            <li>M83	 | 	Hurry Up, We're Dreaming	</li>
+                                            <li>Moby	 | 	Innocents	</li>
+                                            <li>Rudimental	 | 	Home	</li>
+                                            <li>Simian Mobile Disco	 | 	Unpatterns	</li>
+                                            <li>Skrillex	 | 	Bangarang	</li>
+
+                                        </ul>
+                                        <p><strong>COUNTRY ALBUMS</strong></p>
+                                        <ul>
+
+                                            <li>Billy Currington	 | 	We Are Tonight	</li>
+                                            <li>Blake Shelton	 | 	Based on a True Story…	</li>
+                                            <li>Brad Paisley	 | 	Wheelhouse	</li>
+                                            <li>Eric Church	 | 	Chief	</li>
+                                            <li>Florida Georgia Line	 | 	Here's to the Good Times	</li>
+                                            <li>Garth Brooks	 | 	Scarecrow	</li>
+                                            <li>Hunter Hayes	 | 	Hunter Hayes	</li>
+                                            <li>Jason Aldean	 | 	Night Train	</li>
+                                            <li>John Fogerty	 | 	Wrote a Song for Everyone	</li>
+                                            <li>Johnny Cash	 | 	American Recordings	</li>
+                                            <li>Kacey Musgraves	 | 	Same Trailer Different Park	</li>
+                                            <li>Keith Urban	 | 	Fuse	</li>
+                                            <li>Lady Antebellum	 | 	Golden	</li>
+                                            <li>Luke Bryan	 | 	Crash My Party	</li>
+                                            <li>Miranda Lambert	 | 	Four the Record	</li>
+                                            <li>Sugarland	 | 	Love On the Inside	</li>
+                                            <li>Taylor Swift	 | 	Red	</li>
+                                            <li>The Band Perry	 | 	Pioneer	</li>
+                                            <li>Tim McGraw	 | 	Two Lanes Of Freedom	</li>
+
+                                        </ul>
+                                        <p><strong>JAZZ ALBUMS</strong></p>
+                                        <ul>
+                                            <li>Chris Botti	 | 	Impressions	</li>
+                                            <li>Chris Botti	 | 	Impressions	</li>
+                                            <li>Diana Krall	 | 	Stepping Out	</li>
+                                            <li>Diana Krall	 | 	Only Trust Your Heart	</li>
+                                            <li>Diana Krall	 | 	Love Scenes	</li>
+                                            <li>Diana Krall	 | 	When I Look in Your Eyes	</li>
+                                            <li>Diana Krall	 | 	The Look of Love	</li>
+                                            <li>Diana Krall	 | 	The Girl in the Other Room	</li>
+                                            <li>Diana Krall	 | 	From This Moment On	</li>
+                                            <li>Diana Krall	 | 	Quiet Nights	</li>
+                                            <li>Diana Krall	 | 	Glad Rag Doll	</li>
+                                            <li>Esperanza Spalding	 | 	Radio Music Society	</li>
+                                            <li>Gregory Porter	 | 	Liquid Spirit	</li>
+                                            <li>Jose James	 | 	No Beginning No End	</li>
+                                            <li>Katie Melua	 | 	Piece By Piece	</li>
+                                            <li>Madeleine Peyroux	 | 	Standing On The Rooftop	</li>
+                                            <li>Madeleine Peyroux	 | 	The Blue Room	</li>
+                                            <li>Melody Gardot	 | 	The Absence	</li>
+                                            <li>Melody Gardot	 | 	My One and Only Thrill	</li>
+
+                                        </ul>
+                                        <td style="vertical-align:top">
+                                            <p><strong>HIP HOP/RAP ALBUMS</strong></p>
+                                            <ul>
+                                                <li>Childish Gambino	 | 	Because the Internet	</li>
+                                                <li>Danny Brown	 | 	Old	</li>
+                                                <li>Drake	 | 	Nothing Was The Same	</li>
+                                                <li>Earl Sweatshirt 	 | 	Doris	</li>
+                                                <li>Eminem	 | 	The Marshall Mathers LP 2 	</li>
+                                                <li>J. Cole	 | 	Born Sinner	</li>
+                                                <li>Jay-Z	 | 	Magna Carta... Holy Grail 	</li>
+                                                <li>Kanye West	 | 	Yeezus	</li>
+                                                <li>Kendrick Lamar	 | 	good kid, m.A.A.d city	</li>
+                                                <li>Kid Ink	 | 	My Own Lane	</li>
+                                                <li>Lil' Wayne	 | 	I Am Not a Human Being II	</li>
+                                                <li>Ludacris	 | 	Battle Of the Sexes	</li>
+                                                <li>Nas	 | 	Life Is Good 	</li>
+                                                <li>Nas	 | 	Illmatic	</li>
+                                                <li>OutKast	 | 	Speakerboxxx / The Love Below	</li>
+                                                <li>Plan B	 | 	Ill Manors	</li>
+                                                <li>Pusha T	 | 	My Name is My Name	</li>
+                                                <li>Rick Ross	 | 	Deeper Than Rap	</li>
+                                                <li>Schoolboy Q	 | 	Oxymoron	</li>
+
+                                            </ul>
+                                            <p><strong>R&B/SOUL/FUNK ALBUMS</strong></p>
+                                            <ul>
+                                                <li>Aloe Blacc	 | 	Good Things	</li>
+                                                <li>Anthony Hamilton	 | 	Back To Love	</li>
+                                                <li>Charles Bradley	 | 	Victim Of Love	</li>
+                                                <li>Chrisette Michele	 | 	Better	</li>
+                                                <li>Fantasia	 | 	Side Effects Of You	</li>
+                                                <li>Frank Ocean	 | 	channel ORANGE	</li>
+                                                <li>Janelle Monáe	 | 	The Electric Lady	</li>
+                                                <li>Jason Derulo	 | 	Tattoos	</li>
+                                                <li>John Legend 	 | 	Love In The Future	</li>
+                                                <li>Laura Mvula	 | 	Sing to the Moon	</li>
+                                                <li>Maverick Sabre	 | 	Lonely Are The Brave	</li>
+                                                <li>Miguel	 | 	Kaleidoscope Dream	</li>
+                                                <li>Ne-Yo	 | 	R.E.D.	</li>
+                                                <li>Raphael Saadiq	 | 	Stone Rollin'	</li>
+                                                <li>Robert Glasper	 | 	Black Radio	</li>
+                                                <li>Sharon Jones & the Dap-Kings	 | 	Soul Time!	</li>
+                                                <li>Sharon Jones & The Dap-Kings	 | 	I Learned The Hard Way	</li>
+                                                <li>TGT	 | 	Three Kings	</li>
+                                                <li>Trey Songz	 | 	Chapter V	</li>
+
+                                            </ul>
+                                            <p><strong>METAL ALBUMS</strong></p>
+                                            <ul>
+                                                <li>Alice In Chains	 | 	The Devil Put Dinosaurs Here	</li>
+                                                <li>Alkaline Trio	 | 	My Shame Is True 	</li>
+                                                <li>Alter Bridge	 | 	Fortress	</li>
+                                                <li>Avenged Sevenfold	 | 	Hail to the King	</li>
+                                                <li>Black Sabbath	 | 	13	</li>
+                                                <li>Coheed and Cambria	 | 	The Afterman: Descension	</li>
+                                                <li>Cradle of Filth	 | 	The Manticore and Other Horrors	</li>
+                                                <li>Hollywood Undead	 | 	Notes from the Underground	</li>
+                                                <li>Insane Clown Posse	 | 	The Mighty Death Pop!	</li>
+                                                <li>Iron Maiden	 | 	The Final Frontier	</li>
+                                                <li>Jane's Addiction	 | 	The Great Escape Artist	</li>
+                                                <li>Kiss	 | 	Monster	</li>
+                                                <li>P.O.D.	 | 	Murdered Love	</li>
+                                                <li>Rise Against	 | 	Appeal To Reason	</li>
+                                                <li>Slipknot	 | 	All Hope Is Gone	</li>
+                                                <li>Smashing Pumpkins	 | 	Oceania	</li>
+                                                <li>Staind	 | 	Staind	</li>
+                                                <li>Stone Sour	 | 	Audio Secrecy	</li>
+                                                <li>Testament	 | 	Dark Roots of Earth	</li>
+
+                                            </ul>
+                                            <p><strong>FOLK ALBUMS</strong></p>
+                                            <ul>
+                                                <li>Donovan	 | 	What's Bin Did And What's Bin Hid	</li>
+                                                <li>Donovan	 | 	Sunshine Superman	</li>
+                                                <li>Donovan	 | 	Open Road	</li>
+                                                <li>Donovan	 | 	Cosmic Wheels	</li>
+                                                <li>Donovan	 | 	Mellow Yellow 	</li>
+                                                <li>Donovan	 | 	The Hurdy Gurdy Man	</li>
+                                                <li>First Aid Kit	 | 	The Lion's Roar	</li>
+                                                <li>Harry Smith	 | 	Anthology Of American Folk Music	</li>
+                                                <li>Iron & Wine	 | 	Our Endless Numbered Days	</li>
+                                                <li>Joni Mitchell	 | 	Blue	</li>
+                                                <li>Joni Mitchell	 | 	Court And Spark	</li>
+                                                <li>Laura Marling	 | 	I Speak Because I Can	</li>
+                                                <li>Laura Marling	 | 	A Creature I Don't Know	</li>
+                                                <li>Laura Marling	 | 	Once I Was An Eagle	</li>
+                                                <li>Leonard Cohen	 | 	Old Ideas	</li>
+                                                <li>Linda Thompson	 | 	Won't Be Long Now	</li>
+                                                <li>Neil Young	 | 	Harvest	</li>
+                                                <li>Richard & Linda Thompson	 | 	Shoot Out The Lights	</li>
+                                                <li>The Byrds	 | 	Mr. Tambourine Man	</li>
+
+                                            </ul>
+                                            <p><strong>REGGAE ALBUMS</strong></p>
+                                            <ul>
+                                                <li>Beenie Man	 | 	Undisputed	</li>
+                                                <li>Bob Marley & The Wailers	 | 	Confrontation	</li>
+                                                <li>Bob Marley & The Wailers	 | 	Uprising	</li>
+                                                <li>Bob Marley & The Wailers	 | 	Survival	</li>
+                                                <li>Bob Marley & The Wailers	 | 	Kaya	</li>
+                                                <li>Bob Marley & The Wailers	 | 	Rastaman Vibration	</li>
+                                                <li>Bob Marley & The Wailers	 | 	Burnin'	</li>
+                                                <li>Bob Marley & The Wailers	 | 	Live Forever	</li>
+                                                <li>Bob Marley & The Wailers	 | 	Legend - The Best Of Bob Marley & The Wailers	</li>
+                                                <li>Bob Marley & The Wailers	 | 	Exodus	</li>
+                                                <li>Bob Marley & The Wailers	 | 	Catch A Fire	</li>
+                                                <li>Bob Marley & The Wailers	 | 	Natty Dread	</li>
+                                                <li>Damian Marley	 | 	Welcome to Jamrock	</li>
+                                                <li>Matisyahu	 | 	Youth	</li>
+                                                <li>Peter Tosh	 | 	Mama Africa	</li>
+                                                <li>Sean Kingston	 | 	Sean Kingston	</li>
+                                                <li>Selah Sue	 | 	Selah Sue	</li>
+                                                <li>Snoop Lion	 | 	Reincarnated	</li>
+                                                <li>Tanya Stephens	 | 	Gangsta Blues	</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+      <div id="footer">
+
+        <div id="foot-wrap">
+
+            <script type="text/javascript">
+                var d = new Date();
+                document.getElementById("foot-wrap").appendChild(document.createTextNode("© " + d.getFullYear() + " Decibel Music Systems Ltd"));
+            </script>
+
+            <br />
+            The Decibel name, associated trade marks and logos and the &quot;magnifying glass note&quot; logo are trade marks of Decibel Music Systems Limited.
+        <br />
+            The Old Truman Brewery, 91 Brick Lane, London E1 6QL, UK +44 20 3657 9760
+        <br />
+
+            <a href="http://www.3scale.net/" target="_blank">
+                <img alt="Powered by 3scale" src="images/powered_by_logo.png">
+            </a>
+
+            <div id="flashWrapper" style="display: none;">
+                <div class="ajaxNoticeValid alwaysontop "></div>
+            </div>
+
+            <script type="text/javascript" charset="utf-8">
+                jQuery(document).ready(function () {
+                    setTimeout($.flash.hide, 5000);
+                });
+        </script>
+
+        </div>
+    </div>
+</body>
+</html>

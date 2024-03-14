@@ -1,0 +1,64 @@
+
+	<!-- Tracks tab -->
+	<div id="tabTracks" style="padding:5px; margin:0px; height:100%;">		
+
+		<!-- Search parameters -->
+		<div class="header">Search Parameters</div>
+				
+		<!-- Search track title -->
+		<div class="searchField">
+			<label for="searchTrackTitle">Track Title</label>
+			<input id="searchTrackTitle" />
+		</div>
+		
+		<!-- Search artist -->
+		<div class="searchField" style="clear:left">
+			<label for="searchTrackArtist">Artist</label>
+			<input id="searchTrackArtist"/>
+		</div>	
+		
+		<!-- Search album title -->
+		<div class="searchField" style="clear:left">
+			<label for="searchTrackAlbumTitle">Album Title</label>
+			<input id="searchTrackAlbumTitle"/>
+		</div>
+
+		<!-- Search URL -->
+		<div class="searchField" style="clear:left;">
+			<label for="trackSearchURL" style="line-height:40px">URL</label>
+			<textarea id="trackSearchURL" readonly="readonly"></textarea>
+			<script>updateTrackSearchUrl(trackSearchParam);</script>
+		</div>				
+		
+		<!-- Search button -->
+		<div class="searchField">
+			<button id="trackSearchButton">Search</button>
+		</div>						
+
+		<!-- Results -->
+		<div class="header">Results</div>
+
+		<!-- Results table -->
+		<div class="resultsTable"> 
+			<table class="trackResults" style="display: none"></table>	
+		</div>
+
+		<!-- Album information -->	
+		<div class="wrapper" id="tabTracksAlbumInformation">
+			<?php
+				require("album-info.html"); // Include the album-info layout
+			?>
+			<!-- Track listing -->
+			<div class="rightSide" style="max-width:300px;">	
+				<div class="header">Track Listing</div>
+				<table class="tabTracksTrackList" style="display: none"></table>					
+			</div> 	
+		</div>
+		
+		<!-- Footer -->
+		<div id="tabTracksFooter" class="footer">
+			<img id="statusProgress" src="css/images/load.gif" visible="false"/><div id="statusText"></div>
+		</div> 		
+		<script>setStatus("tabTracksFooter", "Ready", false)</script>
+
+	</div>

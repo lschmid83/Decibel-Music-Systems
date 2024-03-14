@@ -1,0 +1,737 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>C# Sample Code</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="javascript/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="javascript/jquery.colorbox-min.js" type="text/javascript"></script>
+    <link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="javascript/highlight.pack.js" type="text/javascript"></script>
+    <script src="javascript/help.js" type="text/javascript"></script>
+    <script src="javascript/flash.js" type="text/javascript"></script>
+    <script src="javascript/remote.js" type="text/javascript"></script>
+    <script src="javascript/switch.js" type="text/javascript"></script>
+    <script src="javascript/ajax_upload.js" type="text/javascript"></script>
+    <script src="javascript/extra_fields.js" type="text/javascript"></script>
+    <script src="javascript/application.js" type="text/javascript"></script>
+    <link href="css/default.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="html5.js"></script>
+    <script type="text/javascript" src="eCSStender.js"></script>
+    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="javascript/prettify.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var offset = $("#sidebar").offset(); //Sets which element is scrollable. In this case it's the div .sidebar
+            var topPadding = 30;  //Set how much top-padding the element has.
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > offset.top) {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: $(window).scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: 0
+                    });
+                };
+            });
+        });
+
+    </script>
+</head>
+    
+<body class="home">
+
+    <div id="page">
+
+        <div id="header">
+            <a id="header-logo" href="index.html">
+                <img src="images/logo-white.png" /></a>
+            <div id="header-widget">
+                <div id="user_widget" class="round">
+                    <a href="login.html">Sign in</a>
+                    | <a href="signup.html">Sign up</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="content">
+            <table style="width: 100%" cellspacing="0" cellpadding="10">
+                <tr>
+                    <td style="width: 250px; vertical-align: top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+
+                            <div id='cssmenu'>
+                                <ul>
+                                    <li><a href='decibel-sdk.html'><span>Home</span></a></li>
+                                    <li><a href='news.html'><span>News</span></a></li>
+                                    <li><a href='our-api.html'><span>API Music Metadata</span></a></li>
+                                    <li><a href='authentication.html'><span>API Authentication</span></a></li>
+                                    <li><a href='rest-api-v2.html'><span>REST API Documentation</span></a></li>
+                                    <li><a href='hackathons.html'><span>Hackathons</span></a></li>
+                                    <li><a href='forum.html'><span>Forum</span></a></li>
+                                    <li><a href='support.html'><span>Support</span></a></li>
+                                    <li><a href='faq.html'><span>FAQ</span></a></li>
+                                    <li><a href='termsandconditions.html'><span>Terms and Conditions</span></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align: top; height:100px">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <script type="text/javascript">
+                                function PopupCenter(pageURL, title, w, h) {
+                                    var left = (screen.width / 2) - (w / 2);
+                                    var top = (screen.height / 2) - (h / 2);
+                                    var targetWin = window.open(pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+                                }
+                            </script>
+                            <a name="samplecode"></a>
+                            <h1>C# REST Sample Code</h1>
+
+                            <p>The following code snippets are taken from the <strong>Decibel REST API Demo.</strong> <a href="https://s3.amazonaws.com/enterprise-multitenant.3scale.net.3scale.net/decibel/2014/06/17/DecibelRestAPI_CSharpSampleCode-317f8c8f3c387798.zip?AWSAccessKeyId=AKIAIRYLTWBQ37ZNGBZA&amp;Expires=1410206794&amp;Signature=%2FsiWe2G7bAq6XzTfNYwvqQwTJOE%3D&amp;response-content-disposition=attachment%3B%20filename%3D%22DecibelRestAPI_CSharpSampleCode.zip%22">Click here to download a copy of the source code</a></p>
+                            <div id="user_widget" style="float:left; margin-top:-12px" class="round">
+                                <a href="download/DecibelCSharpClient.zip">C# Source Code</a>
+                            </div>  
+                            
+                            <h2><a name="callingtheapi"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle">Calling the API</td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h2>
+                            <p>The WebClient class in the System.Net namespace provides methods for receiving data from a resource identified by a URI.</p>
+                            <p>The Rest API is stateless, which means you need to identify yourself with each call.</p>
+                            <p>The WebClient instance does not send optional HTTP headers by default. On each call to the API you will need an Application ID, Application Key and Timestamp included in your HTTP request header. To make this easier a function called SetDecibelRequestHeaders(WebClient, AppID, AppKey) is defined in the <a href="https://s3.amazonaws.com/enterprise-multitenant.3scale.net.3scale.net/decibel/2014/05/14/Util-cf5509dab00cc0cb.cs?AWSAccessKeyId=AKIAIRYLTWBQ37ZNGBZA&amp;Expires=1410206794&amp;Signature=FLEwM7Xx0gLugDldWK%2BeJ845d3w%3D&amp;response-content-disposition=attachment%3B%20filename%3D%22Util.cs%22">Util.cs</a> class.</p>
+                            <p>The following code example sets the WebClient request headers.</p>
+                            <div class="csharpcode">
+                                <pre class="alt">WebClient client = <span class="kwrd">new</span> WebClient();</pre>
+                                <pre>client.Headers.Add(<span class="str">"DecibelAppID"</span>, {Your Application ID});</pre>
+                                <pre class="alt">client.Headers.Add(<span class="str">"DecibelAppKey"</span>, {Your Application Key});</pre>
+                                <pre>client.Headers.Add(<span class="str">"DecibelTimestamp"</span>, DateTime.Now.ToString(<span class="str">"yyyyMMdd HH:mm:ss"</span>, System.Globalization.CultureInfo.InvariantCulture));</pre>
+                            </div>
+                            <p>By default, the Decibel REST API returns results as JSON. You can ask for XML instead by adding the following header to your request</p>
+                            <div class="csharpcode">
+                                <pre class="alt">client.Headers.Add(<span class="str">"accept"</span>, <span class="str">"application/xml"</span>);</pre>
+                            </div>
+                            <p>The DownloadStringAsync(Uri) method  downloads a String from a resource, without blocking the calling thread. This enables the application to continue doing useful work while the method call runs.</p>
+                            <p>The DownloadStringCompleted event is raised each time an asynchronous operation to download a resource as a string completes. The DownloadStringCompletedEventArgs class provides the event handler with event data.</p>
+                            <p>The following code example requests albums by artist name and stores the XML response.</p>
+                            
+                                                      
+                        </div>
+                    </td>
+                    <td style="width: 260px; vertical-align: top">
+                        <div class="container" style="margin-left: 0px; margin-top: 0px">
+                            <h2>Contents</h2>
+                            <p></p>
+                            <div class="feed">
+                                <ul>
+                                    <li><span style="color: black"><strong>Calling the API</strong></span></li>
+                                    <li><a href="#objectmodel">Object Model</a></li>
+                                    <li><a href="#xmldeserialization">XML Deserialization</a></li>
+                                    <li><span style="color: black"><strong>Code Examples</strong></span></li>
+                                    <li><a href="#albumssearch">Albums: Search by Title</a></li>
+                                    <li><a href="#albumsretrieve">Album: Retrieve Album</a></li>
+                                    <li><a href="#albumscoverart">Album: Get Cover Art</a></li>
+                                    <li><a href="#artistssearch">Artists: Search by Name</a></li>
+                                    <li><a href="#artistsretrieve">Artist: Retrieve Artist</a></li>
+                                    <li><a href="#recordingssearch">Recordings: Search by Title</a></li>
+                                    <li><a href="#recordingsretrieve">Recording: Retrieve Recording</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="vertical-align: top">
+                    <td style="width: 250px; vertical-align: top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                             <!-- code formatted by http://manoli.net/csharpformat/ -->
+                            <div class="csharpcode">
+                                <pre class="alt">WebClient client = <span class="kwrd">new</span> WebClient();</pre>
+                                <pre>Util.SetDecibelRequestHeaders(client, <span class="str">"&lt;Your Application ID&gt;"</span>, <span class="str">"&lt;Your Application Key&gt;"</span>);</pre>
+                                <pre class="alt">client.DownloadStringCompleted += client_DownloadStringCompleted;</pre>
+                                <pre>client.DownloadStringAsync(<span class="kwrd">new</span> Uri(<span class="str">"http://rest.decibel.net/v2/albums?artistName=fleetwood%20mac"</span>));</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre><span class="kwrd">private</span> <span class="kwrd">void</span> client_DownloadStringCompleted(<span class="kwrd">object</span> sender, DownloadStringCompletedEventArgs e)</pre>
+                                <pre class="alt">{</pre>
+                                <pre>    <span class="kwrd">string</span> result;</pre>
+                                <pre class="alt">    <span class="kwrd">if</span>(e.Error == <span class="kwrd">null</span>)</pre>
+                                <pre>        result = e.Result;</pre>
+                                <pre class="alt">}</pre>
+                            </div>
+                            <p>
+                                <h2><a name="objectmodel"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Object Model</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <p>The Decibel REST API returns data in two formats XML and JSON. To make it easier to parse the response the data can be deserialized into manageable objects.</p>
+                            <p>
+                                To deserialize the Decibel REST API responses you will need to add the <a href="https://s3.amazonaws.com/enterprise-multitenant.3scale.net.3scale.net/decibel/2014/06/17/DecibelObject-8f043a57faea3635.dll?AWSAccessKeyId=AKIAIRYLTWBQ37ZNGBZA&amp;Expires=1410206794&amp;Signature=j7nqHmvtNf%2FfNb2Sbq%2BYBhTbA8k%3D&amp;response-content-disposition=attachment%3B%20filename%3D%22DecibelObject.dll%22" target="_blank">Decibel Object Model</a> file to your project. This file contains the class definitions for the different types of objects which can be requested from the API.
+                            </p>
+                            <p>
+                                <ul>
+                                    <li>Right click on the project name in the Solution Explorer</li>
+                                    <li>Download the <a href="https://s3.amazonaws.com/enterprise-multitenant.3scale.net.3scale.net/decibel/2014/06/17/DecibelObject-8f043a57faea3635.dll?AWSAccessKeyId=AKIAIRYLTWBQ37ZNGBZA&amp;Expires=1410206794&amp;Signature=j7nqHmvtNf%2FfNb2Sbq%2BYBhTbA8k%3D&amp;response-content-disposition=attachment%3B%20filename%3D%22DecibelObject.dll%22" target="_blank">DecibelObject.dll</a> class (Right click and select Save link as...)</li>
+                                    <li>Right click on the references in your project and select Add Reference...</li>
+                                    <li>Click browse, navigate to the location you saved DecibelObject.dll and select add</li>
+                                </ul>
+                            </p>
+                            <p>
+                                <h2><a name="xmldeserialization"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">XML Deserialization</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <p>
+                                The XmlSerializer class in the System.Xml.Serialization namespace enables you to deserialize XML documents into objects of a specified type.
+It should be constructed with the type of the object that will be deserialized. The typeof operator is used to obtain the System.Type object for a type.
+                            </p>
+                            <p>The following code example deserializes the XML response from a Albums API call to a AlbumQueryResult object.</p>
+                            <!-- code formatted by http://manoli.net/csharpformat/ -->
+                            <div class="csharpcode">
+                                <pre class="alt"><span class="kwrd">private</span> <span class="kwrd">void</span> client_DownloadStringCompleted(<span class="kwrd">object</span> sender, DownloadStringCompletedEventArgs e)</pre>
+                                <pre>{</pre>
+                                <pre class="alt">    <span class="kwrd">if</span> (e.Error == <span class="kwrd">null</span>)</pre>
+                                <pre>    {</pre>
+                                <pre class="alt">        AlbumQueryResult queryResult;</pre>
+                                <pre>        XmlSerializer serializer = <span class="kwrd">new</span> XmlSerializer(<span class="kwrd">typeof</span>(AlbumQueryResult));</pre>
+                                <pre class="alt">        <span class="kwrd">using</span> (TextReader reader = <span class="kwrd">new</span> StringReader(e.Result))</pre>
+                                <pre>        {</pre>
+                                <pre class="alt">            queryResult = (AlbumQueryResult)(serializer.Deserialize(reader));</pre>
+                                <pre>        }</pre>
+                                <pre class="alt">    }</pre>
+                                <pre>}</pre>
+                            </div>
+                            <p>To make it easier to deserialize the different types of XML response objects a generic function is defined in the <a href="http://www.decibel.net/developer/sample-code/csharp/Util.cs" target="_blank">Util.cs</a> class included with the sample project.</p>
+                            <p>The following example code deserializes a Albums API call to a AlbumQueryResult object.</p>
+                            <div class="csharpcode">
+                                <pre class="alt">AlbumQueryResult queryResult = Util.DeserializeXmlString&lt;AlbumQueryResult&gt;(e.Result);</pre>
+                            </div>
+                            <p>
+                                <h2><a name="albumssearch"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Albums: Search for albums by title</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <!-- code formatted by http://manoli.net/csharpformat/ -->
+                            <div class="csharpcode">
+                                <pre class="alt"><span class="kwrd">private</span> <span class="kwrd">void</span> BeginAlbumSearch(<span class="kwrd">string</span> albumTitle, <span class="kwrd">string</span> applicationID, <span class="kwrd">string</span> applicationKey)</pre>
+                                <pre>{</pre>
+                                <pre class="alt">    <span class="rem">// Construct the WebClient and set the request headers</span></pre>
+                                <pre>    WebClient client = <span class="kwrd">new</span> WebClient();</pre>
+                                <pre class="alt">    Util.SetDecibelRequestHeaders(client, applicationID, applicationKey);</pre>
+                                <pre>    client.Headers.Add(<span class="str">"accept"</span>, <span class="str">"application/xml"</span>);</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre>    <span class="rem">// Set the callback function which is invoked when the download of the resource completes</span></pre>
+                                <pre class="alt">    client.DownloadStringCompleted += client_AlbumSearchCompleted;</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">    <span class="rem">// Issue the request to the Decibel Web Service</span></pre>
+                                <pre>    <span class="kwrd">string</span> depth = <span class="str">"Recordings;Identifiers;Works;Participations;Genres;ArtistDetails"</span>;</pre>
+                                <pre class="alt">    client.DownloadStringAsync(<span class="kwrd">new</span> Uri(<span class="str">"http://rest.decibel.net/v2/Albums?title="</span> + albumTitle + <span class="str">"&amp;depth="</span> + depth));         </pre>
+                                <pre>}</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre><span class="kwrd">private</span> <span class="kwrd">void</span> client_AlbumSearchCompleted(<span class="kwrd">object</span> sender, DownloadStringCompletedEventArgs e)</pre>
+                                <pre class="alt">{</pre>
+                                <pre>    <span class="kwrd">if</span> (e.Error == <span class="kwrd">null</span>) </pre>
+                                <pre class="alt">    {</pre>
+                                <pre>        <span class="rem">// Deserialize the response</span></pre>
+                                <pre class="alt">        AlbumQueryResult queryResult = Util.DeserializeXmlString&lt;AlbumQueryResult&gt;(e.Result);</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">        <span class="rem">// Display the results in a grid</span></pre>
+                                <pre>        dtgResults.ItemsSource = queryResult.ResultSet;</pre>
+                                <pre class="alt">    }</pre>
+                                <pre>    <span class="kwrd">else</span></pre>
+                                <pre class="alt">    {</pre>
+                                <pre>        MessageBox.Show(<span class="str">"The Decibel Web Service request was not successful due to the following error:"</span> + </pre>
+                                <pre class="alt">            Environment.NewLine + e.Error.ToString());</pre>
+                                <pre>    }</pre>
+                                <pre class="alt">}</pre>
+                            </div>
+
+
+                            <p>
+                                <h2><a name="albumsretrieve"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Albums: Retrieve Albums with Track information</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <!-- code formatted by http://manoli.net/csharpformat/ -->
+                            <div class="csharpcode">
+                                <pre class="alt"><span class="kwrd">private</span> <span class="kwrd">void</span> BeginAlbumRetrieve(<span class="kwrd">string</span> albumID, <span class="kwrd">string</span> applicationID, <span class="kwrd">string</span> applicationKey)</pre>
+                                <pre>{</pre>
+                                <pre class="alt">    <span class="rem">// Construct the WebClient and set the request headers</span></pre>
+                                <pre>    WebClient client = <span class="kwrd">new</span> WebClient();</pre>
+                                <pre class="alt">    Util.SetDecibelRequestHeaders(client, applicationID, applicationKey);</pre>
+                                <pre>    client.Headers.Add(<span class="str">"accept"</span>, <span class="str">"application/xml"</span>);</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre>    <span class="rem">// Set the callback function which is invoked when the download of the resource completes</span></pre>
+                                <pre class="alt">    client.DownloadStringCompleted += client_AlbumRetrieveCompleted;</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">    <span class="rem">// Issue the request to the Decibel Web Service</span></pre>
+                                <pre>    <span class="kwrd">string</span> depth = <span class="str">"Recordings;Identifiers;Works;Participations;Genres;ArtistDetails"</span>;</pre>
+                                <pre class="alt">    client.DownloadStringAsync(<span class="kwrd">new</span> Uri(<span class="str">"http://rest.decibel.net/v2/Album?id="</span> + albumID + <span class="str">"&amp;depth="</span> + depth));</pre>
+                                <pre>}</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre><span class="kwrd">private</span> <span class="kwrd">void</span> client_AlbumRetrieveCompleted(<span class="kwrd">object</span> sender, DownloadStringCompletedEventArgs e)</pre>
+                                <pre class="alt">{</pre>
+                                <pre>    <span class="kwrd">if</span> (e.Error == <span class="kwrd">null</span>)</pre>
+                                <pre class="alt">    {</pre>
+                                <pre>        <span class="rem">// Deserialize the response</span></pre>
+                                <pre class="alt">        SingleAlbumQueryResult queryResult = Util.DeserializeXmlString&lt;SingleAlbumQueryResult&gt;(e.Result);</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">        <span class="rem">// Display the album information</span></pre>
+                                <pre>        <span class="kwrd">var</span> album = queryResult.Result;</pre>
+                                <pre class="alt">        txtName.Text = album.Title.ToString();</pre>
+                                <pre>        txtArtists.Text = album.ArtistsLiteral;</pre>
+                                <pre class="alt">        txtReleaseDate.Text = album.OriginalReleaseDate;</pre>
+                                <pre>        <span class="rem">// Display the number of recordings on the album</span></pre>
+                                <pre class="alt">        <span class="kwrd">if</span> (album.Recordings != <span class="kwrd">null</span>)</pre>
+                                <pre>        {</pre>
+                                <pre class="alt">            txtTrackCount.Text = album.Recordings.Length.ToString();</pre>
+                                <pre>        }</pre>
+                                <pre class="alt">        <span class="rem">// Display a list of all genres that apply to the album</span></pre>
+                                <pre>        <span class="kwrd">if</span> ((album.Genres != <span class="kwrd">null</span>) &amp;&amp; (album.Genres.Length &gt; 0))</pre>
+                                <pre class="alt">        {</pre>
+                                <pre>            <span class="kwrd">foreach</span> (Genre genreValue <span class="kwrd">in</span> album.Genres)</pre>
+                                <pre class="alt">            {</pre>
+                                <pre>                txtGenres.Text += genreValue.Name + <span class="str">", "</span>;</pre>
+                                <pre class="alt">            }</pre>
+                                <pre>        }</pre>
+                                <pre class="alt">                </pre>
+                                <pre>        <span class="rem">// Add the tracks to a list</span></pre>
+                                <pre class="alt">        <span class="kwrd">if</span> ((album.Recordings != <span class="kwrd">null</span>) &amp;&amp; (album.Recordings.Length &gt; 0))</pre>
+                                <pre>        {</pre>
+                                <pre class="alt">            <span class="kwrd">foreach</span> (Recording track <span class="kwrd">in</span> album.Recordings)</pre>
+                                <pre>            {</pre>
+                                <pre class="alt">                <span class="kwrd">string</span> trackInfo = track.Title;</pre>
+                                <pre>                <span class="kwrd">if</span> (track.Duration &gt; 0)</pre>
+                                <pre class="alt">                {</pre>
+                                <pre>                    trackInfo += <span class="str">" ("</span> + Util.FormatTime(Convert.ToInt32(track.Duration)) + <span class="str">")"</span>;</pre>
+                                <pre class="alt">                }</pre>
+                                <pre>                lstTracks.Items.Add(trackInfo);</pre>
+                                <pre class="alt">            }</pre>
+                                <pre>        }</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre>        <span class="rem">// Add the participants to the list</span></pre>
+                                <pre class="alt">        <span class="kwrd">if</span> ((album.Participations != <span class="kwrd">null</span>) &amp;&amp; (album.Participations.Length &gt; 0))</pre>
+                                <pre>        {</pre>
+                                <pre class="alt">            <span class="kwrd">foreach</span> (Participation participant <span class="kwrd">in</span> album.Participations)</pre>
+                                <pre>            {</pre>
+                                <pre class="alt">                lstParticipations.Items.Add(participant.ArtistsLiteral + <span class="str">" - "</span> + participant.ActivityLiteral);</pre>
+                                <pre>            }</pre>
+                                <pre class="alt">        }</pre>
+                                <pre>    }</pre>
+                                <pre class="alt">    <span class="kwrd">else</span></pre>
+                                <pre>    {</pre>
+                                <pre class="alt">        MessageBox.Show(<span class="str">"The Decibel Web Service request was not successful due to the following error:"</span> + </pre>
+                                <pre>            Environment.NewLine + e.Error.ToString());</pre>
+                                <pre class="alt">    }</pre>
+                                <pre>}</pre>
+                            </div>
+                            <p>
+                                <h2><a name="albumscoverart"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Albums: Get Album Cover Art</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                                Note: You will first need to obtain the album's ImageUrl or ThumbnailUrl using one of the requests above.
+                            </p>
+                            <!-- code formatted by http://manoli.net/csharpformat/ -->
+                            <div class="csharpcode">
+                                <pre class="alt"><span class="kwrd">private</span> <span class="kwrd">void</span> BeginAlbumArtRetrieve(<span class="kwrd">string</span> artUrl, <span class="kwrd">string</span> applicationID, <span class="kwrd">string</span> applicationKey)</pre>
+                                <pre>{</pre>
+                                <pre class="alt">    <span class="rem">// Construct the WebClient and set the request headers</span></pre>
+                                <pre>    WebClient client = <span class="kwrd">new</span> WebClient();</pre>
+                                <pre class="alt">    Util.SetDecibelRequestHeaders(client, applicationID, applicationKey);</pre>
+                                <pre>            </pre>
+                                <pre class="alt">    <span class="rem">// Set the callback function which is invoked when the download of the resource completes</span></pre>
+                                <pre>    client.DownloadDataCompleted += client_AlbumArtRetrieveCompleted;</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre>    <span class="rem">// Issue the request to the Decibel Web Service</span></pre>
+                                <pre class="alt">    client.DownloadDataAsync(<span class="kwrd">new</span> Uri(artUrl));</pre>
+                                <pre>}</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre><span class="kwrd">private</span> <span class="kwrd">void</span> client_AlbumArtRetrieveCompleted(<span class="kwrd">object</span> sender, DownloadDataCompletedEventArgs e)</pre>
+                                <pre class="alt">{</pre>
+                                <pre>    <span class="kwrd">if</span> (e.Error == <span class="kwrd">null</span>)</pre>
+                                <pre class="alt">    {</pre>
+                                <pre>        <span class="kwrd">if</span> (e.Result == <span class="kwrd">null</span>)</pre>
+                                <pre class="alt">        {</pre>
+                                <pre>            MessageBox.Show(<span class="kwrd">string</span>.Format(<span class="str">"Covert Art for Album with ID '{0}' could not be found."</span>, e.UserState));</pre>
+                                <pre class="alt">            <span class="kwrd">return</span>;</pre>
+                                <pre>        }</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre>        <span class="rem">// Successfully retrieved the album cover art - display it on screen</span></pre>
+                                <pre class="alt">        imgAlbumArt.Source = Util.GetImageSourceFromByteArray(e.Result);</pre>
+                                <pre>    }</pre>
+                                <pre class="alt">    <span class="kwrd">else</span></pre>
+                                <pre>    {</pre>
+                                <pre class="alt">        MessageBox.Show(<span class="str">"The Decibel Web Service request was not successful due to the following error:"</span> + </pre>
+                                <pre>            Environment.NewLine + e.Error.ToString());</pre>
+                                <pre class="alt">    }</pre>
+                                <pre>}</pre>
+                            </div>
+                            <p>
+                                <h2><a name="artistssearch"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Artists: Search for artists by name</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                                <!-- code formatted by http://manoli.net/csharpformat/ -->
+                                <div class="csharpcode">
+                                    <pre class="alt"><span class="kwrd">private</span> <span class="kwrd">void</span> BeginArtistSearch(<span class="kwrd">string</span> artistName, <span class="kwrd">string</span> applicationID, <span class="kwrd">string</span> applicationKey)</pre>
+                                    <pre>{</pre>
+                                    <pre class="alt">    <span class="rem">// Construct the WebClient and set the request headers</span></pre>
+                                    <pre>    WebClient client = <span class="kwrd">new</span> WebClient();</pre>
+                                    <pre class="alt">    Util.SetDecibelRequestHeaders(client, applicationID, applicationKey);</pre>
+                                    <pre>    client.Headers.Add(<span class="str">"accept"</span>, <span class="str">"application/xml"</span>);</pre>
+                                    <pre class="alt">&nbsp;</pre>
+                                    <pre>    <span class="rem">// Set the callback function which is invoked when the download of the resource completes</span></pre>
+                                    <pre class="alt">    client.DownloadStringCompleted += client_ArtistSearchCompleted;</pre>
+                                    <pre>&nbsp;</pre>
+                                    <pre class="alt">    <span class="rem">// Issue the request to the Decibel Web Service</span></pre>
+                                    <pre>    <span class="kwrd">string</span> depth = <span class="str">"Identifiers;BiographySnippet;Biography;Members;Dates;Genres;Urls"</span>;</pre>
+                                    <pre class="alt">    client.DownloadStringAsync(<span class="kwrd">new</span> Uri(<span class="str">"http://rest.decibel.net/v2/artists?name="</span> + artistName + <span class="str">"&amp;depth="</span> + depth));</pre>
+                                    <pre>}</pre>
+                                    <pre class="alt">&nbsp;</pre>
+                                    <pre><span class="kwrd">private</span> <span class="kwrd">void</span> client_ArtistSearchCompleted(<span class="kwrd">object</span> sender, DownloadStringCompletedEventArgs e)</pre>
+                                    <pre class="alt">{</pre>
+                                    <pre>    <span class="kwrd">if</span> (e.Error == <span class="kwrd">null</span>) </pre>
+                                    <pre class="alt">    {</pre>
+                                    <pre>        <span class="rem">// Store the query result</span></pre>
+                                    <pre class="alt">        ArtistQueryResult queryResult = Util.DeserializeXmlString&lt;ArtistQueryResult&gt;(e.Result);</pre>
+                                    <pre>        <span class="rem">// Display the results in a grid</span></pre>
+                                    <pre class="alt">        dtgResults.ItemsSource = queryResult.ResultSet;</pre>
+                                    <pre>    }</pre>
+                                    <pre class="alt">    <span class="kwrd">else</span></pre>
+                                    <pre>    {</pre>
+                                    <pre class="alt">        MessageBox.Show(<span class="str">"The Decibel Web Service request was not successful due to the following error:"</span> + </pre>
+                                    <pre>            Environment.NewLine + e.Error.ToString());</pre>
+                                    <pre class="alt">    }</pre>
+                                    <pre>}</pre>
+                                </div>
+                                <p>
+                                    <h2><a name="artistsretrieve"></a>
+                                        <table width="100%">
+                                            <tr>
+                                                <td style="vertical-align: middle">Artists: Retrieve artist with biography</td>
+                                                <td style="text-align: right; vertical-align: middle">
+                                                    <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </h2>
+                                    <!-- code formatted by http://manoli.net/csharpformat/ -->
+                                    <div class="csharpcode">
+                                        <pre class="alt"><span class="kwrd">private</span> <span class="kwrd">void</span> BeginArtistRetrieve(<span class="kwrd">string</span> artistID, <span class="kwrd">string</span> applicationID, <span class="kwrd">string</span> applicationKey)</pre>
+                                        <pre>{</pre>
+                                        <pre class="alt">    <span class="rem">//Construct the WebClient and set the request headers</span></pre>
+                                        <pre>    WebClient client = <span class="kwrd">new</span> WebClient();</pre>
+                                        <pre class="alt">    Util.SetDecibelRequestHeaders(client, applicationID, applicationKey);</pre>
+                                        <pre>    client.Headers.Add(<span class="str">"accept"</span>, <span class="str">"application/xml"</span>);</pre>
+                                        <pre class="alt">&nbsp;</pre>
+                                        <pre>    <span class="rem">//Set the callback function which is invoked when the download of the resource completes</span></pre>
+                                        <pre class="alt">    client.DownloadStringCompleted += client_ArtistRetrieveCompleted;</pre>
+                                        <pre>&nbsp;</pre>
+                                        <pre class="alt">    <span class="rem">//Issue the request to the Decibel Web Service</span></pre>
+                                        <pre>    <span class="kwrd">string</span> depth = <span class="str">"Identifiers;BiographySnippet;Biography;Members;Dates;Genres;Urls"</span>;</pre>
+                                        <pre class="alt">    client.DownloadStringAsync(<span class="kwrd">new</span> Uri(<span class="str">"http://rest.decibel.net/v2/artist?id="</span> + artistID + <span class="str">"&amp;depth="</span> + depth));</pre>
+                                        <pre>}</pre>
+                                        <pre class="alt">&nbsp;</pre>
+                                        <pre><span class="kwrd">private</span> <span class="kwrd">void</span> client_ArtistRetrieveCompleted(<span class="kwrd">object</span> sender, DownloadStringCompletedEventArgs e)</pre>
+                                        <pre class="alt">{</pre>
+                                        <pre>    <span class="kwrd">if</span> (e.Error == <span class="kwrd">null</span>)</pre>
+                                        <pre class="alt">    {</pre>
+                                        <pre>        <span class="rem">// Deserialize the response</span></pre>
+                                        <pre class="alt">        SingleArtistQueryResult queryResult = Util.DeserializeXmlString&lt;SingleArtistQueryResult&gt;(e.Result);</pre>
+                                        <pre>&nbsp;</pre>
+                                        <pre class="alt">        <span class="rem">// Display the artist information</span></pre>
+                                        <pre>        <span class="kwrd">var</span> artist = queryResult.Result;</pre>
+                                        <pre class="alt">        txtName.Text = artist.Name;</pre>
+                                        <pre>        txtDateBorn.Text = artist.BirthDate;</pre>
+                                        <pre class="alt">        txtDateDied.Text = artist.DeathDate;</pre>
+                                        <pre>        txtPlaceBorn.Text = artist.BirthPlace;</pre>
+                                        <pre class="alt">        txtPlaceDied.Text = artist.DeathPlace;</pre>
+                                        <pre>        <span class="kwrd">if</span> (artist.Gender != <span class="kwrd">null</span>)</pre>
+                                        <pre class="alt">        {</pre>
+                                        <pre>            txtGender.Text = artist.Gender.ToString();</pre>
+                                        <pre class="alt">        }</pre>
+                                        <pre>        <span class="rem">// Check fictional box if artist is fictional</span></pre>
+                                        <pre class="alt">        <span class="kwrd">if</span> (artist.IsFictional)</pre>
+                                        <pre>        {</pre>
+                                        <pre class="alt">            chkIsFictional.IsChecked = <span class="kwrd">true</span>;</pre>
+                                        <pre>        }</pre>
+                                        <pre class="alt">        <span class="kwrd">else</span></pre>
+                                        <pre>        {</pre>
+                                        <pre class="alt">            chkIsFictional.IsChecked = <span class="kwrd">false</span>;</pre>
+                                        <pre>        }</pre>
+                                        <pre class="alt">&nbsp;</pre>
+                                        <pre>        <span class="rem">// Find and display any biography text</span></pre>
+                                        <pre class="alt">        <span class="kwrd">if</span> ((artist.Annotations != <span class="kwrd">null</span>) &amp;&amp; (artist.Annotations.Length &gt; 0))</pre>
+                                        <pre>        {</pre>
+                                        <pre class="alt">            <span class="kwrd">foreach</span> (Annotation annotation <span class="kwrd">in</span> artist.Annotations)</pre>
+                                        <pre>            {</pre>
+                                        <pre class="alt">                txtBio.Text = txtBio.Text + annotation.Text + <span class="str">"\n"</span>;</pre>
+                                        <pre>            }</pre>
+                                        <pre class="alt">        }</pre>
+                                        <pre>&nbsp;</pre>
+                                        <pre class="alt">        <span class="rem">// Add artist's website links to a list</span></pre>
+                                        <pre>        <span class="kwrd">if</span> ((artist.Urls != <span class="kwrd">null</span>) &amp;&amp; (artist.Urls.Length &gt; 0))</pre>
+                                        <pre class="alt">        {</pre>
+                                        <pre>            <span class="kwrd">foreach</span> (Url website <span class="kwrd">in</span> artist.Urls)</pre>
+                                        <pre class="alt">            {</pre>
+                                        <pre>                txtWebsites.Text = website.Address + <span class="str">"\n"</span>;</pre>
+                                        <pre class="alt">            }</pre>
+                                        <pre>        }</pre>
+                                        <pre class="alt">    }</pre>
+                                        <pre>    <span class="kwrd">else</span></pre>
+                                        <pre class="alt">    {</pre>
+                                        <pre>        MessageBox.Show(<span class="str">"The Decibel Web Service request was not successful due to the following error:"</span> + </pre>
+                                        <pre class="alt">            Environment.NewLine + e.Error.ToString());</pre>
+                                        <pre>    }</pre>
+                                        <pre class="alt">}</pre>
+                                    </div>
+
+                                    <p>
+                                        <h2><a name="recordingssearch"></a>
+                                            <table width="100%">
+                                                <tr>
+                                                    <td style="vertical-align: middle">Recordings: Search for recordings by title</td>
+                                                    <td style="text-align: right; vertical-align: middle">
+                                                        <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </h2>
+                                    </p>
+                            <!-- code formatted by http://manoli.net/csharpformat/ -->
+                            <div class="csharpcode">
+                                <pre class="alt"><span class="kwrd">private</span> <span class="kwrd">void</span> BeginRecordingSearch(<span class="kwrd">string</span> trackTitle, <span class="kwrd">string</span> applicationID, <span class="kwrd">string</span> applicationKey)</pre>
+                                <pre>{</pre>
+                                <pre class="alt">    <span class="rem">// Construct the WebClient and set the request headers</span></pre>
+                                <pre>    WebClient client = <span class="kwrd">new</span> WebClient();</pre>
+                                <pre class="alt">    Util.SetDecibelRequestHeaders(client, applicationID, applicationKey);</pre>
+                                <pre>    client.Headers.Add(<span class="str">"accept"</span>, <span class="str">"application/xml"</span>);</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre>    <span class="rem">// Set the callback function which is invoked when the download of the resource completes</span></pre>
+                                <pre class="alt">    client.DownloadStringCompleted += client_RecordingSearchCompleted;</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">    <span class="rem">// Issue the request to the Decibel Web Service</span></pre>
+                                <pre>    <span class="kwrd">string</span> depth = <span class="str">"Participations;ArtistDetails;Authors;Genres;Identifiers"</span>;</pre>
+                                <pre class="alt">    client.DownloadStringAsync(<span class="kwrd">new</span> Uri(<span class="str">"http://rest.decibel.net/v2/Recordings?title="</span> + trackTitle + <span class="str">"&amp;depth="</span> + depth));    </pre>
+                                <pre>}</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre><span class="kwrd">private</span> <span class="kwrd">void</span> client_RecordingSearchCompleted(<span class="kwrd">object</span> sender, DownloadStringCompletedEventArgs e)</pre>
+                                <pre class="alt">{</pre>
+                                <pre>    <span class="kwrd">if</span> (e.Error == <span class="kwrd">null</span>)</pre>
+                                <pre class="alt">    {</pre>
+                                <pre>        <span class="rem">// Store the query result</span></pre>
+                                <pre class="alt">        RecordingQueryResult queryResult = Util.DeserializeXmlString&lt;RecordingQueryResult&gt;(e.Result);</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">        <span class="rem">// Display the results in a grid</span></pre>
+                                <pre>        dtgResults.ItemsSource = queryResult.ResultSet;</pre>
+                                <pre class="alt">    }</pre>
+                                <pre>    <span class="kwrd">else</span></pre>
+                                <pre class="alt">    {</pre>
+                                <pre>        MessageBox.Show(<span class="str">"The Decibel Web Service request was not successful due to the following error:"</span> + </pre>
+                                <pre class="alt">            Environment.NewLine + e.Error.ToString());</pre>
+                                <pre>    }</pre>
+                                <pre class="alt">}</pre>
+                            </div>
+
+                            <p>
+                                <h2><a name="recordingsretrieve"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Recordings: Retrieve recording with artists and genres</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <!-- code formatted by http://manoli.net/csharpformat/ -->
+                            <div class="csharpcode">
+                                <pre class="alt"><span class="kwrd">private</span> <span class="kwrd">void</span> BeginRecordingRetrieve(<span class="kwrd">string</span> recordingID, <span class="kwrd">string</span> applicationID, <span class="kwrd">string</span> applicationKey)</pre>
+                                <pre>{</pre>
+                                <pre class="alt">    <span class="rem">// Construct the WebClient and set the request headers</span></pre>
+                                <pre>    WebClient client = <span class="kwrd">new</span> WebClient();</pre>
+                                <pre class="alt">    Util.SetDecibelRequestHeaders(client, applicationID, applicationKey);</pre>
+                                <pre>    client.Headers.Add(<span class="str">"accept"</span>, <span class="str">"application/xml"</span>);</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre>    <span class="rem">// Set the callback function which is invoked when the download of the resource completes</span></pre>
+                                <pre class="alt">    client.DownloadStringCompleted += client_RecordingRetrieveCompleted;</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">    <span class="rem">// Issue the request to the Decibel Web Service</span></pre>
+                                <pre>    <span class="kwrd">string</span> depth = <span class="str">"Participations;ArtistDetails;Works;Genres;Identifiers;SessionInfo"</span>;</pre>
+                                <pre class="alt">    client.DownloadStringAsync(<span class="kwrd">new</span> Uri(<span class="str">"http://rest.decibel.net/v2/Recording?id="</span> + recordingID + <span class="str">"&amp;depth="</span> + depth));</pre>
+                                <pre>}</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre><span class="kwrd">private</span> <span class="kwrd">void</span> client_RecordingRetrieveCompleted(<span class="kwrd">object</span> sender, DownloadStringCompletedEventArgs e)</pre>
+                                <pre class="alt">{</pre>
+                                <pre>    <span class="kwrd">if</span> (e.Error == <span class="kwrd">null</span>)</pre>
+                                <pre class="alt">    {</pre>
+                                <pre>        <span class="rem">// Deserialize the response</span></pre>
+                                <pre class="alt">        SingleRecordingQueryResult queryResult = Util.DeserializeXmlString&lt;SingleRecordingQueryResult&gt;(e.Result);</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">        <span class="rem">// Display the recording information</span></pre>
+                                <pre>        <span class="kwrd">var</span> recording = queryResult.Result;</pre>
+                                <pre class="alt">        txtName.Text = recording.Title.ToString();</pre>
+                                <pre>        txtArtists.Text = recording.MainArtistsLiteral;</pre>
+                                <pre class="alt">        txtTotalSeconds.Text = Util.FormatTime(Convert.ToInt32(recording.Duration));</pre>
+                                <pre>        <span class="kwrd">if</span> (recording.AlbumSequence != <span class="kwrd">null</span>)</pre>
+                                <pre class="alt">        {</pre>
+                                <pre>            txtTrackNumber.Text = recording.AlbumSequence.ToString();</pre>
+                                <pre class="alt">        }</pre>
+                                <pre>        <span class="kwrd">if</span> (recording.MusicalKeys != <span class="kwrd">null</span>)</pre>
+                                <pre class="alt">        {</pre>
+                                <pre>            txtKey.Text = recording.MusicalKeys.ToString();</pre>
+                                <pre class="alt">        }</pre>
+                                <pre>        <span class="kwrd">if</span> (recording.BeatsPerMinute != <span class="kwrd">null</span>)</pre>
+                                <pre class="alt">        {</pre>
+                                <pre>            txtBPM.Text = recording.BeatsPerMinute.ToString();</pre>
+                                <pre class="alt">        }</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">        <span class="rem">// Check boxes if recording is live or in concert</span></pre>
+                                <pre>        <span class="kwrd">if</span> (recording.IsLive == <span class="kwrd">true</span>)</pre>
+                                <pre class="alt">        {</pre>
+                                <pre>            chkIsLive.IsChecked = <span class="kwrd">true</span>;</pre>
+                                <pre class="alt">        }</pre>
+                                <pre>        <span class="kwrd">if</span> (recording.IsConcert == <span class="kwrd">true</span>)</pre>
+                                <pre class="alt">        {</pre>
+                                <pre>            chkIsConcert.IsChecked = <span class="kwrd">true</span>;</pre>
+                                <pre class="alt">        }</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">        <span class="rem">// add the recording's genres to the text box</span></pre>
+                                <pre>        <span class="kwrd">if</span> (recording.Genres != <span class="kwrd">null</span>)</pre>
+                                <pre class="alt">        {</pre>
+                                <pre>            <span class="kwrd">foreach</span> (Genre genreValue <span class="kwrd">in</span> recording.Genres)</pre>
+                                <pre class="alt">            {</pre>
+                                <pre>                <span class="kwrd">if</span> (genreValue.Name.ToString().Length &gt; 0)</pre>
+                                <pre class="alt">                {</pre>
+                                <pre>                    txtGenres.Text += genreValue.Name + <span class="str">", "</span>;</pre>
+                                <pre class="alt">                }</pre>
+                                <pre>            }</pre>
+                                <pre class="alt">        }</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">        <span class="rem">// Add the recording participants to the ListBox</span></pre>
+                                <pre>        <span class="kwrd">if</span> (recording.Participations != <span class="kwrd">null</span> &amp;&amp; recording.Participations.Length &gt; 0)</pre>
+                                <pre class="alt">        {</pre>
+                                <pre>            <span class="kwrd">foreach</span> (Participation participation <span class="kwrd">in</span> recording.Participations)</pre>
+                                <pre class="alt">            {</pre>
+                                <pre>                lstParticipants.Items.Add(participation.ArtistsLiteral + <span class="str">" - "</span> + participation.ActivityLiteral);</pre>
+                                <pre class="alt">            }</pre>
+                                <pre>        }</pre>
+                                <pre class="alt">&nbsp;</pre>
+                                <pre>        <span class="rem">// Add the identifiers to the list</span></pre>
+                                <pre class="alt">        <span class="kwrd">if</span> (recording.Identifiers != <span class="kwrd">null</span>)</pre>
+                                <pre>        {</pre>
+                                <pre class="alt">            <span class="kwrd">foreach</span> (Identifier identifier <span class="kwrd">in</span> recording.Identifiers)</pre>
+                                <pre>            {</pre>
+                                <pre class="alt">                lstIdentifiers.Items.Add(identifier.IdentifierType + <span class="str">" - "</span> + identifier.Value);</pre>
+                                <pre>            }</pre>
+                                <pre class="alt">        }</pre>
+                                <pre>&nbsp;</pre>
+                                <pre class="alt">        <span class="rem">// Add the production events to the list</span></pre>
+                                <pre>        <span class="kwrd">if</span> (recording.ProductionEvents != <span class="kwrd">null</span> &amp;&amp; recording.ProductionEvents.Length &gt; 0)</pre>
+                                <pre class="alt">        {</pre>
+                                <pre>            <span class="kwrd">foreach</span> (ProductionEvent productionEvent <span class="kwrd">in</span> recording.ProductionEvents)</pre>
+                                <pre class="alt">            {</pre>
+                                <pre>                lstEvents.Items.Add(productionEvent.Date + <span class="str">" - "</span> + productionEvent.Location);</pre>
+                                <pre class="alt">            }</pre>
+                                <pre>        }</pre>
+                                <pre class="alt">    }</pre>
+                                <pre>    <span class="kwrd">else</span></pre>
+                                <pre class="alt">    {</pre>
+                                <pre>        MessageBox.Show(<span class="str">"The Decibel Web Service request was not successful due to the following error:"</span> + </pre>
+                                <pre class="alt">            Environment.NewLine + e.Error.ToString());</pre>
+                                <pre>    }</pre>
+                                <pre class="alt">}</pre>
+                            </div>
+                        </div>
+                    </td>
+            </table>
+        </div>
+    </div>
+
+    <div id="footer">
+
+        <div id="foot-wrap">
+
+            <script type="text/javascript">
+                var d = new Date();
+                document.getElementById("foot-wrap").appendChild(document.createTextNode("© " + d.getFullYear() + " Decibel Music Systems Ltd"));
+            </script>
+
+            <br />
+            The Decibel name, associated trade marks and logos and the &quot;magnifying glass note&quot; logo are trade marks of Decibel Music Systems Limited.
+        <br />
+            The Old Truman Brewery, 91 Brick Lane, London E1 6QL, UK +44 20 3657 9760
+        <br />
+
+            <a href="http://www.3scale.net/" target="_blank">
+                <img alt="Powered by 3scale" src="images/powered_by_logo.png">
+            </a>
+
+            <div id="flashWrapper" style="display: none;">
+                <div class="ajaxNoticeValid alwaysontop "></div>
+            </div>
+
+            <script type="text/javascript" charset="utf-8">
+                jQuery(document).ready(function () {
+                    setTimeout($.flash.hide, 5000);
+                });
+        </script>
+
+        </div>
+    </div>
+</body>
+</html>

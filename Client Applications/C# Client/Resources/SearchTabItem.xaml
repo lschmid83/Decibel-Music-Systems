@@ -1,0 +1,32 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:my="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit">
+
+    <Style x:Key="TabControlStyle" TargetType="{x:Type TabControl}">
+        <Setter Property="Margin" Value="0,2,0,0" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="Height" Value="Auto" />
+    </Style>
+    
+    <Style x:Key="ControlBaseStyle" TargetType="{x:Type Control}">
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+    
+    <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}" BasedOn="{StaticResource ControlBaseStyle}">
+        <Setter Property="Margin" Value="10,0,15,0" />
+        <Setter Property="Width" Value="260" />
+        <Setter Property="Height" Value="23" />
+    </Style>
+    
+    <Style x:Key="AutoCompleteStyle" TargetType="{x:Type my:AutoCompleteBox}" BasedOn="{StaticResource ControlBaseStyle}">
+        <Setter Property="Margin" Value="10,0,15,0" />
+        <Setter Property="Width" Value="260" />
+        <Setter Property="Height" Value="23" />
+    </Style>
+
+</ResourceDictionary>

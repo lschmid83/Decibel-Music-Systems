@@ -1,0 +1,422 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Authentication</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="javascript/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="javascript/jquery.colorbox-min.js" type="text/javascript"></script>
+    <link href="css/colorbox.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="javascript/highlight.pack.js" type="text/javascript"></script>
+    <script src="javascript/help.js" type="text/javascript"></script>
+    <script src="javascript/flash.js" type="text/javascript"></script>
+    <script src="javascript/remote.js" type="text/javascript"></script>
+    <script src="javascript/switch.js" type="text/javascript"></script>
+    <script src="javascript/ajax_upload.js" type="text/javascript"></script>
+    <script src="javascript/extra_fields.js" type="text/javascript"></script>
+    <script src="javascript/application.js" type="text/javascript"></script>
+    <link href="css/default.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#" />
+    <script type="text/javascript" src="html5.js"></script>
+    <script type="text/javascript" src="eCSStender.js"></script>
+    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="javascript/prettify.js"></script>
+    
+    <script type="text/javascript">
+        $(function () {
+            var offset = $("#sidebar").offset(); //Sets which element is scrollable. In this case it's the div .sidebar
+            var topPadding = 30;  //Set how much top-padding the element has.
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > offset.top) {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: $(window).scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $("#sidebar").stop().animate({   //Sets which element is scrollable. In this case it's the div .sidebar
+                        marginTop: 0
+                    });
+                };
+            });
+        });
+
+    </script>
+</head>
+
+<body class="home">
+
+    <div id="page">
+
+        <div id="header">
+            <a id="header-logo" href="index.html">
+                <img src="images/logo-white.png" /></a>
+            <div id="header-widget">
+                <div id="user_widget" class="round">
+                    <a href="login.html">Sign in</a>
+                    | <a href="signup.html">Sign up</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="content">
+            <table style="width: 100%" cellspacing="0" cellpadding="10">
+                <tr>
+                    <td style="width: 250px; vertical-align: top">
+
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <div id='cssmenu'>
+                                <ul>
+                                    <li><a href='decibel-sdk.html'><span>Home</span></a></li>
+                                    <li><a href='news.html'><span>News</span></a></li>
+                                    <li><a href='our-api.html'><span>API Music Metadata</span></a></li>
+                                    <li><a href='authentication.html'><span>API Authentication</span></a></li>
+                                    <li><a href='rest-api-v2.html'><span>REST API Documentation</span></a></li>
+                                    <li><a href='hackathons.html'><span>Hackathons</span></a></li>
+                                    <li><a href='forum.html'><span>Forum</span></a></li>
+                                    <li><a href='support.html'><span>Support</span></a></li>
+                                    <li><a href='faq.html'><span>FAQ</span></a></li>
+                                    <li><a href='termsandconditions.html'><span>Terms and Conditions</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align: top">
+                        <div style="margin-left: 0px; margin-top: 0px">
+                            <h2>Welcome to the Decibel SDK</h2>
+                            <h2><a></a>About</h2>
+                            <p>The Decibel SDK makes it simple to query the Decibel API and deal with the results returned.</p>
+                            <p>Calls to the Decibel API are made through query objects, which take care of all the logic involved in running a REST query, including deserialising the results to handy result objects. These can then be used to easily ingegrate Decibel data into your own application</p>
+                        
+                            <h2><a name="samples"></a>Sample Projects</h2>
+                            <p>The sample projects demonstrate the functionality of the Decibel API.</p>
+                            <ul>
+                                <li><a href='sample-code-restv2-csharp.html'>C#</a></li>
+                                <li><a href='sample-code-restv2-java.html'>Java</a></li>
+                                <li><a href='sample-code-restv2-php.html'>PHP</a></li>
+                                <li><a href='sample-code-restv2-python.html'>Python</a></li>
+                                <li><a href='sample-code-restv2-ruby.html'>Ruby</a></li>
+                            </ul>       
+                        </div>
+                            <a name="download"></a>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="vertical-align: middle;">
+                                        <h2>Download </h2>
+                                    </td>
+                                    <td style="text-align: right; vertical-align: middle">
+                                        <div class="backlinkdivh3">
+                                            <a href="#top">
+                                                <h2>Back to top</h2>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p><strong>Please note: The C# SDK is currently in beta release. Content and functionality are likely to change significantly and without warning.</strong></p>
+                            <p>The latest version of Decibel C# SDK is avalible from NuGet. <a href="https://www.nuget.org/packages/DecibelSDK/">Click here</a> to download it or run the following command in the Package Manager Console in Visual Studio:</p>
+
+                            <!-- code formatted by http://manoli.net/csharpformat/ -->
+                            <div class="csharpcode">
+                                <pre class="alt">PM&gt; Install-Package DecibelSDK</pre>
+                            </div>
+
+                    </td>
+                    <td style="width: 260px; vertical-align: top">
+                        <div class="container" style="margin-left: 0px; margin-top: 0px">
+                            <h2>Contents</h2>
+                            <p></p>
+                            <div class="feed">
+                                <ul>
+                                    <li><a href="#about">About</a></li>
+                                    <li><a href="#samples">Sample Projects</a></li>
+                                    <li><a href="#download">Download</a></li>
+                                    <li><a href="#query">Querying the API</a></li>
+                                    <li><a href="#result">Dealing with Results</a></li>
+                                    <li><a href="#bugs">Known Bugs</a></li>
+                                    <li><a href="#version">Version History</a></li>
+                                    <li><a href="#plans">Planned Changes</a></li>
+                                    <li><a href="#upcoming-features">Upcoming Features</a></li>
+                                    <li><a href="#terms">Terms of Use</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="vertical-align: top">
+                    <td style="width: 250px; vertical-align: top">
+                        <div style="margin-left: 0px; margin-top: 0px"></div>
+                    </td>
+                    <td>
+                        <div>
+
+
+                            <h2>Installation</h2>
+                            <ul style="padding-left: 20px">
+                                <li>In Visual Studio, right click the References section of your project in the Solution Explorer and select Add Reference</li>
+                                <li>Click Browse, navigate to the location you have saved the DLL to and confirm the addition by clicking OK</li>
+                                <li>Add the following line to the top of any file that will use the Decibel C# SDK</li>
+                            </ul>
+                            <div class="csharpcode">
+                                <pre class="alt"><span class="kwrd">using</span> DecibelSDK;</pre>
+                            </div>
+
+                            <a name="query"></a>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="vertical-align: middle">
+                                        <h2>Querying The API</h2>
+                                    </td>
+                                    <td style="text-align: right; vertical-align: middle">
+                                        <div class="backlinkdivh3">
+                                            <a href="#top">
+                                                <h2>Back to top</h2>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p>Before you can query the Decibel API, you must first set your app ID and app Key. These are provided on <a href="signup.html">registration.</a></p>
+                            <div class="csharpcode">
+                                <pre class="alt">DecibelUtilities.SetKeys(<span class="str">"YOUR_APP_ID"</span>, <span class="str">"YOUR_APP_KEY"</span>);</pre>
+                            </div>
+                            <p>Each query topic has its own Query class. A full list of topics can be found in our <a href="rest-api-v2.html">API Reference</a>. SingleQuery classes, eg SingleAlbumQuery, return one result and are used to find items by ID. SearchQuery classes, eg AlbumsQuery, return many results and are used to search the API by parameters such as title, main artists, release date etc.</p>
+                            <p>Querying works the same for both Single and Search topics. First, a new instance of the class must be created. The search parameters should then be filled in with the values you require. The Decibel C# SDK is IntelliSense compatible. A full list of parameters can also be found online in our <a href="rest-api-v2.html">API Reference</a>. Please note: not all search fields are currently supported by the SDK</p>
+                            <p>The following code demonstrates how to create a new AlbumSearch query, looking for albums with the title 'Rumours' that were released in 1977.</p>
+
+                            <!-- code formatted by http://manoli.net/csharpformat/ -->
+                            <div class="csharpcode">
+                                <pre class="alt"><span class="kwrd">var</span> qo = <span class="kwrd">new</span> AlbumsQuery</pre>
+                                <pre>{</pre>
+                                <pre class="alt">    Title = <span class="str">"Rumours"</span>,</pre>
+                                <pre>    DateReleased = <span class="str">"1977"</span>,</pre>
+                                <pre class="alt">    Depth = <span class="kwrd">new</span> AlbumRetrievalDepth?[] { AlbumRetrievalDepth.ArtistDetails, AlbumRetrievalDepth.Genres },</pre>
+                                <pre>};</pre>
+                            </div>
+                            
+                            <p>The following code demonstrates how to create a new SingleAlbum query to find the album with a given Spotify ID.</p>
+                            <!-- code formatted by http://manoli.net/csharpformat/ -->
+                            <div class="csharpcode">
+                                <pre class="alt"><span class="kwrd">var</span> qo = <span class="kwrd">new</span> SingleAlbumQuery()</pre>
+                                <pre>{</pre>
+                                <pre class="alt">    Id = <span class="str">"spotify:album:{SPOTIFY_ID}"</span>,</pre>
+                                <pre>    IdType = AlbumSearchType.Spotify,</pre>
+                                <pre class="alt">};</pre>
+                            </div>
+
+                            <p>Once the parameters you wish to search on have been set, use the Run() method to run the query.</p>
+                            <div class="csharpcode">
+                                <pre class="alt">qo.Run();</pre>
+                            </div>
+
+                            <p>
+                                <a name="result"></a>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="vertical-align: middle"><h2>Dealing With Results</h2></td>
+                                        <td style="text-align: right; vertical-align: middle">
+                                            <div class="backlinkdivh3"><a href="#top"><h2>Back to top</h2></a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </p>
+                            
+                            <p>Before doing anything with the results of the query, it is good practice to check if any errors occurred.</p>
+                            <!-- code formatted by http://manoli.net/csharpformat/ -->
+                            <div class="csharpcode">
+                                <pre class="alt"><span class="rem">// Check if any errors occurred</span></pre>
+                                <pre><span class="kwrd">if</span> (qo.Error.HasError)</pre>
+                                <pre class="alt">{</pre>
+                                <pre>    <span class="rem">// Error.ErrorMsg provides details of the error</span></pre>
+                                <pre class="alt">    Console.WriteLine(qo.Error.ErrorMsg);</pre>
+                                <pre>}</pre>
+                            </div>
+                            
+                            <p>
+                                The result of the query is saved to the Result object in your Query object. The structure of this differs slightly for Single and Search queries.
+                                <p><strong>Single Query Results</strong></p>
+                                <p>SingleQuery topics return a copy of the terms of the query in a Search object, (see below) and a Result object. The type of this object corresponds to the Query topic, so a SingleAlbumQuery would return an Album. The properties of this object can then be accessed and used within your own application.</p>
+                                <!-- code formatted by http://manoli.net/csharpformat/ -->
+                                <div class="csharpcode">
+                                    <pre class="alt"><span class="rem">// Get the album requested from the result</span></pre>
+                                    <pre><span class="kwrd">var</span> album = qo.Result;</pre>
+                                    <pre class="alt">&nbsp;</pre>
+                                    <pre><span class="rem">// Display the details of the album</span></pre>
+                                    <pre class="alt">Console.WriteLine(<span class="str">"Title: "</span> + album.Title);</pre>
+                                    <pre>Console.WriteLine(<span class="str">"Artist: "</span> + album.ArtistsLiteral);</pre>
+                                    <pre class="alt">Console.WriteLine(<span class="str">"ReleaseDate: "</span> + album.OriginalReleaseDate);</pre>
+                                </div>
+
+                                <p><strong>Search Query Result</strong></p>
+                                <p>All Search queries return a Result array, as oppose to a single Result. The type of this again corresponds to the topic, so a AlbumsQuery would return a Result[] of Album[].</p>
+                                <!-- code formatted by http://manoli.net/csharpformat/ -->
+                                <div class="csharpcode">
+                                    <pre class="alt"><span class="kwrd">var</span> albums = qo.Result;</pre>
+                                    <pre><span class="kwrd">foreach</span> (<span class="kwrd">var</span> album <span class="kwrd">in</span> albums)</pre>
+                                    <pre class="alt">{</pre>
+                                    <pre>    <span class="rem">// Display the details of the album</span></pre>
+                                    <pre class="alt">    Console.WriteLine(<span class="str">"Title: "</span> + album.Title);</pre>
+                                    <pre>    Console.WriteLine(<span class="str">"Artist: "</span> + album.ArtistsLiteral);</pre>
+                                    <pre class="alt">    Console.WriteLine(<span class="str">"ReleaseDate: "</span> + album.OriginalReleaseDate);</pre>
+                                    <pre>}</pre>
+                                </div>
+
+                                <p>The Result[] can be manipulated using LINQ statements to search within and order results.</p>
+                                <!-- code formatted by http://manoli.net/csharpformat/ -->
+                                <div class="csharpcode">
+                                    <pre class="alt"><span class="rem">// Only get albums in the ResultSet by Fleetwood Mac</span></pre>
+                                    <pre><span class="kwrd">var</span> fleetwoodMac = qo.Result.Where(x =&gt; x.ArtistsLiteral == <span class="str">"Fleetwood Mac"</span>);</pre>
+                                    <pre class="alt"><span class="rem">// Order the results by title</span></pre>
+                                    <pre><span class="kwrd">var</span> alphabetical = qo.Result.OrderBy(x =&gt; x.Title);</pre>
+                                </div>
+
+                                <p>In addition to the ResultSet and a copy of the terms of the query, Search queries return a PageCount, ResultCount and TotalResultCount.</p>
+
+                                <p><strong>Query Terms</strong></p>
+                                <p>The terms of your original query are returned in the Search object.</p>
+                                <!-- code formatted by http://manoli.net/csharpformat/ -->
+                                <div class="csharpcode">
+                                    <pre class="alt"><span class="kwrd">var</span> searchTerms = qo.Search;</pre>
+                                </div>
+
+                                <p>
+                                    <h2><a name="bugs"></a>
+                                        <table width="100%">
+                                            <tr>
+                                                <td style="vertical-align: middle">Known Bugs</td>
+                                                <td style="text-align: right; vertical-align: middle">
+                                                    <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </h2>
+                                </p>
+                                <p><strong>Version 0.1.3 (current)</strong></p>
+                                <ul>
+                                    <li>Search parameters for min and max seconds do not work for Recordings and SingleRecording queries</li>
+                                </ul>
+                            </p>
+
+                            <p>
+                                <h2><a name="version"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Version History</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <p><strong>Version 0.2.0 (current)</strong></p>
+                            <ul>
+                                <li>Revision of the underlying data model to improve the handling of results and make it more compatible with the data model used by the API. For a list of items affected.</a></li>
+                            </ul>
+                            <p><strong>Version 0.1.3</strong></p>
+                            <ul>
+                                <li>Minor changes to the underlying data model. A full revision will be coming in version 0.2</li>
+                                <li>Added the ability to search recordings by artist Id</li>
+                            </ul>
+                            <p><strong>Version 0.1.2</strong></p>
+                            <ul>
+                                <li>Bug fix: Dependancies have been fixed</li>
+                            </ul>
+                            <p><strong>Version 0.1.1</strong></p>
+                            <ul>
+                                <li>Bug fix: All classes are now in the DecibelSDK namespace</li>
+                            </ul>
+                            <p><strong>Version 0.1.0 </strong></p>
+                            <ul>
+                                <li>Supports query building and result handling for Album, Artist and Recording topics</li>
+                            </ul>
+
+                            <p>
+                                <h2><a name="plans"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Planned Changes</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <p>Below is a list of planned changes for future releases that will likely effect the way you use the Decibel C# SDK. This list is not comprehensive and is subject to change at any time whilst the SDK is in beta release.</p>
+                            <ul>
+                                <li>The underlying object model is currently being re-written, which may result in changes to some Query and Result objects. <strong>Expected v0.2 and upwards</strong></li>
+                                <li>The qo.Search object that contains details of your search terms will be removed once the paging utilities have been released. <strong>Expected v0.4 - v0.5</strong></li>
+                            </ul>
+
+                            <p>
+                                <h2><a name="upcoming-features"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Upcoming Features</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <p>Below is a list of features planned for future releases of the SDK. This list is not comprehensive. Features and estimated release versions are subject to change at any time.</p>
+                            <ul>
+                                <li>Utilties for dealing with paged results. Will include functions for navigating between pages, to a specific page and returning all pages in a single object. <strong>Estimated v0.3</strong></li>
+                                <li>Support for Image queries and image handling helpers <strong>Estimated v0.4</strong></li>
+                                <li>Support for Disc Tag queries <strong>Estimated v0.4 - v0.5</strong></li>
+                            </ul>
+                            <p>
+                                <h2><a name="terms"></a>
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="vertical-align: middle">Terms of Use</td>
+                                            <td style="text-align: right; vertical-align: middle">
+                                                <div class="backlinkdivh3"><a href="#top">Back to top</a></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </h2>
+                            </p>
+                            <p>©Decibel Music Systems, 2014. May be used freely in unaltered form.</p>
+                            <p>Use of the Decibel API is subject to the following <a href="eula.html" target="_blank">end user license agreement</a> &amp; <a href="termsandconditions.html" target="_blank">terms and conditions</a></p>
+                        </div>
+                    </td>
+
+            </table>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="foot-wrap">
+
+            <script type="text/javascript">
+                var d = new Date();
+                document.getElementById("foot-wrap").appendChild(document.createTextNode("© " + d.getFullYear() + " Decibel Music Systems Ltd"));
+            </script>
+
+            <br />
+            The Decibel name, associated trade marks and logos and the &quot;magnifying glass note&quot; logo are trade marks of Decibel Music Systems Limited.
+            <br />
+
+            The Old Truman Brewery, 91 Brick Lane, London E1 6QL, UK +44 20 3657 9760
+            <br />
+
+            <a href="http://www.3scale.net/" target="_blank">
+                <img alt="Powered by 3scale" src="images/powered_by_logo.png">
+            </a>
+            <div id="flashWrapper" style="display: none;">
+                <div class="ajaxNoticeValid alwaysontop ">
+                </div>
+            </div>
+
+            <script type="text/javascript" charset="utf-8">
+                jQuery(document).ready(function () {
+                    setTimeout($.flash.hide, 5000);
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>

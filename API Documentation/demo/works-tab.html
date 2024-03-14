@@ -1,0 +1,60 @@
+
+	<!-- Works tab -->
+	<div id="tabWorks" style="padding:5px; margin:0px; height:100%;">		
+
+		<!-- Search parameters -->
+		<div class="header">Search Parameters</div>
+				
+		<!-- Search work name -->
+		<div class="searchField">
+			<label for="searchWorkName">Name</label>
+			<input id="searchWorkName"/>
+		</div>
+		
+		<!-- Search work catalogue -->
+		<div class="searchField" style="clear:left">
+			<label for="searchWorkCatalogue">Catalogue</label>
+			<input id="searchWorkCatalogue"/>
+		</div>	
+		
+		<!-- Search work composer -->
+		<div class="searchField" style="clear:left">
+			<label for="searchWorkComposer">Composer</label>
+			<input id="searchWorkComposer"/>
+		</div>
+
+		<!-- Search URL -->
+		<div class="searchField" style="clear:left;">
+			<label for="workSearchURL" style="line-height:40px">URL</label>
+			<textarea id="workSearchURL" readonly="readonly"></textarea>
+			<script>updateWorkSearchUrl(workSearchParam);</script>
+		</div>				
+		
+		<!-- Search button -->
+		<div class="searchField">
+			<button id="workSearchButton">Search</button>
+		</div>						
+
+		<!-- Results -->
+		<div class="header">Results</div>
+
+		<!-- Results table -->
+		<div class="resultsTable"> 
+			<table class="workResults" style="display: none"></table>	
+		</div>
+
+		<!-- Track appearances table -->
+		<div style="height:230px">
+			<div class="header">Track Appearances</div>
+			<div class="resultsTable"> 
+				<table class="workTrackAppearances" style="display: none"></table>	
+			</div>
+		</div>
+		
+		<!-- Footer -->
+		<div id="tabWorksFooter" class="footer">
+			<img id="statusProgress" src="css/images/load.gif" visible="false"/><div id="statusText"></div>
+		</div> 		
+		<script>setStatus("tabWorksFooter", "Ready", false)</script>
+
+	</div>

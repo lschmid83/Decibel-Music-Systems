@@ -1,0 +1,74 @@
+
+	<!-- Participants tab -->
+	<div id="tabParticipants" style="padding:5px; margin:0px; height:100%;">		
+
+		<!-- Search parameters -->
+		<div class="header">Search Parameters</div>
+				
+		<!-- Search name -->
+		<div class="searchField">
+			<label for="searchParticipantName">Name</label>
+			<input id="searchParticipantName" />
+		</div>
+		
+		<!-- Search activity -->
+		<div class="searchField">
+			<label for="searchParticipantActivity">Activity</label>
+			<input id="searchParticipantActivity"/>
+		</div>	
+		
+		<!-- Search date born -->
+		<div class="searchField" style="clear:left">
+			<label for="searchParticipantDateBorn">Date Born</label>
+			<input id="searchParticipantDateBorn"/>
+		</div>
+			
+		<!-- Search date died -->
+		<div class="searchField" style="clear:left">
+			<label for="searchParticipantDateDied">Date Died</label>
+			<input id="searchParticipantDateDied"/>
+		</div>
+
+		<!-- Search URL -->
+		<div class="searchField" style="clear:left;">
+			<label for="participantSearchURL" style="line-height:40px">URL</label>
+			<textarea id="participantSearchURL" readonly="readonly"></textarea>
+			<script>updateParticipantSearchUrl(participantSearchParam);</script>
+		</div>				
+		
+		<!-- Search button -->
+		<div class="searchField">
+			<button id="participantSearchButton">Search</button>
+		</div>						
+
+		<!-- Results -->
+		<div class="header">Results</div>
+
+		<!-- Results table -->
+		<div class="resultsTable"> 
+			<table class="participantResults" style="display: none;"></table>	
+		</div>
+		
+		<!-- Particpant information -->
+		<div class="wrapper" >
+				
+				<!-- Participant associates -->
+				<div class="leftSide" style="width: 280px">
+					<div class="header">Associates</div>
+					<table class="participantAssociates" style="display: none"></table>		
+				</div>
+ 			
+				<!-- Track appearances -->
+				<div class="rightSide" style="width:215px; max-width:712px;">	
+					<div id="trackAppearancesHeader" class="header">Track Appearances</div>
+					<table class="participantTrackAppearances" style="display: none"></table>					
+				</div> 
+		</div>		
+
+		<!-- Footer -->
+		<div id="tabParticipantsFooter" class="footer">
+			<img id="statusProgress" src="css/images/load.gif" visible="false"/><div id="statusText"></div>
+		</div> 		
+		<script>setStatus("tabParticipantsFooter", "Ready", false)</script>
+
+	</div>
