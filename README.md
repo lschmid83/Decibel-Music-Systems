@@ -4,6 +4,12 @@ These projects are a collection of frontend client sample applications which ret
 
 I have also included the API documentation HTML website which includes instructions on how to use the client applications.
 
+Here are some screenshots of the project:
+
+<img align='left' src='https://drive.google.com/uc?id=1MulUZxoZ672gE4aklhc42yES3Bz3cq27' width='240'>
+<img align='left' src='https://drive.google.com/uc?id=1qY3OwDhlKfkxI6UKyeGqpcBbqEFRXLK8' width='240'>
+<img src='https://drive.google.com/uc?id=1JwXKymPSDVFpsJllvJm7vRilVnOr3tjj' width='240'>
+
 C# Client
 =========
 
