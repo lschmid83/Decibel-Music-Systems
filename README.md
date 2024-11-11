@@ -36,7 +36,7 @@ Download the required software here:
 
 1. Create a folder called decibel-php-client in the C:\wamp\www\ folder
 2. Copy the contents of the source code folder Client Applications\PHP Client to the newly created folder
-3. Open http://localhost:8080/decibel-php-client/ in a browser
+3. Open http://localhost:8080/decibel-php-client/ in a browser or whatever port you setup WAMP with
 
 API Documentation Website
 =========================
